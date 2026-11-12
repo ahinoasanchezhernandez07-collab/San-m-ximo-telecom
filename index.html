@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Máximo Telecom | Auditoría Inteligente y Tarifas MásMóvil</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B1120',
+                            navy: '#111827',
+                            card: '#1E293B',
+                            orange: '#FF6B00',
+                            amber: '#F59E0B',
+                            yellow: '#FACC15',
+                            blue: '#3B82F6',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scan': 'scan 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%, 100%': { transform: 'translateY(0%)' },
+                            '50%': { transform: 'translateY(100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B1120;
+            color: #F8FAFC;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card-light:hover {
+            border-color: rgba(255, 107, 0, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(255, 107, 0, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B00 0%, #FACC15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B00 0%, #F59E0B 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1120;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF6B00;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-orange selection:text-white">
+
+    <!-- Notificación Toast Flotante -->
+    <div id="toast" class="fixed top-20 right-5 z-50 transform transition-all duration-300 translate-x-full opacity-0">
+        <div class="glass-panel border-l-4 border-brand-orange px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3">
+            <i id="toast-icon" class="ph-fill ph-check-circle text-emerald-400 text-xl"></i>
+            <div>
+                <h4 id="toast-title" class="text-sm font-semibold text-white">Notificación</h4>
+                <p id="toast-msg" class="text-xs text-slate-300">Acción completada</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación Superior -->
+    <header class="fixed top-0 w-full z-40 glass-panel border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-18 py-4">
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center text-white shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform">
+                        <i class="ph-bold ph-broadcast text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-display font-extrabold text-xl tracking-tight text-white block leading-none">SAN MÁXIMO</span>
+                        <span class="text-[11px] font-semibold tracking-widest text-brand-orange uppercase">Telecom & IA</span>
+                    </div>
+                </a>
+
+                <!-- Links Desktop -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
+                    <a href="#auditor" class="text-brand-orange font-semibold flex items-center gap-1.5 hover:text-amber-400 transition-colors">
+                        <i class="ph-fill ph-sparkle"></i> Auditor IA
+                    </a>
+                    <a href="#tarifas" class="hover:text-white transition-colors">Tarifas MásMóvil</a>
+                    <a href="#asistente" class="hover:text-white transition-colors">Asistente 24/7</a>
+                    <a href="#como-funciona" class="hover:text-white transition-colors">Ventajas</a>
+                </nav>
+
+                <!-- Botones Acción Header -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#auditor" class="px-4 py-2.5 rounded-xl gradient-bg text-slate-950 font-bold text-sm hover:opacity-95 transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2">
+                        <i class="ph-bold ph-magnifying-glass"></i> Auditar Factura
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-5 space-y-2">
+            <a href="#inicio" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Inicio</a>
+            <a href="#auditor" class="block px-3 py-2 rounded-lg text-brand-orange font-semibold bg-orange-500/10">✨ Auditor IA de Facturas</a>
+            <a href="#tarifas" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Tarifas MásMóvil</a>
+            <a href="#asistente" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Asistente Virtual 24/7</a>
+            <a href="#como-funciona" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800">Cómo Funciona</a>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <!-- Fondos decorativos -->
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-orange/15 blur-[130px] rounded-full pointer-events-none"></div>
+        <div class="absolute bottom-0 right-10 w-[400px] h-[300px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <!-- Badge superior -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-xs sm:text-sm font-medium text-slate-200 mb-6 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Distribuidor Autorizado <strong class="text-brand-yellow">MÁSMÓVIL</strong> • Auditoría con Inteligencia Artificial</span>
+            </div>
+
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-4xl mx-auto leading-[1.12] mb-6">
+                Deja de pagar de más en tu <span class="gradient-text">factura de teléfono e internet</span>
+            </h1>
+
+            <p class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Sube tu factura actual y nuestra Inteligencia Artificial detectará en segundos cargos ocultos, alquileres innecesarios y permanencias, calculando tu ahorro exacto con nuestras ofertas oficiales.
+            </p>
+
+            <!-- Botones CTA -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+                <a href="#auditor" class="w-full sm:w-auto px-8 py-4 rounded-2xl gradient-bg text-slate-950 font-extrabold text-base hover:scale-[1.02] transition-all shadow-xl shadow-orange-500/25 flex items-center justify-center gap-2.5">
+                    <i class="ph-bold ph-file-magnifying-glass text-xl"></i>
+                    Auditar mi factura ahora
+                </a>
+                <a href="#asistente" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-panel hover:bg-slate-800/90 text-white font-semibold text-base transition-all flex items-center justify-center gap-2.5 border border-slate-700">
+                    <i class="ph-duotone ph-robot text-xl text-brand-orange"></i>
+                    Hablar con Asesor IA
+                </a>
+            </div>
+
+            <!-- Indicadores de confianza rápidos -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-800/80 text-left sm:text-center">
+                <div class="p-3">
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">+160 €</div>
+                    <div class="text-xs sm:text-sm text-slate-400">Ahorro medio anual</div>
+                </div>
+                <div class="p-3">
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-brand-orange">15 seg</div>
+                    <div class="text-xs sm:text-sm text-slate-400">Análisis automático IA</div>
+                </div>
+                <div class="p-3">
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">0 €</div>
+                    <div class="text-xs sm:text-sm text-slate-400">Estudio 100% gratuito</div>
+                </div>
+                <div class="p-3">
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-emerald-400">100%</div>
+                    <div class="text-xs sm:text-sm text-slate-400">Sin cortes de línea</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SECCIÓN PRINCIPAL: AUDITOR DE FACTURAS CON IA -->
+    <section id="auditor" class="py-20 bg-slate-900/50 border-y border-slate-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Encabezado Sección -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-brand-orange font-semibold text-sm uppercase tracking-wider mb-2">
+                        <i class="ph-fill ph-cpu"></i> Herramienta Exclusiva San Máximo
+                    </div>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">Auditor Inteligente de Facturas</h2>
+                    <p class="text-slate-400 mt-2 max-w-2xl">Analiza cualquier factura en PDF, imagen o texto. Si estás haciendo una demostración en vivo, usa el botón de factura de ejemplo para probarlo al instante.</p>
+                </div>
+                
+                <!-- Botón Rápido Demo 1-Clic -->
+                <button onclick="cargarFacturaEjemplo()" class="self-start md:self-auto px-5 py-3 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 font-semibold text-sm flex items-center gap-2 transition-all shadow-lg">
+                    <i class="ph-bold ph-lightning text-brand-yellow"></i>
+                    Probar con Factura de Ejemplo
+                </button>
+            </div>
+
+            <!-- Grid Principal del Auditor -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- COLUMNA IZQUIERDA: Formulario y Subida (5 columnas) -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 shadow-2xl">
+                    <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-brand-orange/20 text-brand-orange flex items-center justify-center text-sm font-bold">1</span>
+                        Datos y Factura Actual
+                    </h3>
+
+                    <div class="space-y-5">
+                        <!-- Nombre del Cliente -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Nombre del Cliente / Referencia</label>
+                            <div class="relative">
+                                <i class="ph ph-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
+                                <input type="text" id="input-cliente" value="Carlos Mendoza" placeholder="Ej. Laura García"
+                                    class="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-orange transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Operador Actual e Importe -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Operador Actual</label>
+                                <select id="select-operador" class="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-orange transition-colors">
+                                    <option value="TeleComPlus">TeleComPlus</option>
+                                    <option value="Movistar">Movistar</option>
+                                    <option value="Vodafone">Vodafone</option>
+                                    <option value="Orange">Orange</option>
+                                    <option value="Digi / Otro">Digi / Otro</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Gasto Mensual (€)</label>
+                                <div class="relative">
+                                    <input type="number" id="input-importe" value="53.40" step="0.01" min="15" max="300"
+                                        class="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl pl-3.5 pr-8 py-3 text-sm font-bold text-white focus:outline-none focus:border-brand-orange transition-colors">
+                                    <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">€</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Zona Drag & Drop de Archivo -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Documento de Factura (PDF, JPG, PNG, TXT)</label>
+                            <div id="drop-zone" class="border-2 border-dashed border-slate-700 hover:border-brand-orange rounded-2xl p-6 text-center cursor-pointer transition-all bg-slate-950/40 group relative overflow-hidden">
+                                <input type="file" id="file-upload" class="hidden" accept=".pdf,.png,.jpg,.jpeg,.txt">
+                                <div id="upload-placeholder">
+                                    <div class="w-12 h-12 rounded-2xl bg-slate-800 group-hover:bg-brand-orange/20 text-slate-300 group-hover:text-brand-orange flex items-center justify-center mx-auto mb-3 transition-colors">
+                                        <i class="ph-duotone ph-cloud-arrow-up text-2xl"></i>
+                                    </div>
+                                    <p class="text-sm font-medium text-white mb-1">Haz clic para subir o arrastra tu factura</p>
+                                    <p class="text-xs text-slate-400">Soporta PDF, capturas de pantalla o texto</p>
+                                </div>
+                                <div id="file-selected-info" class="hidden">
+                                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-2">
+                                        <i class="ph-fill ph-file-check text-2xl"></i>
+                                    </div>
+                                    <p id="selected-filename" class="text-sm font-bold text-emerald-300 truncate px-2">factura_actual.pdf</p>
+                                    <p class="text-xs text-slate-400 mt-1">Listo para analizar con IA</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botón Principal de Ejecución -->
+                        <button id="btn-analizar" onclick="ejecutarAuditoria()" class="w-full py-4 rounded-2xl gradient-bg text-slate-950 font-extrabold text-base hover:opacity-95 active:scale-[0.99] transition-all shadow-xl shadow-orange-500/20 flex items-center justify-center gap-2.5">
+                            <i class="ph-bold ph-sparkle text-xl"></i>
+                            Analizar Factura con IA
+                        </button>
+
+                        <div class="flex items-center justify-center gap-2 text-xs text-slate-400 pt-1">
+                            <i class="ph-fill ph-database text-emerald-400"></i>
+                            <span>Conectado a <strong>Neon PostgreSQL</strong> para registro automático</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: Panel de Resultados Visuales (7 columnas) -->
+                <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 shadow-2xl min-h-[510px] flex flex-col justify-between relative overflow-hidden">
+                    
+                    <!-- Estado Inicial (Antes de analizar) -->
+                    <div id="state-empty" class="my-auto text-center py-12 px-4">
+                        <div class="w-20 h-20 rounded-3xl bg-slate-800/80 border border-slate-700 flex items-center justify-center mx-auto mb-5 text-brand-orange">
+                            <i class="ph-duotone ph-chart-polar text-4xl"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">Esperando factura para auditar</h3>
+                        <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">
+                            Sube un documento a la izquierda o pulsa en <strong class="text-blue-400">"Probar con Factura de Ejemplo"</strong> para ver cómo la IA desglosa tus costes ocultos y calcula tu ahorro.
+                        </p>
+                        <div class="inline-flex items-center gap-4 text-xs text-slate-400 bg-slate-950/60 px-4 py-2.5 rounded-xl border border-slate-800">
+                            <span class="flex items-center gap-1.5"><i class="ph-fill ph-check-circle text-emerald-400"></i> Detección de Router</span>
+                            <span class="flex items-center gap-1.5"><i class="ph-fill ph-check-circle text-emerald-400"></i> Permanencias</span>
+                            <span class="flex items-center gap-1.5"><i class="ph-fill ph-check-circle text-emerald-400"></i> Comparativa MásMóvil</span>
+                        </div>
+                    </div>
+
+                    <!-- Estado Cargando / Escaneando -->
+                    <div id="state-loading" class="hidden my-auto text-center py-16 px-4">
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <div class="absolute inset-0 rounded-2xl border-2 border-brand-orange/40 animate-ping"></div>
+                            <div class="relative w-full h-full rounded-2xl bg-slate-900 border border-brand-orange flex items-center justify-center overflow-hidden">
+                                <i class="ph-duotone ph-file-text text-4xl text-brand-orange"></i>
+                                <div class="absolute top-0 left-0 w-full h-1 bg-brand-yellow shadow-[0_0_12px_#FACC15] animate-scan"></div>
+                            </div>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-2">Escaneando conceptos de la factura...</h3>
+                        <p id="loading-step-text" class="text-sm text-brand-orange font-medium">Identificando operador y servicios contratados...</p>
+                    </div>
+
+                    <!-- Estado Resultados Completos -->
+                    <div id="state-results" class="hidden space-y-6 animate-fade-in">
+                        <!-- Cabecera del Informe -->
+                        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                                    <i class="ph-fill ph-check-circle"></i> Diagnóstico Completado • Guardado en Neon DB
+                                </span>
+                                <h3 class="font-display font-bold text-xl text-white mt-0.5">Informe de Ahorro: <span id="res-cliente-nombre" class="text-brand-orange">Carlos Mendoza</span></h3>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold">
+                                ¡Ahorro Garantizado!
+                            </span>
+                        </div>
+
+                        <!-- 3 Tarjetas KPI -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-4">
+                                <div class="text-xs text-slate-400 font-medium mb-1">Tu Gasto Actual</div>
+                                <div id="res-gasto-actual" class="text-2xl font-display font-extrabold text-rose-400">53,40 €<span class="text-xs font-normal text-slate-400">/mes</span></div>
+                                <div id="res-operador-badge" class="text-[11px] text-slate-400 mt-1">Operador: TeleComPlus</div>
+                            </div>
+                            <div class="bg-slate-950/70 border border-brand-orange/40 rounded-2xl p-4 relative overflow-hidden">
+                                <div class="text-xs text-brand-orange font-semibold mb-1">Propuesta MásMóvil</div>
+                                <div id="res-precio-masmovil" class="text-2xl font-display font-extrabold text-white">39,99 €<span class="text-xs font-normal text-slate-400">/mes</span></div>
+                                <div class="text-[11px] text-slate-300 mt-1">Fibra 300Mb + Móvil 50GB</div>
+                            </div>
+                            <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-2xl p-4">
+                                <div class="text-xs text-emerald-300 font-semibold mb-1">💰 Ahorro Anual Total</div>
+                                <div id="res-ahorro-anual" class="text-2xl font-display font-extrabold text-emerald-400">+160,92 €</div>
+                                <div id="res-ahorro-mensual" class="text-[11px] text-emerald-200/80 mt-1">13,41 € menos cada mes</div>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico Comparativo Visual + Costes Ocultos -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <!-- Gráfico de Barras Comparativo -->
+                            <div class="bg-slate-950/60 border border-slate-800/90 rounded-2xl p-5 flex flex-col justify-between">
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-4 flex items-center gap-2">
+                                    <i class="ph-fill ph-chart-bar text-brand-orange"></i> Comparativa Mensual
+                                </h4>
+                                <div class="space-y-4 my-auto">
+                                    <div>
+                                        <div class="flex justify-between text-xs mb-1.5">
+                                            <span class="text-slate-300 font-medium" id="bar-label-actual">Operador Actual</span>
+                                            <span class="font-bold text-rose-400" id="bar-val-actual">53,40 €</span>
+                                        </div>
+                                        <div class="w-full bg-slate-800 rounded-full h-4 overflow-hidden">
+                                            <div id="bar-fill-actual" class="bg-gradient-to-r from-rose-500 to-rose-400 h-full rounded-full transition-all duration-700" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-xs mb-1.5">
+                                            <span class="text-white font-semibold">San Máximo / MásMóvil</span>
+                                            <span class="font-bold text-emerald-400" id="bar-val-nuevo">39,99 €</span>
+                                        </div>
+                                        <div class="w-full bg-slate-800 rounded-full h-4 overflow-hidden">
+                                            <div id="bar-fill-nuevo" class="bg-gradient-to-r from-emerald-500 to-brand-yellow h-full rounded-full transition-all duration-700" style="width: 74%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-800/80">
+                                    * Precio final con IVA incluido y router Wi-Fi gratuito sin cuotas de alquiler.
+                                </p>
+                            </div>
+
+                            <!-- Costes Ocultos Detectados por IA -->
+                            <div class="bg-slate-950/60 border border-slate-800/90 rounded-2xl p-5">
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-3 flex items-center gap-2">
+                                    <i class="ph-fill ph-warning-circle"></i> Costes Ocultos Detectados
+                                </h4>
+                                <ul id="res-costes-ocultos" class="space-y-2.5 text-xs text-slate-300">
+                                    <li class="flex items-start gap-2 bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-xl">
+                                        <i class="ph-bold ph-x-circle text-rose-400 text-base shrink-0 mt-0.5"></i>
+                                        <span><strong>Alquiler de Router (5,00 €/mes):</strong> Cobro indebido por equipo estándar.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 bg-amber-500/10 border border-amber-500/20 p-2.5 rounded-xl">
+                                        <i class="ph-bold ph-warning text-amber-400 text-base shrink-0 mt-0.5"></i>
+                                        <span><strong>Servicio Mantenimiento (4,50 €/mes):</strong> Extra activado sin uso real.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 bg-emerald-500/10 border border-emerald-500/20 p-2.5 rounded-xl">
+                                        <i class="ph-bold ph-check-circle text-emerald-400 text-base shrink-0 mt-0.5"></i>
+                                        <span><strong>Solución San Máximo:</strong> Eliminamos ambos cargos desde el primer día.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Resumen IA en lenguaje natural -->
+                        <div class="bg-slate-900/90 border border-slate-700/70 rounded-2xl p-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            <span class="font-bold text-brand-orange">💡 Explicación sencilla de tu asesor IA:</span>
+                            <span id="res-explicacion-ia">Estás pagando casi 10 € al mes solo en mantenimiento y alquiler del router. Pasándote a la tarifa convergente de MásMóvil mantienes tu mismo número y velocidad de fibra pagando 39,99 € fijos al mes.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Historial en Base de Datos (Neon PostgreSQL) -->
+            <div class="mt-10 glass-panel rounded-3xl p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center">
+                            <i class="ph-duotone ph-database text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display font-bold text-lg text-white">Registro de Auditorías en Tiempo Real (Neon DB)</h3>
+                            <p class="text-xs text-slate-400">Cada factura analizada se almacena automáticamente en nuestra base de datos PostgreSQL en la nube.</p>
+                        </div>
+                    </div>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-emerald-400 font-mono">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> postgresql://neon.tech/san_maximo
+                    </span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                                <th class="py-3 px-4">Cliente</th>
+                                <th class="py-3 px-4">Operador Origen</th>
+                                <th class="py-3 px-4">Factura Anterior</th>
+                                <th class="py-3 px-4">Nueva Cuota</th>
+                                <th class="py-3 px-4">Ahorro Anual</th>
+                                <th class="py-3 px-4 text-right">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-historial-body" class="divide-y divide-slate-800/60 text-sm">
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="py-3.5 px-4 font-semibold text-white">Laura Gómez</td>
+                                <td class="py-3.5 px-4 text-slate-300">Movistar</td>
+                                <td class="py-3.5 px-4 text-rose-400 font-medium">64,90 €/mes</td>
+                                <td class="py-3.5 px-4 text-white font-semibold">39,99 €/mes</td>
+                                <td class="py-3.5 px-4 text-emerald-400 font-bold">+298,92 €/año</td>
+                                <td class="py-3.5 px-4 text-right"><span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-400 text-xs font-semibold">Guardado</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="py-3.5 px-4 font-semibold text-white">Javier Ruiz</td>
+                                <td class="py-3.5 px-4 text-slate-300">Vodafone</td>
+                                <td class="py-3.5 px-4 text-rose-400 font-medium">58,00 €/mes</td>
+                                <td class="py-3.5 px-4 text-white font-semibold">39,99 €/mes</td>
+                                <td class="py-3.5 px-4 text-emerald-400 font-bold">+216,12 €/año</td>
+                                <td class="py-3.5 px-4 text-right"><span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-400 text-xs font-semibold">Guardado</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. CATÁLOGO DE TARIFAS OFICIALES (MÁSMÓVIL PARTNER) -->
+    <section id="tarifas" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-orange font-bold text-sm uppercase tracking-wider">Ofertas Exclusivas San Máximo</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-2 mb-4">Tarifas MásMóvil sin sorpresas</h2>
+                <p class="text-slate-400">Precios definitivos con IVA incluido, instalación gratuita y router Wi-Fi de última generación sin costes de alquiler.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+                
+                <!-- Tarifa 1: Solo Fibra -->
+                <div class="glass-card-light rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-semibold">Hogar Conectado</span>
+                            <i class="ph-duotone ph-wifi-high text-2xl text-brand-orange"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">Solo Fibra 300Mb</h3>
+                        <p class="text-slate-400 text-sm mb-6">Ideal para teletrabajo, streaming en 4K y navegación ultrarrápida simétrica.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-slate-800">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display font-extrabold text-4xl text-white">24,99 €</span>
+                                <span class="text-slate-400 text-sm">/mes IVA incl.</span>
+                            </div>
+                            <span class="text-xs text-emerald-400 font-medium">Precio definitivo para siempre</span>
+                        </div>
+
+                        <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-orange"></i> Fibra óptica simétrica 300 Mb</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-orange"></i> Teléfono fijo con llamadas ilimitadas</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-orange"></i> Router Wi-Fi e instalación GRATIS</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-orange"></i> Sin alquiler de equipos</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="seleccionarTarifa('Solo Fibra 300Mb', '24,99 €')" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition-all">
+                        Consultar esta tarifa
+                    </button>
+                </div>
+
+                <!-- Tarifa 2: Más Popular (Fibra + Móvil) -->
+                <div class="relative rounded-3xl p-8 bg-gradient-to-b from-slate-800/95 to-slate-900 border-2 border-brand-orange shadow-2xl shadow-orange-500/15 flex flex-col justify-between transform md:-translate-y-3">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full gradient-bg text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg">
+                        ⭐ La más elegida
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-4 mt-2">
+                            <span class="px-3 py-1 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-bold">Pack Ahorro Total</span>
+                            <i class="ph-duotone ph-device-mobile text-2xl text-brand-yellow"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">Fibra 300Mb + Móvil</h3>
+                        <p class="text-slate-300 text-sm mb-6">La combinación perfecta utilizada por nuestro auditor para maximizar tu ahorro.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-slate-700/80">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display font-extrabold text-5xl text-white">39,99 €</span>
+                                <span class="text-slate-300 text-sm">/mes IVA incl.</span>
+                            </div>
+                            <span class="text-xs text-brand-yellow font-semibold">Ahorra más de 160 € al año frente a la media</span>
+                        </div>
+
+                        <ul class="space-y-3.5 text-sm text-white mb-8">
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-yellow"></i> <strong>Fibra 300 Mb</strong> simétricos</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-yellow"></i> Línea móvil con <strong>50 GB acumulables</strong></li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-yellow"></i> Llamadas ilimitadas a fijos y móviles</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-yellow"></i> Cobertura 5G de alta velocidad</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-yellow"></i> Portabilidad rápida sin cortes</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="seleccionarTarifa('Fibra 300Mb + Móvil 50GB', '39,99 €')" class="w-full py-4 rounded-xl gradient-bg text-slate-950 font-extrabold text-sm hover:opacity-95 transition-all shadow-lg shadow-orange-500/25">
+                        Quiero esta oferta
+                    </button>
+                </div>
+
+                <!-- Tarifa 3: Familia Pro -->
+                <div class="glass-card-light rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-semibold">Pack Familiar</span>
+                            <i class="ph-duotone ph-users-three text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">Fibra 600Mb + 2 Líneas</h3>
+                        <p class="text-slate-400 text-sm mb-6">Máxima potencia para hogares con varios dispositivos y dos líneas móviles incluidas.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-slate-800">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display font-extrabold text-4xl text-white">49,99 €</span>
+                                <span class="text-slate-400 text-sm">/mes IVA incl.</span>
+                            </div>
+                            <span class="text-xs text-emerald-400 font-medium">2ª línea móvil incluida gratis</span>
+                        </div>
+
+                        <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-orange"></i> Fibra óptica simétrica 600 Mb</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-orange"></i> 2 líneas móviles (80 GB a compartir)</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-orange"></i> Llamadas ilimitadas en ambas líneas</li>
+                            <li class="flex items-center gap-2.5"><i class="ph-fill ph-check-circle text-brand-orange"></i> Roaming UE incluido</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="seleccionarTarifa('Fibra 600Mb + 2 Líneas', '49,99 €')" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition-all">
+                        Consultar esta tarifa
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ASISTENTE VIRTUAL IA EN VIVO (SECCIÓN INTERACTIVA) -->
+    <section id="asistente" class="py-20 bg-slate-900/60 border-y border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Texto Explicativo Izquierda -->
+                <div class="lg:col-span-5 space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-brand-orange text-xs font-bold uppercase">
+                        <i class="ph-fill ph-chats-circle"></i> Atención Inmediata IA
+                    </div>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white leading-tight">
+                        ¿Tienes dudas sobre tu permanencia o cobertura?
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Habla directamente con <strong>Maxi</strong>, nuestro asistente virtual entrenado en telecomunicaciones. Resuelve al instante cualquier consulta sobre portabilidades, penalizaciones o tarifas sin esperar al teléfono.
+                    </p>
+                    
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-brand-orange shrink-0">
+                                <i class="ph-bold ph-clock"></i>
+                            </div>
+                            <span>Disponible 24 horas, los 7 días de la semana.</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-emerald-400 shrink-0">
+                                <i class="ph-bold ph-shield-check"></i>
+                            </div>
+                            <span>Respuestas claras, sin letra pequeña ni tecnicismos.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ventana de Chat Integrada Derecha -->
+                <div class="lg:col-span-7 glass-panel rounded-3xl border border-slate-700/80 shadow-2xl overflow-hidden flex flex-col h-[480px]">
+                    <!-- Header del Chat -->
+                    <div class="bg-slate-950/90 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-slate-950 font-bold text-lg">
+                                    <i class="ph-bold ph-robot"></i>
+                                </div>
+                                <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-950"></span>
+                            </div>
+                            <div>
+                                <h4 class="font-display font-bold text-white text-sm">Maxi • Asesor IA San Máximo</h4>
+                                <span class="text-xs text-emerald-400">En línea ahora</span>
+                            </div>
+                        </div>
+                        <button onclick="reiniciarChat()" title="Limpiar conversación" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors">
+                            <i class="ph ph-arrows-clockwise text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Mensajes del Chat -->
+                    <div id="embedded-chat-messages" class="flex-1 p-5 overflow-y-auto space-y-4 bg-slate-900/40">
+                        <!-- Mensaje Inicial del Bot -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-slate-950 shrink-0 mt-1">
+                                <i class="ph-bold ph-robot text-sm"></i>
+                            </div>
+                            <div class="bg-slate-800/90 border border-slate-700/60 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-slate-200 max-w-[85%] shadow-sm">
+                                ¡Hola! 👋 Soy <strong>Maxi</strong>, tu asesor virtual de <strong>San Máximo Telecom</strong>. ¿En qué puedo ayudarte hoy? Puedes preguntarme por nuestras ofertas de MásMóvil o cómo ahorrar en tu factura actual.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preguntas Rápidas (Chips) -->
+                    <div class="px-4 py-2.5 bg-slate-950/60 border-t border-slate-800/80 flex gap-2 overflow-x-auto no-scrollbar">
+                        <button onclick="enviarPreguntaRapida('¿Cuánto puedo ahorrar con MásMóvil?')" class="whitespace-nowrap px-3 py-1.5 rounded-full bg-slate-800 hover:bg-brand-orange/20 hover:text-brand-orange border border-slate-700 text-xs text-slate-300 transition-colors">
+                            💰 ¿Cuánto ahorro?
+                        </button>
+                        <button onclick="enviarPreguntaRapida('¿Me quedo sin internet al cambiar de compañía?')" class="whitespace-nowrap px-3 py-1.5 rounded-full bg-slate-800 hover:bg-brand-orange/20 hover:text-brand-orange border border-slate-700 text-xs text-slate-300 transition-colors">
+                            🌐 ¿Hay cortes de línea?
+                        </button>
+                        <button onclick="enviarPreguntaRapida('¿Tenéis permanencia en las tarifas?')" class="whitespace-nowrap px-3 py-1.5 rounded-full bg-slate-800 hover:bg-brand-orange/20 hover:text-brand-orange border border-slate-700 text-xs text-slate-300 transition-colors">
+                            📝 ¿Hay permanencia?
+                        </button>
+                    </div>
+
+                    <!-- Input Enviar Mensaje -->
+                    <form onsubmit="manejarEnvioChat(event, 'embedded')" class="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2">
+                        <input type="text" id="embedded-chat-input" placeholder="Escribe tu duda aquí (ej. Tengo permanencia con Movistar)..."
+                            class="flex-1 bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-orange">
+                        <button type="submit" class="p-3 rounded-xl gradient-bg text-slate-950 font-bold hover:opacity-95 transition-all shrink-0">
+                            <i class="ph-bold ph-paper-plane-right text-lg"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CÓMO FUNCIONA (3 PASOS SIMPLES) -->
+    <section id="como-funciona" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-orange font-bold text-sm uppercase tracking-wider">Proceso Transparente</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-2">Empieza a ahorrar en 3 sencillos pasos</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel rounded-3xl p-8 text-center relative">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-orange/15 border border-brand-orange/30 text-brand-orange flex items-center justify-center mx-auto mb-6 text-2xl font-display font-extrabold">
+                        1
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Sube tu factura</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Haz una foto o sube el PDF de tu última factura de teléfono. No necesitas rellenar largos formularios.</p>
+                </div>
+
+                <div class="glass-panel rounded-3xl p-8 text-center relative">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow flex items-center justify-center mx-auto mb-6 text-2xl font-display font-extrabold">
+                        2
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Auditoría con IA</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Nuestro sistema detecta alquileres ocultos de router, mantenimientos innecesarios y compara precios reales.</p>
+                </div>
+
+                <div class="glass-panel rounded-3xl p-8 text-center relative">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto mb-6 text-2xl font-display font-extrabold">
+                        3
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Ahorra sin cortes</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Si decides cambiar, nosotros tramitamos toda la portabilidad manteniendo tu número y sin quedarte sin internet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl gradient-bg flex items-center justify-center text-slate-950">
+                    <i class="ph-bold ph-broadcast text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-lg text-white">SAN MÁXIMO TELECOM</span>
+                    <p class="text-xs text-slate-400">Proyecto Bootcamp • Auditoría IA + Neon PostgreSQL</p>
+                </div>
+            </div>
+            <div class="text-xs text-slate-500 text-center md:text-right">
+                © 2026 San Máximo Telecom. Todos los derechos reservados. Tarifas sujetas a cobertura oficial MásMóvil.
+            </div>
+        </div>
+    </footer>
+
+    <!-- BURBUJA FLOTANTE DE CHATBOT (ESQUINA INFERIOR DERECHA) -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <!-- Ventana Desplegable Flotante -->
+        <div id="floating-chat-window" class="hidden mb-4 w-[340px] sm:w-[380px] glass-panel bg-slate-900/95 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[440px]">
+            <div class="gradient-bg px-5 py-3.5 flex items-center justify-between text-slate-950">
+                <div class="flex items-center gap-2.5">
+                    <i class="ph-bold ph-robot text-xl"></i>
+                    <div>
+                        <h4 class="font-display font-extrabold text-sm leading-none">Asistente San Máximo</h4>
+                        <span class="text-[11px] font-semibold opacity-85">IA en tiempo real</span>
+                    </div>
+                </div>
+                <button onclick="toggleFloatingChat()" class="p-1 rounded-lg hover:bg-black/10 transition-colors">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            </div>
+
+            <div id="floating-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-sm bg-slate-950/60">
+                <div class="bg-slate-800 border border-slate-700/70 rounded-2xl rounded-tl-none p-3 text-slate-200 text-xs leading-relaxed">
+                    ¡Hola! 👋 ¿Quieres que revise cuánto ahorrarías con nuestra oferta de <strong>Fibra 300Mb + Móvil por 39,99€</strong>? Pregúntame lo que quieras.
+                </div>
+            </div>
+
+            <form onsubmit="manejarEnvioChat(event, 'floating')" class="p-2.5 bg-slate-950 border-t border-slate-800 flex items-center gap-2">
+                <input type="text" id="floating-chat-input" placeholder="Escribe tu consulta..."
+                    class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-orange">
+                <button type="submit" class="p-2.5 rounded-xl gradient-bg text-slate-950 font-bold hover:opacity-95">
+                    <i class="ph-bold ph-paper-plane-right"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Botón Circular Flotante -->
+        <button onclick="toggleFloatingChat()" class="ml-auto w-14 h-14 rounded-full gradient-bg text-slate-950 shadow-2xl shadow-orange-500/40 flex items-center justify-center hover:scale-105 active:scale-95 transition-all relative">
+            <i class="ph-bold ph-chat-teardrop-text text-2xl"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-slate-950"></span>
+        </button>
+    </div>
+
+    <!-- LÓGICA JAVASCRIPT COMPLETA E INTEGRACIÓN GEMINI -->
+    <script>
+        const apiKey = ""; // En tiempo de ejecución se inyecta automáticamente si está disponible
+
+        // Menú móvil
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Sistema de Notificaciones Toast
+        function mostrarToast(titulo, mensaje, tipo = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toast-icon');
+            document.getElementById('toast-title').textContent = titulo;
+            document.getElementById('toast-msg').textContent = mensaje;
+            
+            icon.className = tipo === 'success' 
+                ? 'ph-fill ph-check-circle text-emerald-400 text-xl' 
+                : 'ph-fill ph-info text-brand-orange text-xl';
+
+            toast.classList.remove('translate-x-full', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full', 'opacity-0');
+            }, 3800);
+        }
+
+        // Drag & Drop y Selección de Archivo
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-upload');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-brand-orange', 'bg-orange-500/5');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-brand-orange', 'bg-orange-500/5');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-brand-orange', 'bg-orange-500/5');
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                actualizarVistaArchivo(e.dataTransfer.files[0].name);
+            }
+        });
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                actualizarVistaArchivo(e.target.files[0].name);
+            }
+        });
+
+        function actualizarVistaArchivo(nombre) {
+            document.getElementById('upload-placeholder').classList.add('hidden');
+            document.getElementById('file-selected-info').classList.remove('hidden');
+            document.getElementById('selected-filename').textContent = nombre;
+        }
+
+        // Botón "Probar con Factura de Ejemplo" (1-Clic para la Demo)
+        function cargarFacturaEjemplo() {
+            document.getElementById('input-cliente').value = "Elena Martínez";
+            document.getElementById('select-operador').value = "TeleComPlus";
+            document.getElementById('input-importe').value = "53.40";
+            actualizarVistaArchivo("Factura_TeleComPlus_Noviembre.pdf");
+            mostrarToast("Factura de ejemplo cargada", "Pulsa 'Analizar Factura con IA' o espera un segundo...", "info");
+            setTimeout(() => {
+                ejecutarAuditoria();
+            }, 450);
+        }
+
+        // Ejecutar Auditoría Visual + Simulación Neon DB + Gemini IA
+        async function ejecutarAuditoria() {
+            const cliente = document.getElementById('input-cliente').value.trim() || "Cliente Demo";
+            const operador = document.getElementById('select-operador').value;
+            let importeActual = parseFloat(document.getElementById('input-importe').value);
+            if (isNaN(importeActual) || importeActual <= 0) importeActual = 53.40;
+
+            const precioOferta = 39.99;
+            const ahorroMensual = Math.max(0, importeActual - precioOferta);
+            const ahorroAnual = ahorroMensual * 12;
+
+            // Cambiar estados UI a cargando
+            document.getElementById('state-empty').classList.add('hidden');
+            document.getElementById('state-results').classList.add('hidden');
+            document.getElementById('state-loading').classList.remove('hidden');
+
+            const pasos = [
+                "Extrayendo conceptos de la factura...",
+                "Detectando cargos ocultos y alquiler de router...",
+                "Comparando con tarifa oficial MásMóvil (39,99 €)...",
+                "Guardando registro en Neon PostgreSQL..."
+            ];
+
+            let pasoIdx = 0;
+            const interval = setInterval(() => {
+                if (pasoIdx < pasos.length) {
+                    document.getElementById('loading-step-text').textContent = pasos[pasoIdx];
+                    pasoIdx++;
+                }
+            }, 400);
+
+            // Llamada opcional a Gemini si existe texto/apiKey para personalizar la explicación
+            let explicacionPersonalizada = `Estás pagando ${importeActual.toFixed(2).replace('.', ',')} € al mes con ${operador}, incluyendo cargos extras por mantenimiento y alquiler de router. Con la tarifa convergente de MásMóvil (39,99 €/mes) mantienes fibra de 300Mb y móvil 50GB ahorrando ${ahorroAnual.toFixed(2).replace('.', ',')} € al año.`;
+
+            try {
+                if (apiKey) {
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                    const prompt = `Actúa como asesor cercano de San Máximo Telecom. El cliente ${cliente} paga ${importeActual}€/mes en ${operador}. Ofrécele la tarifa MásMóvil Fibra 300Mb + Móvil 50GB por 39,99€/mes (ahorro anual ${ahorroAnual.toFixed(2)}€). Escribe una explicación muy breve (2 frases máximo), humana, sin tecnicismos, explicando que eliminamos alquileres ocultos de router.`;
+                    const res = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                        if (aiText) explicacionPersonalizada = aiText;
+                    }
+                }
+            } catch (e) {
+                // Fallback silencioso para garantizar 100% de estabilidad en la demo
+            }
+
+            setTimeout(() => {
+                clearInterval(interval);
+                document.getElementById('state-loading').classList.add('hidden');
+                document.getElementById('state-results').classList.remove('hidden');
+
+                // Rellenar métricas
+                document.getElementById('res-cliente-nombre').textContent = cliente;
+                document.getElementById('res-gasto-actual').innerHTML = `${importeActual.toFixed(2).replace('.', ',')} €<span class="text-xs font-normal text-slate-400">/mes</span>`;
+                document.getElementById('res-operador-badge').textContent = `Operador: ${operador}`;
+                document.getElementById('res-precio-masmovil').innerHTML = `39,99 €<span class="text-xs font-normal text-slate-400">/mes</span>`;
+                document.getElementById('res-ahorro-anual').textContent = `+${ahorroAnual.toFixed(2).replace('.', ',')} €`;
+                document.getElementById('res-ahorro-mensual').textContent = `${ahorroMensual.toFixed(2).replace('.', ',')} € menos cada mes`;
+
+                // Actualizar Barras Comparativas
+                document.getElementById('bar-label-actual').textContent = `${operador} (Actual)`;
+                document.getElementById('bar-val-actual').textContent = `${importeActual.toFixed(2).replace('.', ',')} €`;
+                document.getElementById('bar-val-nuevo').textContent = `39,99 €`;
+
+                const maxVal = Math.max(importeActual, 39.99);
+                const pctActual = Math.min(100, Math.round((importeActual / maxVal) * 100));
+                const pctNuevo = Math.min(100, Math.round((39.99 / maxVal) * 100));
+
+                document.getElementById('bar-fill-actual').style.width = `${pctActual}%`;
+                document.getElementById('bar-fill-nuevo').style.width = `${pctNuevo}%`;
+
+                document.getElementById('res-explicacion-ia').textContent = explicacionPersonalizada;
+
+                // Añadir fila a la tabla simulada de Neon PostgreSQL
+                agregarFilaHistorial(cliente, operador, importeActual, ahorroAnual);
+                mostrarToast("Auditoría completada", "Registro guardado en Neon PostgreSQL", "success");
+            }, 1700);
+        }
+
+        function agregarFilaHistorial(cliente, operador, importeActual, ahorroAnual) {
+            const tbody = document.getElementById('tabla-historial-body');
+            const tr = document.createElement('tr');
+            tr.className = "bg-orange-500/5 hover:bg-slate-800/40 transition-colors";
+            tr.innerHTML = `
+                <td class="py-3.5 px-4 font-bold text-white flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-orange"></span> ${cliente}
+                </td>
+                <td class="py-3.5 px-4 text-slate-300">${operador}</td>
+                <td class="py-3.5 px-4 text-rose-400 font-medium">${importeActual.toFixed(2).replace('.', ',')} €/mes</td>
+                <td class="py-3.5 px-4 text-white font-semibold">39,99 €/mes</td>
+                <td class="py-3.5 px-4 text-emerald-400 font-bold">+${ahorroAnual.toFixed(2).replace('.', ',')} €/año</td>
+                <td class="py-3.5 px-4 text-right"><span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-semibold">Recién guardado</span></td>
+            `;
+            tbody.insertBefore(tr, tbody.firstChild);
+        }
+
+        // Selección de tarifa desde las tarjetas comerciales
+        function seleccionarTarifa(nombreTarifa, precio) {
+            const chatWin = document.getElementById('floating-chat-window');
+            chatWin.classList.remove('hidden');
+            const pregunta = `Me interesa la tarifa ${nombreTarifa} por ${precio}/mes. ¿Qué incluye exactamente?`;
+            procesarMensajeChat(pregunta, 'floating');
+        }
+
+        // Lógica del Chatbot (Embebido + Flotante)
+        function toggleFloatingChat() {
+            document.getElementById('floating-chat-window').classList.toggle('hidden');
+        }
+
+        function reiniciarChat() {
+            const container = document.getElementById('embedded-chat-messages');
+            container.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-slate-950 shrink-0 mt-1">
+                        <i class="ph-bold ph-robot text-sm"></i>
+                    </div>
+                    <div class="bg-slate-800/90 border border-slate-700/60 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-slate-200 max-w-[85%]">
+                        ¡Conversación reiniciada! 👋 ¿En qué puedo ayudarte con tu factura o tarifas de MásMóvil?
+                    </div>
+                </div>
+            `;
+        }
+
+        function enviarPreguntaRapida(texto) {
+            procesarMensajeChat(texto, 'embedded');
+        }
+
+        function manejarEnvioChat(event, origen) {
+            event.preventDefault();
+            const inputId = origen === 'embedded' ? 'embedded-chat-input' : 'floating-chat-input';
+            const inputEl = document.getElementById(inputId);
+            const texto = inputEl.value.trim();
+            if (!texto) return;
+            inputEl.value = '';
+            procesarMensajeChat(texto, origen);
+        }
+
+        async function procesarMensajeChat(mensajeUsuario, origen) {
+            const containerId = origen === 'embedded' ? 'embedded-chat-messages' : 'floating-chat-messages';
+            const container = document.getElementById(containerId);
+
+            // Añadir burbuja usuario
+            const userDiv = document.createElement('div');
+            userDiv.className = "flex justify-end";
+            userDiv.innerHTML = `
+                <div class="gradient-bg text-slate-950 font-medium rounded-2xl rounded-tr-none px-4 py-2.5 text-xs sm:text-sm max-w-[82%] shadow-md">
+                    ${mensajeUsuario}
+                </div>
+            `;
+            container.appendChild(userDiv);
+            container.scrollTop = container.scrollHeight;
+
+            // Indicador escribiendo
+            const typingId = 'typing-' + Date.now();
+            const typingDiv = document.createElement('div');
+            typingDiv.id = typingId;
+            typingDiv.className = "flex items-start gap-2.5";
+            typingDiv.innerHTML = `
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl px-4 py-2.5 text-xs text-slate-400 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" style="animation-delay: 0.15s"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" style="animation-delay: 0.3s"></span>
+                </div>
+            `;
+            container.appendChild(typingDiv);
+            container.scrollTop = container.scrollHeight;
+
+            // Respuesta inteligente (Gemini API + Respuestas rápidas integradas)
+            let respuestaBot = obtenerRespuestaLocal(mensajeUsuario);
+
+            try {
+                if (apiKey) {
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                    const systemPrompt = "Eres Maxi, el asistente virtual de San Máximo Telecom (distribuidor autorizado MásMóvil en España). Responde de forma muy amable, cercana, breve (máximo 3 líneas) y sin tecnicismos. Oferta estrella: Fibra 300Mb + Móvil 50GB por 39,99€/mes IVA incluido, sin alquiler de router y portabilidad sin cortes.";
+                    const res = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: mensajeUsuario }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] }
+                        })
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                        if (aiReply) respuestaBot = aiReply;
+                    }
+                }
+            } catch (err) {
+                // Usa respuesta local garantizada
+            }
+
+            setTimeout(() => {
+                const typingEl = document.getElementById(typingId);
+                if (typingEl) typingEl.remove();
+
+                const botDiv = document.createElement('div');
+                botDiv.className = "flex items-start gap-2.5";
+                botDiv.innerHTML = `
+                    <div class="w-7 h-7 rounded-full gradient-bg flex items-center justify-center text-slate-950 shrink-0 mt-0.5">
+                        <i class="ph-bold ph-robot text-xs"></i>
+                    </div>
+                    <div class="bg-slate-800/95 border border-slate-700/70 rounded-2xl rounded-tl-none px-4 py-2.5 text-xs sm:text-sm text-slate-200 max-w-[85%] leading-relaxed">
+                        ${respuestaBot}
+                    </div>
+                `;
+                container.appendChild(botDiv);
+                container.scrollTop = container.scrollHeight;
+            }, 600);
+        }
+
+        function obtenerRespuestaLocal(pregunta) {
+            const q = pregunta.toLowerCase();
+            if (q.includes('ahorro') || q.includes('cuánto') || q.includes('cuanto')) {
+                return "De media nuestros clientes ahorran <strong>más de 160 € al año</strong> gracias a nuestra tarifa de <strong>Fibra 300Mb + Móvil 50GB por 39,99 €/mes</strong>, eliminando alquileres ocultos de router. ¡Sube tu factura arriba y lo calculamos al céntimo!";
+            }
+            if (q.includes('corte') || q.includes('internet') || q.includes('portabilidad')) {
+                return "¡Tranquilo! Nunca te quedas sin servicio. El cambio de compañía se realiza de madrugada de forma automática y mantienes tu número de teléfono fijo y móvil de siempre.";
+            }
+            if (q.includes('permanencia') || q.includes('compromiso')) {
+                return "Nuestras tarifas convergentes tienen un compromiso estándar de solo 3 meses por la instalación gratuita de fibra, sin sorpresas ni subidas de precio ocultas.";
+            }
+            if (q.includes('24,99') || q.includes('solo fibra')) {
+                return "La tarifa <strong>Solo Fibra 300Mb por 24,99 €/mes</strong> incluye fibra simétrica de alta velocidad, router Wi-Fi gratuito, instalación gratis y llamadas ilimitadas a fijos nacionales.";
+            }
+            if (q.includes('49,99') || q.includes('600mb') || q.includes('2 líneas')) {
+                return "El pack <strong>Fibra 600Mb + 2 Líneas Móviles por 49,99 €/mes</strong> incluye 80 GB a compartir entre ambas líneas con cobertura 5G y llamadas ilimitadas. ¡Ideal para familias!";
+            }
+            return "¡Claro! En <strong>San Máximo Telecom</strong> analizamos tu factura gratis con IA y te ofrecemos la mejor tarifa de <strong>MásMóvil (desde 39,99 €/mes fibra y móvil)</strong> sin alquiler de router. ¿Quieres probar el auditor de arriba?";
+        }
+    </script>
+</body>
+</html>
