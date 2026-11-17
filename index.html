@@ -499,7 +499,7 @@
                 <i class="fa-solid fa-tower-broadcast text-blue-500"></i>
                 <span>San Máximo Telecom S.L.</span>
             </div>
-            <p>Distribuidor Oficial de Telecomunicaciones y Energía en Salamanca, Ávila y Zamora.</p>
+            <p>Información comercial orientativa. Verifica servicios, precios y condiciones antes de contratar.</p>
             <p>&copy; 2026 San Máximo Telecom. Todos los derechos reservados.</p>
         </div>
     </footer>
@@ -532,12 +532,12 @@
 
         // 1. Verificador de Cobertura
         function comprobarCobertura() {
-            const cp = document.getElementById('input-cp').value.trim() || "37002 (Salamanca)";
+            const cp = document.getElementById('input-cp').value.trim();
             const box = document.getElementById('resultado-cobertura');
             const txt = document.getElementById('texto-cobertura');
+            if (!/^\\d{5}$/.test(cp)) { showToast('Introduce un código postal de 5 cifras.', 'info'); return; }
             box.classList.remove('hidden');
-            txt.innerText = `¡Cobertura 100% confirmada! Dispones de Fibra Simétrica hasta 1Gb y Red 5G Plus en ${cp}.`;
-            showToast("¡Cobertura verificada con éxito!");
+            txt.textContent = 'Consulta orientativa para el código postal ' + cp + '. Esta web no consulta los sistemas de los operadores y no puede confirmar disponibilidad. Solicita una comprobación de dirección antes de contratar.';
         }
 
         // 2. Filtro de Catálogo
@@ -599,44 +599,38 @@
             d.classList.toggle('flex');
         }
 
-        function confirmarPedido() {
+        async function confirmarPedido() {
             const tel = document.getElementById('cart-telefono').value.trim();
-            if (carrito.length === 0) return showToast("El carrito está vacío.", 'info');
-            if (!tel) return showToast("Introduce un teléfono de contacto.", 'info');
-            showToast("¡Solicitud registrada con éxito! Un asesor de Salamanca te llamará en breve.");
-            carrito = [];
-            actualizarCarritoUI();
-            toggleCarrito();
-            document.getElementById('cart-telefono').value = '';
+            if (!carrito.length) return showToast('El carrito está vacío.', 'info');
+            if (!/^[+0-9\\s().-]{9,20}$/.test(tel)) return showToast('Revisa el teléfono de contacto.', 'info');
+            const resumen = 'Solicitud orientativa - San Máximo Telecom\\nTeléfono: ' + tel + '\\n' + carrito.map(x => x.nombre + ' — ' + money(x.precio) + '/mes (ejemplo)').join('\\n') + '\\nTotal orientativo: ' + money(carrito.reduce((a,x)=>a+x.precio,0)) + '/mes. Pendiente de confirmar condiciones.';
+            try { await navigator.clipboard.writeText(resumen); showToast('Resumen copiado. Esta demo no tramita pedidos ni contacta con la empresa.'); }
+            catch(e) { showToast('Esta demo no tramita pedidos ni envía datos. Anota los productos del carrito.', 'info'); }
         }
 
         // Estudio Luz
         function solicitarEstudioLuz() {
             const nombre = document.getElementById('luz-nombre').value.trim();
             const tel = document.getElementById('luz-tel').value.trim();
-            if (!nombre || !tel) return showToast("Por favor, rellena tu nombre y teléfono.", 'info');
-            showToast("¡Estudio de luz solicitado correctamente! Nos pondremos en contacto.");
-            document.getElementById('luz-nombre').value = '';
-            document.getElementById('luz-tel').value = '';
+            if (!nombre || !/^[+0-9\\s().-]{9,20}$/.test(tel)) return showToast('Introduce tu nombre y un teléfono válido.', 'info');
+            showToast('Formulario de demostración: no se ha enviado ni guardado ninguna solicitud.', 'info');
         }
 
         // Contacto
         function enviarContacto() {
             const nom = document.getElementById('cnt-nombre').value.trim();
-            if (!nom) return showToast("Por favor, completa el formulario de contacto.", 'info');
-            showToast("¡Mensaje enviado con éxito! Te responderemos muy pronto.");
-            document.getElementById('cnt-nombre').value = '';
-            document.getElementById('cnt-email').value = '';
-            document.getElementById('cnt-msg').value = '';
+            const email = document.getElementById('cnt-email').value.trim();
+            const msg = document.getElementById('cnt-msg').value.trim();
+            if (!nom || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email) || !msg) return showToast('Completa nombre, correo válido y mensaje.', 'info');
+            showToast('Esta demo todavía no envía mensajes. No se ha transmitido ni guardado tu información.', 'info');
         }
 
         // Trabaja con nosotros
         function enviarCandidatura() {
             const nom = document.getElementById('job-nombre').value.trim();
-            if (!nom) return showToast("Por favor, introduce tu nombre y apellidos.", 'info');
-            showToast("¡Candidatura enviada con éxito! Nuestro departamento de RRHH en Salamanca la revisará.");
-            document.getElementById('job-nombre').value = '';
-            document.getElementById('job-email').value = '';
+            const email = document.getElementById('job-email').value.trim();
+            if (!nom || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) return showToast('Introduce tu nombre y un correo válido.', 'info');
+            showToast('Esta demo aún no recibe candidaturas. No se ha enviado ni guardado tu información.', 'info');
         }
 
         function actualizarComparador() { const a=Number(document.getElementById('compare-a').value), b=Number(document.getElementById('compare-b').value), out=document.getElementById('compare-result'); if(a===b){out.textContent='Has elegido el mismo precio en ambas opciones. Selecciona dos packs distintos.';return;} const d=Math.abs(a-b), cheaper=a<b?'La primera opción':'La segunda opción'; out.textContent=cheaper+' cuesta '+money(d)+' menos al mes ('+money(d*12)+' al año), según los precios de ejemplo. Comprueba que servicios y condiciones sean equivalentes.'; }
