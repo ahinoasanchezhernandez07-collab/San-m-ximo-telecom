@@ -212,7 +212,7 @@
                     <p class="text-xs text-slate-500">Fibra simétrica de alta velocidad y 1 línea móvil 5G con llamadas ilimitadas.</p>
                     <div class="text-3xl font-black text-slate-900 pt-1">29,90 € <span class="text-xs font-normal text-slate-500">/mes</span></div>
                 </div>
-                <button onclick="agregarAlCarrito('Fibra 300Mb + Móvil 30GB', 29.90)" class="w-full bg-slate-900 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs transition cursor-pointer">Añadir al Carrito</button>
+                <div class="grid grid-cols-2 gap-2"><button onclick="agregarAlCarrito('Fibra 300Mb + Móvil 30GB', 29.90)" class="bg-slate-900 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs transition">Añadir al carrito</button><button onclick="compararTarifa(29.90)" class="bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 font-bold py-3 rounded-xl text-xs transition">Comparar</button></div>
             </div>
 
             <div data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-xs hover:shadow-lg hover:border-blue-400 transition flex flex-col justify-between space-y-5">
@@ -222,7 +222,7 @@
                     <p class="text-xs text-slate-500">1.000 Mb simétricos con datos 5G ilimitados y Agile TV incluido.</p>
                     <div class="text-3xl font-black text-slate-900 pt-1">49,90 € <span class="text-xs font-normal text-slate-500">/mes</span></div>
                 </div>
-                <button onclick="agregarAlCarrito('Fibra 1Gb + 2 Líneas Ilimitadas', 49.90)" class="w-full bg-slate-900 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs transition cursor-pointer">Añadir al Carrito</button>
+                <div class="grid grid-cols-2 gap-2"><button onclick="agregarAlCarrito('Fibra 1Gb + 2 Líneas Ilimitadas', 49.90)" class="bg-slate-900 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs transition">Añadir al carrito</button><button onclick="compararTarifa(49.90)" class="bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 font-bold py-3 rounded-xl text-xs transition">Comparar</button></div>
             </div>
 
             <div data-cat="empresas" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-xs hover:shadow-lg hover:border-blue-400 transition flex flex-col justify-between space-y-5">
@@ -232,7 +232,7 @@
                     <p class="text-xs text-slate-500">Fibra dedicada + IP Fija + Centralita virtual avanzada para tu negocio.</p>
                     <div class="text-3xl font-black text-slate-900 pt-1">54,90 € <span class="text-xs font-normal text-slate-500">/mes</span></div>
                 </div>
-                <button onclick="agregarAlCarrito('Pack Oficina Pro + Centralita IP', 54.90)" class="w-full bg-slate-900 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs transition cursor-pointer">Añadir al Carrito</button>
+                <div class="grid grid-cols-2 gap-2"><button onclick="agregarAlCarrito('Pack Oficina Pro + Centralita IP', 54.90)" class="bg-slate-900 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs transition">Añadir al carrito</button><button onclick="compararTarifa(54.90)" class="bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 font-bold py-3 rounded-xl text-xs transition">Comparar</button></div>
             </div>
 
             <div data-cat="terminales" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-xs hover:shadow-lg hover:border-blue-400 transition flex flex-col justify-between space-y-5">
@@ -617,6 +617,14 @@
             showToast("¡Candidatura enviada con éxito! Nuestro departamento de RRHH en Salamanca la revisará.");
             document.getElementById('job-nombre').value = '';
             document.getElementById('job-email').value = '';
+        }
+
+        function compararTarifa(precio){
+          const selector=document.getElementById('audit-pack');
+          if(!selector)return;
+          selector.value=String(precio);
+          document.getElementById('auditor-ia').scrollIntoView({behavior:'smooth',block:'start'});
+          showToast('Pack seleccionado para comparar en el analizador.');
         }
 
         // Lectura local de facturas: texto PDF y OCR para documentos escaneados e imágenes.
