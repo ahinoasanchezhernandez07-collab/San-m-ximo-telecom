@@ -65,7 +65,7 @@
                 </div>
                 <div>
                     <span class="text-xl font-extrabold text-slate-900 tracking-tight block leading-none">San Máximo <span class="text-blue-600">Telecom</span></span>
-                    <span class="text-[10px] text-slate-500 font-extrabold tracking-wider uppercase">MásMóvil &bull; Yoigo &bull; Luz</span>
+                    <span class="text-[10px] text-slate-500 font-extrabold tracking-wider uppercase">Conectividad &bull; Energía</span>
                 </div>
             </a>
 
@@ -148,7 +148,7 @@
                     </div>
                     <div id="resultado-cobertura" class="hidden text-xs bg-emerald-50 border border-emerald-200 text-emerald-900 p-3.5 rounded-xl flex items-start space-x-2.5">
                         <i class="fa-solid fa-circle-check text-emerald-600 text-base mt-0.5"></i>
-                        <span id="texto-cobertura" class="font-semibold leading-relaxed"></span>
+                        <span id="texto-cobertura" class="font-semibold leading-relaxed"></span> <a id="official-coverage-link" class="hidden underline font-extrabold" target="_blank" rel="noopener noreferrer" href="https://digital.gob.es/telecomunicaciones-infraestructuras-digitales/areas-interes/banda-ancha/informacion-cobertura/mapas-servicios-banda-ancha">Abrir mapa oficial</a>
                     </div>
                 </div>
             </div>
@@ -210,13 +210,19 @@
             <div class="bg-white border border-slate-200 rounded-2xl p-4"><p class="text-[11px] uppercase tracking-wide font-extrabold text-blue-600">Negocios</p><p class="font-extrabold text-slate-900 mt-1">Conectividad profesional</p><p class="text-xs text-slate-500 mt-1">Soluciones para autónomos y PYMEs.</p></div>
             <div class="bg-white border border-slate-200 rounded-2xl p-4"><p class="text-[11px] uppercase tracking-wide font-extrabold text-blue-600">Dispositivos</p><p class="font-extrabold text-slate-900 mt-1">Terminales 5G</p><p class="text-xs text-slate-500 mt-1">Equipos y financiación sujeta a estudio.</p></div>
         </div>
-        <section id="comparador-tarifas" class="bg-blue-50/70 border border-blue-100 rounded-3xl p-5 sm:p-7 mb-7 space-y-4">
-<div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Comparador</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">Compara dos packs</h3><p class="text-xs text-slate-600 mt-1">Precios ilustrativos de esta demo, no ofertas verificadas.</p></div>
-<div class="grid md:grid-cols-2 gap-3">
-<label class="text-xs font-bold text-slate-700">Primera opción<select id="compare-a" class="mt-1 w-full bg-white border border-slate-300 rounded-xl px-3 py-3 text-sm"><option value="29.90">Fibra 300 Mb + Móvil 30 GB · 29,90 €/mes</option><option value="49.90">Fibra 1 Gb + 2 líneas · 49,90 €/mes</option><option value="54.90">Pack Oficina Pro · 54,90 €/mes</option></select></label>
-<label class="text-xs font-bold text-slate-700">Segunda opción<select id="compare-b" class="mt-1 w-full bg-white border border-slate-300 rounded-xl px-3 py-3 text-sm"><option value="29.90">Fibra 300 Mb + Móvil 30 GB · 29,90 €/mes</option><option value="49.90" selected>Fibra 1 Gb + 2 líneas · 49,90 €/mes</option><option value="54.90">Pack Oficina Pro · 54,90 €/mes</option></select></label></div>
-<div id="compare-result" aria-live="polite" class="bg-white border border-blue-100 rounded-2xl p-4 text-sm text-slate-700">Pulsa comparar para ver la diferencia mensual y anual.</div>
-<button type="button" onclick="actualizarComparador()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-3 rounded-xl text-xs">Comparar opciones</button></section>
+        <section id="comparador-tarifas" class="bg-blue-50/70 border border-blue-100 rounded-3xl p-5 sm:p-7 mb-7 space-y-5">
+<div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Comparador dinámico</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">Compara ofertas reales</h3><p class="text-xs text-slate-600 mt-1">Introduce los precios de las ofertas que estés valorando. No usamos tarifas inventadas ni suponemos que una oferta esté disponible en tu dirección.</p></div>
+<div class="grid lg:grid-cols-2 gap-4">
+<div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-3"><h4 class="font-extrabold text-slate-900">Oferta A</h4><label class="block text-xs font-bold text-slate-700">Nombre<input id="offer-a-name" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm" value="Oferta A"></label><div class="grid grid-cols-2 gap-2">
+<label class="text-xs font-bold text-slate-700">Precio promo €/mes<input id="offer-a-promo" type="number" min="0" step=".01" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm" placeholder="Ej. 25"></label><label class="text-xs font-bold text-slate-700">Meses promo<input id="offer-a-months" type="number" min="0" max="12" step="1" value="0" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm"></label><label class="text-xs font-bold text-slate-700">Precio normal €/mes<input id="offer-a-normal" type="number" min="0" step=".01" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm" placeholder="Ej. 40"></label><label class="text-xs font-bold text-slate-700">Alta/instalación €<input id="offer-a-fee" type="number" min="0" step=".01" value="0" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm"></label></div></div>
+<div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-3"><h4 class="font-extrabold text-slate-900">Oferta B</h4><label class="block text-xs font-bold text-slate-700">Nombre<input id="offer-b-name" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm" value="Oferta B"></label><div class="grid grid-cols-2 gap-2">
+<label class="text-xs font-bold text-slate-700">Precio promo €/mes<input id="offer-b-promo" type="number" min="0" step=".01" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm" placeholder="Ej. 29"></label><label class="text-xs font-bold text-slate-700">Meses promo<input id="offer-b-months" type="number" min="0" max="12" step="1" value="0" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm"></label><label class="text-xs font-bold text-slate-700">Precio normal €/mes<input id="offer-b-normal" type="number" min="0" step=".01" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm" placeholder="Ej. 45"></label><label class="text-xs font-bold text-slate-700">Alta/instalación €<input id="offer-b-fee" type="number" min="0" step=".01" value="0" class="mt-1 w-full border border-slate-300 rounded-xl p-3 text-sm" ></label></div></div></div>
+<p class="text-[11px] text-slate-500">Cálculo a 12 meses y año 2, incluyendo alta/instalación en el primer año. No incluye impuestos adicionales, extras, subidas futuras ni penalizaciones.</p><button type="button" onclick="actualizarComparador()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-3 rounded-xl text-xs">Calcular comparación</button><div id="compare-result" aria-live="polite" class="bg-white border border-blue-100 rounded-2xl p-4 text-sm text-slate-700">Introduce los precios y condiciones de las dos ofertas.</div></section>
+<section id="fuentes-oficiales" class="bg-white border border-slate-200 rounded-3xl p-5 sm:p-7 mb-7 space-y-4"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Fuentes oficiales</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">Cobertura y energía: consulta datos contrastados</h3><p class="text-xs text-slate-600 mt-1">Acceso directo a herramientas públicas de organismos oficiales. Esta web no suplanta sus resultados ni consulta bases privadas.</p></div><div class="grid sm:grid-cols-2 gap-3">
+<a target="_blank" rel="noopener noreferrer" href="https://digital.gob.es/telecomunicaciones-infraestructuras-digitales/areas-interes/banda-ancha/informacion-cobertura/mapas-servicios-banda-ancha" class="border border-slate-200 rounded-2xl p-4 hover:border-blue-400"><b class="text-sm text-slate-900">Mapa oficial de servicios de banda ancha</b><p class="text-xs text-slate-600 mt-1">Ministerio: consulta por dirección/parcela y operadores con servicio fijo o móvil.</p></a>
+<a target="_blank" rel="noopener noreferrer" href="https://calidadtelecos.cnmc.gob.es/mapa-cobertura" class="border border-slate-200 rounded-2xl p-4 hover:border-blue-400"><b class="text-sm text-slate-900">Mapa de cobertura y calidad</b><p class="text-xs text-slate-600 mt-1">CNMC: mapa de fibra y móvil y datos de medición.</p></a>
+<a target="_blank" rel="noopener noreferrer" href="https://comparador.cnmc.gob.es/" class="border border-slate-200 rounded-2xl p-4 hover:border-blue-400"><b class="text-sm text-slate-900">Comparador oficial de energía</b><p class="text-xs text-slate-600 mt-1">CNMC: ofertas de electricidad y gas revisadas por el regulador.</p></a>
+<a target="_blank" rel="noopener noreferrer" href="https://www.esios.ree.es/es" class="border border-slate-200 rounded-2xl p-4 hover:border-blue-400"><b class="text-sm text-slate-900">Datos del sistema eléctrico</b><p class="text-xs text-slate-600 mt-1">Red Eléctrica: indicadores y precios horarios de referencia del PVPC.</p></a></div><p class="text-[10px] text-slate-500">La cobertura agregada y los mapas de servicios tienen distinta resolución y periodicidad. La disponibilidad exacta debe verificarse por dirección.</p></section>
 <div id="grid-productos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-xs hover:shadow-lg hover:border-blue-400 transition flex flex-col justify-between space-y-5">
                 <div class="space-y-3">
@@ -303,23 +309,20 @@
                     <span>Optimización Energética Green</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Tarifas de Luz y Gas sin sobresaltos en tu factura</h2>
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    En San Máximo Telecom no solo ahorramos en tu factura de teléfono. Ahora te ayudamos a gestionar el suministro eléctrico de tu hogar o negocio con tarifas 100% verdes, precio transparente por kilovatio hora y auditoría gratuita de potencia contratada.
-                </p>
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl flex-1 min-w-[200px]">
-                        <p class="text-xs text-slate-400">Ahorro medio en luz</p>
-                        <p class="text-2xl font-black text-sky-400 mt-1">140 €/año</p>
-                    </div>
-                    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl flex-1 min-w-[200px]">
-                        <p class="text-xs text-slate-400">Energía Certificada</p>
-                        <p class="text-2xl font-black text-emerald-400 mt-1">100% Renovable</p>
-                    </div>
+                <p class="text-slate-300 text-sm leading-relaxed">Compara tu consumo con los precios que figuran en tu factura y consulta las ofertas verificadas por la CNMC. No afirmamos ahorros medios ni origen renovable sin una oferta y garantías concretas.</p>
+                <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl space-y-3">
+                  <h3 class="font-extrabold text-white">Calculadora de consumo eléctrico</h3><div class="grid grid-cols-2 gap-2">
+                    <label class="text-xs text-slate-300">Consumo mensual (kWh)<input id="energy-kwh" type="number" min="0" step=".1" placeholder="Ej. 250" class="mt-1 w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white"></label>
+                    <label class="text-xs text-slate-300">Precio energía (€/kWh)<input id="energy-unit" type="number" min="0" step=".0001" placeholder="De tu factura" class="mt-1 w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white"></label>
+                    <label class="text-xs text-slate-300 col-span-2">Otros costes mensuales de potencia (€)<input id="energy-fixed" type="number" min="0" step=".01" value="0" class="mt-1 w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white"></label></div>
+                  <button type="button" onclick="calcularConsumoLuz()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold py-3 rounded-xl text-sm">Calcular estimación</button>
+                  <p id="energy-result" aria-live="polite" class="text-sm text-sky-100">Introduce datos de tu factura para calcular un subtotal orientativo.</p>
+                  <p class="text-[10px] text-slate-400">No incluye impuestos, contador, servicios adicionales ni conceptos que no introduzcas.</p>
                 </div>
             </div>
             <div class="lg:col-span-5 bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/15 space-y-4">
                 <h3 class="text-lg font-bold">Solicita tu Estudio de Luz Gratuito</h3>
-                <p class="text-xs text-slate-300">Sube tu última factura de luz o facilítanos tus datos y te decimos si estás pagando de más.</p>
+                <p class="text-xs text-slate-300">La calculadora de consumo funciona aquí. La solicitud de asesoramiento aún no está conectada a un canal seguro.</p>
                 <input type="text" id="luz-nombre" placeholder="Tu Nombre o Empresa" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-400">
                 <input type="tel" id="luz-tel" placeholder="Teléfono de contacto" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-400">
                 <button onclick="solicitarEstudioLuz()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold py-3.5 rounded-xl text-sm transition cursor-pointer shadow-lg">
@@ -383,7 +386,7 @@
             <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Estamos a tu disposición</span>
                 <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Formulario de Contacto</h2>
-                <p class="text-xs text-slate-500 mt-1">Formulario de demostración: todavía no envía mensajes ni guarda datos.</p>
+                <p class="text-xs text-slate-500 mt-1">El formulario aún no está conectado a un servidor. No introduzcas datos personales hasta habilitar el envío seguro.</p>
             </div>
             <div class="space-y-4">
                 <input type="text" id="cnt-nombre" placeholder="Tu Nombre completo" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500">
@@ -400,7 +403,7 @@
             <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Únete al equipo</span>
                 <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Trabaja con nosotros</h2>
-                <p class="text-xs text-slate-500 mt-1">Formulario de demostración: aún no recibe candidaturas.</p>
+                <p class="text-xs text-slate-500 mt-1">La recepción segura de candidaturas todavía no está configurada.</p>
             </div>
             <div class="space-y-4">
                 <input type="text" id="job-nombre" placeholder="Nombre y Apellidos" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500">
@@ -537,7 +540,8 @@
             const txt = document.getElementById('texto-cobertura');
             if (!/^\\d{5}$/.test(cp)) { showToast('Introduce un código postal de 5 cifras.', 'info'); return; }
             box.classList.remove('hidden');
-            txt.textContent = 'Consulta orientativa para el código postal ' + cp + '. Esta web no consulta los sistemas de los operadores y no puede confirmar disponibilidad. Solicita una comprobación de dirección antes de contratar.';
+            txt.textContent = 'Código postal ' + cp + ': consulta los operadores y tecnologías disponibles en tu parcela en el mapa oficial. El código postal por sí solo no confirma cobertura en una dirección.';
+            const link=document.getElementById('official-coverage-link'); if(link) link.classList.remove('hidden');
         }
 
         // 2. Filtro de Catálogo
@@ -633,13 +637,30 @@
             showToast('Esta demo aún no recibe candidaturas. No se ha enviado ni guardado tu información.', 'info');
         }
 
-        function actualizarComparador() { const a=Number(document.getElementById('compare-a').value), b=Number(document.getElementById('compare-b').value), out=document.getElementById('compare-result'); if(a===b){out.textContent='Has elegido el mismo precio en ambas opciones. Selecciona dos packs distintos.';return;} const d=Math.abs(a-b), cheaper=a<b?'La primera opción':'La segunda opción'; out.textContent=cheaper+' cuesta '+money(d)+' menos al mes ('+money(d*12)+' al año), según los precios de ejemplo. Comprueba que servicios y condiciones sean equivalentes.'; }
+        function actualizarComparador() {
+          const out=document.getElementById('compare-result');
+          const read=id=>({name:document.getElementById('offer-'+id+'-name').value.trim()||'Oferta '+id.toUpperCase(),promo:Number(document.getElementById('offer-'+id+'-promo').value),months:Number(document.getElementById('offer-'+id+'-months').value),normal:Number(document.getElementById('offer-'+id+'-normal').value),fee:Number(document.getElementById('offer-'+id+'-fee').value)});
+          const a=read('a'),b=read('b');
+          for(const x of [a,b]){if(!Number.isFinite(x.promo)||!Number.isFinite(x.normal)||!Number.isFinite(x.fee)||!Number.isFinite(x.months)||x.promo<0||x.normal<0||x.fee<0||x.months<0||x.months>12||!Number.isInteger(x.months)){out.textContent='Revisa precios, costes y meses promocionales (0 a 12).';return;}}
+          if(!document.getElementById('offer-a-normal').value||!document.getElementById('offer-b-normal').value){out.textContent='Introduce el precio mensual normal de las dos ofertas.';return;}
+          const total=x=>x.promo*x.months+x.normal*(12-x.months)+x.fee;
+          const a1=total(a),b1=total(b),a2=a.normal*12,b2=b.normal*12;
+          const safe=x=>x.replace(/[&<>"]/g,'');
+          out.textContent='';
+          const wrap=document.createElement('div');wrap.className='grid sm:grid-cols-2 gap-4';
+          [[a,a1,a2],[b,b1,b2]].forEach(([x,y1,y2])=>{const card=document.createElement('div'),name=document.createElement('b'),p1=document.createElement('p'),p2=document.createElement('p');name.textContent=safe(x.name);p1.textContent='Año 1: '+money(y1);p2.textContent='Año 2: '+money(y2);card.append(name,p1,p2);wrap.append(card);});
+          out.append(wrap);
+          const summary=document.createElement('p');summary.className='mt-3 font-extrabold text-blue-800';summary.textContent='Menor coste año 1: '+(a1===b1?'empate':a1<b1?a.name:b.name)+'. Año 2: '+(a2===b2?'empate':a2<b2?a.name:b.name)+'.';out.append(summary);
+          const note=document.createElement('p');note.className='text-xs mt-2 text-slate-500';note.textContent='Comparación matemática de los datos introducidos; comprueba que servicios y condiciones sean equivalentes.';out.append(note);
+        }
+        function calcularConsumoLuz(){
+          const ks=document.getElementById('energy-kwh').value,ps=document.getElementById('energy-unit').value,fs=document.getElementById('energy-fixed').value,k=Number(ks),p=Number(ps),f=Number(fs),out=document.getElementById('energy-result');
+          if(ks===''||ps===''||!Number.isFinite(k*p+f)||k<0||p<0||f<0){out.textContent='Introduce consumo, precio por kWh y costes fijos válidos.';return;}
+          out.textContent='Subtotal mensual estimado: '+money(k*p+f)+'. Coste anual equivalente: '+money((k*p+f)*12)+'. No es una factura final ni una oferta.';
+        }
         function compararTarifa(precio){
-          const selector=document.getElementById('audit-pack');
-          if(!selector)return;
-          selector.value=String(precio);
-          document.getElementById('auditor-ia').scrollIntoView({behavior:'smooth',block:'start'});
-          showToast('Pack seleccionado para comparar en el analizador.');
+          const campo=document.getElementById('offer-a-normal');
+          if(campo){campo.value=Number(precio).toFixed(2);document.getElementById('comparador-tarifas').scrollIntoView({behavior:'smooth',block:'start'});showToast('Precio cargado como dato editable. Verifica que corresponda a la oferta real.');}
         }
 
         // Lectura local de facturas: texto PDF y OCR para documentos escaneados e imágenes.
