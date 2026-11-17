@@ -108,6 +108,7 @@
             <a href="#servicios" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Servicios</a>
             <a href="#tiendas" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Tiendas</a>
             <a href="#luz" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600"><i class="fa-solid fa-bolt text-sky-500 mr-2"></i> Luz y Energía</a>
+            <a href="#preguntas" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Preguntas frecuentes</a>
             <a href="#blog" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Blog</a>
             <a href="#contacto" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Contacto</a>
             <a href="#trabaja" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-blue-600 bg-blue-50">Trabaja con nosotros</a>
@@ -334,14 +335,7 @@
         </div>
     </section>
 
-    <section id="preguntas" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 space-y-6"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Ayuda</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Preguntas frecuentes</h2></div><div class="grid md:grid-cols-2 gap-3">
-<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Los precios son definitivos?</summary><p class="text-sm text-slate-600 mt-3">No. Son ejemplos de demostración. Solicita una oferta actualizada con impuestos, duración de promociones y posibles costes adicionales.</p></details>
-<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿La web confirma la cobertura?</summary><p class="text-sm text-slate-600 mt-3">No. Esta versión no consulta los sistemas de los operadores. La cobertura debe verificarse para la dirección de instalación.</p></details>
-<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Se guarda mi factura?</summary><p class="text-sm text-slate-600 mt-3">La lectura se realiza localmente en el navegador. La detección automática puede equivocarse; comprueba los datos antes de comparar.</p></details>
-<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Puedo contratar desde la web?</summary><p class="text-sm text-slate-600 mt-3">No en esta versión. El carrito y los formularios son demostrativos y aún no están conectados a un sistema de pedidos.</p></details>
-<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Hay permanencia o instalación?</summary><p class="text-sm text-slate-600 mt-3">Depende del operador y la tarifa. Solicita por escrito permanencia, instalación, router, penalizaciones y precio tras promociones.</p></details>
-<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Maxi es una IA conectada?</summary><p class="text-sm text-slate-600 mt-3">Maxi es un asistente automático de demostración con respuestas guiadas. No está conectado a una IA ni a sistemas internos.</p></details></div></section>
-<!-- ================= 8. AUDITOR DE FACTURAS ================= -->
+    <!-- ================= 8. AUDITOR DE FACTURAS ================= -->
     <section id="auditor-ia" class="bg-white border-y border-slate-200 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
         <div class="max-w-3xl"><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Área de análisis</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Analizador de facturas y comparador de tarifas</h2><p class="text-sm text-slate-600 mt-2">Selecciona una factura PDF o una imagen. El navegador intentará leer el documento y detectar el importe mensual para compararlo con un pack.</p></div>
@@ -349,7 +343,7 @@
           <div class="lg:col-span-5 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl space-y-4">
             <div><label for="audit-titular" class="block text-xs font-bold text-slate-700 mb-1.5">Titular o empresa (opcional)</label><input type="text" id="audit-titular" placeholder="Nombre del titular" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"></div>
             <div><label for="audit-operador" class="block text-xs font-bold text-slate-700 mb-1.5">Operador actual</label><select id="audit-operador" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><option>Otro</option><option>Movistar</option><option>Vodafone</option><option>Orange</option><option>MásMóvil</option><option>Yoigo</option></select></div>
-            <div><label for="audit-file" class="block text-xs font-bold text-slate-700 mb-1.5">Factura (PDF, JPG o PNG)</label><label for="audit-file" class="border-2 border-dashed border-slate-300 hover:border-blue-500 bg-white rounded-2xl p-6 text-center cursor-pointer flex flex-col items-center justify-center space-y-2"><i class="fa-solid fa-cloud-arrow-up text-2xl text-blue-600"></i><span id="audit-file-name" class="text-xs font-bold text-slate-700">Seleccionar factura</span><input type="file" id="audit-file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" class="hidden" onchange="procesarFacturaSeleccionada()"></label><p id="audit-status" class="audit-status mt-2">El archivo se procesa localmente en este navegador. No se envía a San Máximo Telecom.</p></div>
+            <div><label for="audit-file" class="block text-xs font-bold text-slate-700 mb-1.5">Factura (PDF, JPG o PNG)</label><div id="audit-dropzone" class="border-2 border-dashed border-slate-300 hover:border-blue-500 bg-white rounded-2xl p-6 text-center transition-colors"><label for="audit-file" class="cursor-pointer flex flex-col items-center justify-center space-y-2"><i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-600"></i><span class="text-sm font-extrabold text-slate-800">Arrastra tu factura aquí</span><span class="text-xs text-slate-500">o haz clic para seleccionar un archivo</span><span id="audit-file-name" class="text-xs font-bold text-blue-700">PDF, JPG o PNG · Máximo 12 MB</span><input type="file" id="audit-file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" class="sr-only" onchange="procesarFacturaSeleccionada()"></label></div><p id="audit-status" class="audit-status mt-2">El archivo se procesa localmente en este navegador. No se envía a San Máximo Telecom.</p></div>
             <div><label for="audit-gasto" class="block text-xs font-bold text-slate-700 mb-1.5">Importe mensual actual (€)</label><input type="number" id="audit-gasto" min="0" step="0.01" placeholder="Importe mensual de tu factura" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><p class="text-[10px] text-slate-500 mt-1">Revisa el importe detectado y corrígelo si incluye varios servicios o meses.</p></div>
             <div><label for="audit-pack" class="block text-xs font-bold text-slate-700 mb-1.5">Precio mensual de la oferta que quieres comparar (€)</label><input id="audit-pack" type="number" min="0" step="0.01" placeholder="Introduce el precio de una oferta real" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><p class="text-[10px] text-slate-500 mt-1">Cópialo de las condiciones oficiales de la oferta; no hay precios precargados.</p></div>
             <button id="audit-run" onclick="lanzarAuditoriaIA()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-4 rounded-2xl text-sm"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i> Comparar mi factura</button>
@@ -367,6 +361,14 @@
         </div>
       </div>
     </section>
+
+<section id="preguntas" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 space-y-6"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Ayuda</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Preguntas frecuentes</h2></div><div class="grid md:grid-cols-2 gap-3">
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Los precios son definitivos?</summary><p class="text-sm text-slate-600 mt-3">No. Son ejemplos de demostración. Solicita una oferta actualizada con impuestos, duración de promociones y posibles costes adicionales.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿La web confirma la cobertura?</summary><p class="text-sm text-slate-600 mt-3">No. Esta versión no consulta los sistemas de los operadores. La cobertura debe verificarse para la dirección de instalación.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Se guarda mi factura?</summary><p class="text-sm text-slate-600 mt-3">La lectura se realiza localmente en el navegador. La detección automática puede equivocarse; comprueba los datos antes de comparar.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Puedo contratar desde la web?</summary><p class="text-sm text-slate-600 mt-3">No en esta versión. El carrito y los formularios son demostrativos y aún no están conectados a un sistema de pedidos.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Hay permanencia o instalación?</summary><p class="text-sm text-slate-600 mt-3">Depende del operador y la tarifa. Solicita por escrito permanencia, instalación, router, penalizaciones y precio tras promociones.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Maxi es una IA conectada?</summary><p class="text-sm text-slate-600 mt-3">Maxi es un asistente automático de demostración con respuestas guiadas. No está conectado a una IA ni a sistemas internos.</p></details></div></section>
 
     <!-- ================= DRAWER CARRITO ================= -->
     <div id="drawer-carrito" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden justify-end">
@@ -652,6 +654,22 @@
             showToast('Comparativa calculada.');
           },300);},250);
         }
+        // Zona de arrastrar y soltar para subir facturas.
+        function configurarArrastrarFactura(){
+          const zone=document.getElementById('audit-dropzone'),input=document.getElementById('audit-file');
+          if(!zone||!input)return;
+          ['dragenter','dragover'].forEach(evt=>zone.addEventListener(evt,e=>{e.preventDefault();e.stopPropagation();zone.classList.add('border-blue-600','bg-blue-50');}));
+          ['dragleave','dragend'].forEach(evt=>zone.addEventListener(evt,e=>{e.preventDefault();e.stopPropagation();zone.classList.remove('border-blue-600','bg-blue-50');}));
+          zone.addEventListener('drop',e=>{
+            e.preventDefault();e.stopPropagation();zone.classList.remove('border-blue-600','bg-blue-50');
+            const file=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(!file)return;
+            const valid=/\\.pdf$/i.test(file.name)||/^image\\/(png|jpeg)$/i.test(file.type);
+            if(!valid){showToast('Formato no compatible. Usa PDF, JPG o PNG.','info');return;}
+            const transfer=new DataTransfer();transfer.items.add(file);input.files=transfer.files;procesarFacturaSeleccionada();
+          });
+        }
+        configurarArrastrarFactura();
+
         // Maxi: respuestas guiadas con la información de la web.
         function toggleChat(){document.getElementById('widget-chat').classList.toggle('hidden');}
         function preguntarMaxi(texto){document.getElementById('maxi-input').value=texto;enviarMaxi();}
