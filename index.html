@@ -45,7 +45,7 @@
           *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
         }
 
-    </style>
+    .maxi-avatar{width:44px;height:44px;flex:0 0 44px;border-radius:15px;background:linear-gradient(145deg,#dbeafe,#eff6ff);display:grid;place-items:center;border:1px solid #bfdbfe;box-shadow:0 5px 14px rgba(37,99,235,.16)}.maxi-avatar svg{width:38px;height:38px}.maxi-launcher-avatar{width:28px;height:28px;display:inline-grid;place-items:center}.maxi-launcher-avatar svg{width:28px;height:28px}.tariff-note{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;border-radius:14px;padding:12px 14px;font-size:11px;line-height:1.55}.audit-status{font-size:11px;color:#475569;line-height:1.5}</style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
@@ -185,8 +185,9 @@
     <section id="servicios" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 space-y-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Catálogo Oficial 2026</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Nuestros Servicios y Tarifas</h2>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Catálogo de servicios</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Tarifas y soluciones para cada necesidad</h2>
+                <p class="text-sm text-slate-600 mt-2 max-w-xl">Compara opciones para hogar, autónomos y empresas. Añade al carrito los servicios que quieras consultar.</p>
             </div>
             <!-- Filtros de Categoría -->
             <div class="flex flex-wrap gap-2">
@@ -197,6 +198,12 @@
             </div>
         </div>
 
+        <div class="tariff-note"><i class="fa-solid fa-circle-info mr-1.5"></i>Precios y packs incluidos en esta web como demostración comercial. La oferta final, cobertura, impuestos, permanencia y condiciones deben confirmarse con un asesor antes de contratar.</div>
+        <div class="grid md:grid-cols-3 gap-3">
+            <div class="bg-white border border-slate-200 rounded-2xl p-4"><p class="text-[11px] uppercase tracking-wide font-extrabold text-blue-600">Hogar</p><p class="font-extrabold text-slate-900 mt-1">Fibra + móvil</p><p class="text-xs text-slate-500 mt-1">Opciones para conectarte y navegar.</p></div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-4"><p class="text-[11px] uppercase tracking-wide font-extrabold text-blue-600">Negocios</p><p class="font-extrabold text-slate-900 mt-1">Conectividad profesional</p><p class="text-xs text-slate-500 mt-1">Soluciones para autónomos y PYMEs.</p></div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-4"><p class="text-[11px] uppercase tracking-wide font-extrabold text-blue-600">Dispositivos</p><p class="font-extrabold text-slate-900 mt-1">Terminales 5G</p><p class="text-xs text-slate-500 mt-1">Equipos y financiación sujeta a estudio.</p></div>
+        </div>
         <div id="grid-productos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-xs hover:shadow-lg hover:border-blue-400 transition flex flex-col justify-between space-y-5">
                 <div class="space-y-3">
@@ -397,106 +404,31 @@
         </div>
     </section>
 
-    <!-- ================= 8. SECCIÓN: AI AUDITOR & TARIFF CONFIGURATOR ================= -->
+    <!-- ================= 8. AUDITOR DE FACTURAS ================= -->
     <section id="auditor-ia" class="bg-white border-y border-slate-200 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Área de Inteligencia Artificial</span>
-                    <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Auditor Automático de Facturas con OCR</h2>
-                    <p class="text-sm text-slate-600 mt-1">Sube tu factura de telecomunicaciones actual para calcular tu ahorro exacto con San Máximo Telecom.</p>
-                </div>
-                <button onclick="simularFacturaReal()" class="bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 font-bold text-xs px-4 py-3 rounded-xl transition flex items-center space-x-2 cursor-pointer">
-                    <i class="fa-solid fa-bolt"></i>
-                    <span>Probar con Factura Real de Ejemplo</span>
-                </button>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+        <div class="max-w-3xl"><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Área de análisis</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Analizador de facturas y comparador de tarifas</h2><p class="text-sm text-slate-600 mt-2">Selecciona una factura PDF o una imagen. El navegador intentará leer el documento y detectar el importe mensual para compararlo con un pack.</p></div>
+        <div class="grid lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-5 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl space-y-4">
+            <div><label for="audit-titular" class="block text-xs font-bold text-slate-700 mb-1.5">Titular o empresa (opcional)</label><input type="text" id="audit-titular" placeholder="Nombre del titular" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"></div>
+            <div><label for="audit-operador" class="block text-xs font-bold text-slate-700 mb-1.5">Operador actual</label><select id="audit-operador" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><option>Otro</option><option>Movistar</option><option>Vodafone</option><option>Orange</option><option>MásMóvil</option><option>Yoigo</option></select></div>
+            <div><label for="audit-file" class="block text-xs font-bold text-slate-700 mb-1.5">Factura (PDF, JPG o PNG)</label><label for="audit-file" class="border-2 border-dashed border-slate-300 hover:border-blue-500 bg-white rounded-2xl p-6 text-center cursor-pointer flex flex-col items-center justify-center space-y-2"><i class="fa-solid fa-cloud-arrow-up text-2xl text-blue-600"></i><span id="audit-file-name" class="text-xs font-bold text-slate-700">Seleccionar factura</span><input type="file" id="audit-file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" class="hidden" onchange="procesarFacturaSeleccionada()"></label><p id="audit-status" class="audit-status mt-2">El archivo se procesa localmente en este navegador. No se envía a San Máximo Telecom.</p></div>
+            <div><label for="audit-gasto" class="block text-xs font-bold text-slate-700 mb-1.5">Importe mensual actual (€)</label><input type="number" id="audit-gasto" min="0" step="0.01" value="58.50" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><p class="text-[10px] text-slate-500 mt-1">Revisa el importe detectado y corrígelo si incluye varios servicios o meses.</p></div>
+            <div><label for="audit-pack" class="block text-xs font-bold text-slate-700 mb-1.5">Pack para comparar</label><select id="audit-pack" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><option value="29.90">Fibra 300 Mb + Móvil 30 GB — 29,90 €/mes</option><option value="49.90" selected>Fibra 1 Gb + 2 líneas — 49,90 €/mes</option><option value="54.90">Pack Oficina Pro — 54,90 €/mes</option></select></div>
+            <button id="audit-run" onclick="lanzarAuditoriaIA()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-4 rounded-2xl text-sm"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i> Comparar mi factura</button>
+            <p class="text-[10px] text-slate-500">Estimación orientativa según los datos introducidos; no es una oferta contractual ni sustituye la revisión de un asesor.</p>
+          </div>
+          <div class="lg:col-span-7 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl flex flex-col justify-center min-h-[440px]">
+            <div id="audit-idle" class="text-center space-y-3 py-10"><div class="w-16 h-16 rounded-2xl bg-white border border-slate-200 mx-auto flex items-center justify-center text-2xl text-blue-600"><i class="fa-solid fa-file-invoice-dollar"></i></div><h3 class="text-lg font-extrabold text-slate-900">Tu comparativa aparecerá aquí</h3><p class="text-xs text-slate-500 max-w-sm mx-auto">Sube una factura para intentar detectar el importe, o escribe el coste mensual manualmente.</p></div>
+            <div id="audit-loading" class="hidden text-center space-y-4 py-10"><div class="w-20 h-24 rounded-xl bg-white border border-blue-300 mx-auto flex items-center justify-center text-3xl text-blue-600 relative overflow-hidden"><i class="fa-solid fa-file-lines"></i><div class="scanner-line"></div></div><p id="audit-step-text" class="text-sm font-bold text-slate-900">Leyendo factura…</p><div class="w-56 bg-slate-200 h-2 rounded-full mx-auto overflow-hidden"><div id="audit-bar" class="bg-blue-600 h-full w-1/4"></div></div></div>
+            <div id="informe-imprimible" class="hidden space-y-5">
+              <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-200 pb-4"><div><span class="text-[11px] font-extrabold uppercase text-blue-700 bg-blue-100 px-2.5 py-0.5 rounded-md">Comparativa orientativa</span><h3 id="res-titular" class="text-lg font-extrabold text-slate-900 mt-1">Tu comparativa</h3></div><button onclick="window.print()" class="bg-white border border-slate-300 text-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl"><i class="fa-solid fa-print text-blue-600 mr-1.5"></i> Guardar PDF</button></div>
+              <div class="grid grid-cols-3 gap-3 text-center"><div class="bg-white p-3 rounded-2xl border"><p class="text-[11px] text-slate-500">Coste actual</p><p id="res-actual" class="text-lg font-black text-slate-900">58,50 €</p><p class="text-[10px] text-slate-500">al mes</p></div><div class="bg-white p-3 rounded-2xl border"><p class="text-[11px] text-slate-500">Pack elegido</p><p id="res-actual-pack" class="text-lg font-black text-blue-700">49,90 €</p><p class="text-[10px] text-slate-500">al mes</p></div><div class="bg-blue-50 p-3 rounded-2xl border border-blue-200"><p class="text-[11px] text-blue-800">Diferencia anual</p><p id="res-ahorro" class="text-lg font-black text-blue-700">103,20 €</p><p class="text-[10px] text-blue-700">estimada</p></div></div>
+              <div id="audit-conclusion" class="bg-white border border-slate-200 p-4 rounded-2xl text-xs leading-relaxed text-slate-700"></div><div class="h-48 bg-white p-3 rounded-2xl border"><canvas id="chartAhorro"></canvas></div><p class="text-[10px] text-slate-500">No contempla posibles costes de instalación, promociones, impuestos no incluidos ni diferencias de servicios. Confirma condiciones con un asesor.</p>
             </div>
-
-            <div class="grid lg:grid-cols-12 gap-8">
-                <div class="lg:col-span-5 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl space-y-5">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Titular o Empresa</label>
-                        <input type="text" id="audit-titular" value="Asesoría Salamanca S.L." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Operador Actual</label>
-                        <select id="audit-operador" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-500">
-                            <option value="64.90">Movistar (Media: 64,90 €/mes)</option>
-                            <option value="58.50" selected>Vodafone (Media: 58,50 €/mes)</option>
-                            <option value="54.00">Orange (Media: 54,00 €/mes)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Adjuntar Factura (PDF / Foto)</label>
-                        <label for="audit-file" class="border-2 border-dashed border-slate-300 hover:border-blue-500 bg-white rounded-2xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center space-y-2">
-                            <i class="fa-solid fa-cloud-arrow-up text-2xl text-blue-600"></i>
-                            <span id="audit-file-name" class="text-xs font-bold text-slate-700">Haz clic para seleccionar archivo</span>
-                            <input type="file" id="audit-file" class="hidden" onchange="if(this.files[0]){document.getElementById('audit-file-name').innerText = '📄 ' + this.files[0].name; lanzarAuditoriaIA();}">
-                        </label>
-                    </div>
-                    <button onclick="lanzarAuditoriaIA()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-4 rounded-2xl text-sm shadow-md transition cursor-pointer">
-                        <i class="fa-solid fa-microchip mr-2"></i> Iniciar Auditoría IA
-                    </button>
-                </div>
-
-                <div class="lg:col-span-7 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl flex flex-col justify-center min-h-[420px] relative overflow-hidden">
-                    <div id="audit-idle" class="text-center space-y-3 py-10">
-                        <div class="w-16 h-16 rounded-2xl bg-white border border-slate-200 mx-auto flex items-center justify-center text-2xl text-blue-600 shadow-xs">
-                            <i class="fa-solid fa-file-invoice-dollar"></i>
-                        </div>
-                        <h3 class="text-lg font-extrabold text-slate-900">Esperando documento para analizar</h3>
-                        <p class="text-xs text-slate-500 max-w-sm mx-auto">Sube tu factura o pulsa el botón superior para ver el informe de ahorro.</p>
-                    </div>
-
-                    <div id="audit-loading" class="hidden text-center space-y-4 py-10">
-                        <div class="w-20 h-24 rounded-xl bg-white border border-blue-300 mx-auto flex items-center justify-center text-3xl text-blue-600 relative overflow-hidden shadow-sm">
-                            <i class="fa-solid fa-file-lines"></i>
-                            <div class="scanner-line"></div>
-                        </div>
-                        <p id="audit-step-text" class="text-sm font-bold text-slate-900">Extrayendo conceptos mediante OCR...</p>
-                        <div class="w-56 bg-slate-200 h-2 rounded-full mx-auto overflow-hidden">
-                            <div id="audit-bar" class="bg-blue-600 h-full w-1/4 transition-all duration-500"></div>
-                        </div>
-                    </div>
-
-                    <div id="informe-imprimible" class="hidden space-y-5">
-                        <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-200 pb-4">
-                            <div>
-                                <span class="text-[11px] font-extrabold uppercase text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-md">Informe Verificado</span>
-                                <h3 id="res-titular" class="text-lg font-extrabold text-slate-900 mt-1">Asesoría Salamanca S.L.</h3>
-                            </div>
-                            <button onclick="window.print()" class="bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl transition cursor-pointer">
-                                <i class="fa-solid fa-print text-blue-600 mr-1.5"></i> Imprimir / PDF
-                            </button>
-                        </div>
-                        <div class="grid grid-cols-3 gap-3 text-center">
-                            <div class="bg-white p-3.5 rounded-2xl border border-slate-200">
-                                <p class="text-[11px] text-slate-500 font-semibold">Pagas Hoy</p>
-                                <p id="res-actual" class="text-xl font-black text-rose-600 mt-0.5">58,50 €</p>
-                            </div>
-                            <div class="bg-white p-3.5 rounded-2xl border border-slate-200">
-                                <p class="text-[11px] text-slate-500 font-semibold">San Máximo</p>
-                                <p id="res-actual-pack" class="text-xl font-black text-emerald-600 mt-0.5">39,99 €</p>
-                            </div>
-                            <div class="bg-blue-50 p-3.5 rounded-2xl border border-blue-200">
-                                <p class="text-[11px] text-blue-800 font-bold">Ahorro Anual</p>
-                                <p id="res-ahorro" class="text-xl font-black text-blue-600 mt-0.5">222,12 €</p>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-4 items-center">
-                            <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-2 text-xs text-slate-700">
-                                <p class="font-extrabold text-slate-900">Anomalías Detectadas:</p>
-                                <p><i class="fa-solid fa-triangle-exclamation text-sky-500 mr-1.5"></i><b>Cuota de red oculta:</b> 4,90 €/mes innecesarios.</p>
-                                <p class="text-emerald-700 font-semibold"><i class="fa-solid fa-circle-check mr-1.5"></i>Solución: Pack Fibra 600Mb + Móvil 5G.</p>
-                            </div>
-                            <div class="h-40 bg-white p-3 rounded-2xl border border-slate-200">
-                                <canvas id="chartAhorro"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- ================= DRAWER CARRITO ================= -->
@@ -527,39 +459,17 @@
         </div>
     </div>
 
-    <!-- ================= CHATBOT FLOTANTE MAXI ================= -->
+    <!-- ================= CHATBOT MAXI ================= -->
     <div class="fixed bottom-5 right-5 z-40">
-        <div id="widget-chat" class="hidden mb-3 w-80 sm:w-96 bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
-            <div class="bg-slate-900 text-white p-4 flex justify-between items-center">
-                <div class="flex items-center space-x-2.5">
-                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center font-extrabold text-xs">M</div>
-                    <div>
-                        <p class="text-xs font-bold">Maxi &bull; Asistente San Máximo</p>
-                        <p class="text-[10px] text-emerald-400">En línea &bull; Asistente virtual</p>
-                    </div>
-                </div>
-                <button onclick="toggleChat()" aria-label="Cerrar chat" class="text-slate-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div id="maxi-messages" class="p-4 h-60 overflow-y-auto space-y-3 text-xs bg-slate-50">
-                <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700 shadow-2xs">
-                    ¡Hola! Soy <b>Maxi</b>, tu asistente virtual de San Máximo Telecom. 👋<br>Estoy aquí para ayudarte con fibra, móvil, energía y nuestras tiendas. ¿Por dónde empezamos?
-                <div class="grid grid-cols-2 gap-2 mt-3">
-                    <button onclick="preguntarMaxi('Quiero conocer las tarifas de fibra')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold transition"> <i class="fa-solid fa-wifi mr-1.5"></i> Tarifas</button>
-                    <button onclick="preguntarMaxi('Quiero información sobre luz y energía')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold transition"><i class="fa-solid fa-bolt mr-1.5"></i> Luz y energía</button>
-                    <button onclick="preguntarMaxi('Dónde están vuestras tiendas')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold transition"><i class="fa-solid fa-location-dot mr-1.5"></i> Tiendas</button>
-                    <button onclick="preguntarMaxi('Quiero hablar con un asesor')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold transition"><i class="fa-solid fa-headset mr-1.5"></i> Asesor</button>
-                </div>
-                </div>
-            </div>
-            <div class="p-3 bg-white border-t border-slate-200 flex space-x-2">
-                <input type="text" id="maxi-input" placeholder="Escribe tu consulta a Maxi..." class="flex-1 bg-slate-100 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500" onkeypress="if(event.key==='Enter') enviarMaxi()">
-                <button onclick="enviarMaxi()" aria-label="Enviar" class="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-2 rounded-xl text-xs font-bold transition cursor-pointer"><i class="fa-solid fa-paper-plane"></i></button>
-            </div>
+      <div id="widget-chat" class="hidden mb-3 w-80 sm:w-96 max-w-[calc(100vw-2rem)] bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+        <div class="bg-slate-900 text-white p-4 flex justify-between items-center"><div class="flex items-center space-x-3"><div class="maxi-avatar" role="img" aria-label="Avatar de Maxi"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></div><div><p class="text-xs font-bold">Maxi · Asistente San Máximo</p><p class="text-[10px] text-emerald-300"><i class="fa-solid fa-circle text-[7px] mr-1"></i> Disponible para ayudarte</p></div></div><button onclick="toggleChat()" aria-label="Cerrar chat" class="text-slate-300 hover:text-white"><i class="fa-solid fa-xmark"></i></button></div>
+        <div id="maxi-messages" class="p-4 h-72 overflow-y-auto space-y-3 text-xs bg-slate-50" aria-live="polite">
+          <div class="flex items-start gap-2"><div class="maxi-avatar !w-8 !h-8 !basis-8 !rounded-xl"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></div><div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700">¡Hola! Soy <b>Maxi</b>, tu asistente virtual. Puedo orientarte sobre tarifas, fibra, móvil, luz y nuestras tiendas. ¿Qué necesitas?</div></div>
+          <div class="grid grid-cols-2 gap-2 pl-10"><button onclick="preguntarMaxi('Quiero conocer las tarifas de hogar')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-wifi mr-1"></i> Tarifas</button><button onclick="preguntarMaxi('Quiero analizar mi factura')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-file-invoice mr-1"></i> Facturas</button><button onclick="preguntarMaxi('Información sobre luz y energía')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-bolt mr-1"></i> Energía</button><button onclick="preguntarMaxi('Dónde están las tiendas')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-location-dot mr-1"></i> Tiendas</button></div>
         </div>
-        <button onclick="toggleChat()" class="ml-auto bg-blue-600 hover:bg-blue-500 text-white px-5 py-3.5 rounded-full shadow-xl flex items-center space-x-2.5 font-bold text-xs transition cursor-pointer">
-            <i class="fa-solid fa-comments text-base"></i>
-            <span>Hablar con Maxi</span>
-        </button>
+        <div class="p-3 bg-white border-t border-slate-200 flex space-x-2"><input type="text" id="maxi-input" placeholder="Escribe tu consulta..." class="flex-1 min-w-0 bg-slate-100 rounded-xl px-3 py-2 text-xs" onkeydown="if(event.key==='Enter') enviarMaxi()"><button onclick="enviarMaxi()" aria-label="Enviar mensaje" class="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-2 rounded-xl text-xs font-bold"><i class="fa-solid fa-paper-plane"></i></button></div>
+      </div>
+      <button onclick="toggleChat()" aria-label="Abrir chat con Maxi" class="ml-auto bg-blue-600 hover:bg-blue-500 text-white px-4 py-3 rounded-full shadow-xl flex items-center space-x-2.5 font-bold text-xs"><span class="maxi-launcher-avatar"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></span><span>Hablar con Maxi</span></button>
     </div>
 
     <!-- ================= FOOTER CORPORATIVO ================= -->
@@ -574,6 +484,8 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
         // Menú Móvil
@@ -707,98 +619,99 @@
             document.getElementById('job-email').value = '';
         }
 
-        // Auditor IA de Facturas
-        let chartAhorro = null;
-        function simularFacturaReal() {
-            document.getElementById('audit-file-name').innerText = "📄 factura_vodafone_2026.pdf";
-            lanzarAuditoriaIA();
+        // Lectura local de facturas: texto PDF y OCR para documentos escaneados e imágenes.
+        let chartAhorro=null;
+        const money=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+        function setAuditStatus(msg){document.getElementById('audit-status').textContent=msg;}
+        function setAuditProgress(p,msg){document.getElementById('audit-bar').style.width=p+'%';document.getElementById('audit-step-text').textContent=msg;}
+        function extraerImporteFactura(texto){
+          const lines=(texto||'').split(/\n|\r/).map(x=>x.trim()).filter(Boolean),found=[];
+          const rx=/(\d{1,4}(?:[.\s]\d{3})*[,.]\d{2})\s*(?:€|eur)?/gi;
+          for(const line of lines){let m;while((m=rx.exec(line))!==null){
+            const val=Number(m[1].replace(/[.\s]/g,'').replace(',','.'));if(!Number.isFinite(val)||val<=0||val>10000)continue;
+            const c=line.toLowerCase();let score=0;
+            if(/total a pagar|importe total|total factura|total del recibo|total a abonar/.test(c))score+=8;
+            if(/mensual|cuota total|importe a pagar|total/.test(c))score+=4;
+            if(/iva|impuesto|base imponible|descuento|saldo anterior/.test(c))score-=3;
+            found.push({val,score});
+          }}
+          found.sort((a,b)=>b.score-a.score);return found.length?found[0].val:null;
         }
-
-        function lanzarAuditoriaIA() {
-            const titular = document.getElementById('audit-titular').value || "Cliente";
-            const actual = parseFloat(document.getElementById('audit-operador').value);
-            const ahorroAnual = ((actual - 39.99) * 12).toFixed(2);
-
-            document.getElementById('audit-idle').classList.add('hidden');
-            document.getElementById('informe-imprimible').classList.add('hidden');
-            document.getElementById('audit-loading').classList.remove('hidden');
-
-            const bar = document.getElementById('audit-bar');
-            const stepText = document.getElementById('audit-step-text');
-            bar.style.width = '35%';
-            stepText.innerText = "Extrayendo conceptos mediante OCR...";
-
-            setTimeout(() => {
-                bar.style.width = '85%';
-                stepText.innerText = "Calculando comparativa óptima MásMóvil...";
-            }, 800);
-
-            setTimeout(() => {
-                document.getElementById('audit-loading').classList.add('hidden');
-                document.getElementById('informe-imprimible').classList.remove('hidden');
-
-                document.getElementById('res-titular').innerText = titular;
-                document.getElementById('res-actual').innerText = actual.toFixed(2).replace('.', ',') + " €";
-                document.getElementById('res-ahorro').innerText = ahorroAnual.replace('.', ',') + " €";
-
-                if (chartAhorro) chartAhorro.destroy();
-                const ctx = document.getElementById('chartAhorro').getContext('2d');
-                chartAhorro = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Actual', 'San Máximo'],
-                        datasets: [{
-                            data: [actual, 39.99],
-                            backgroundColor: ['#e11d48', '#2563eb'],
-                            borderRadius: 8,
-                            barThickness: 32
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { beginAtZero: true, ticks: { font: { size: 10 } } },
-                            x: { ticks: { font: { size: 11, weight: 'bold' } }, grid: { display: false } }
-                        }
-                    }
-                });
-                showToast("¡Auditoría completada con éxito!");
-            }, 1600);
+        async function leerPdf(file){
+          if(!window.pdfjsLib)throw new Error('No se pudo cargar el lector PDF. Introduce el importe manualmente.');
+          pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;let txt='';
+          for(let n=1;n<=Math.min(pdf.numPages,3);n++){const page=await pdf.getPage(n);const c=await page.getTextContent();txt+=c.items.map(i=>i.str).join(' ')+'\n';}
+          if(txt.replace(/\s/g,'').length>25)return txt;
+          if(!window.Tesseract)throw new Error('El PDF está escaneado y no se ha podido iniciar el OCR. Introduce el importe manualmente.');
+          let ocr='';
+          for(let n=1;n<=Math.min(pdf.numPages,2);n++){
+            setAuditStatus('Leyendo página '+n+' del PDF con OCR en este dispositivo…');
+            const page=await pdf.getPage(n),vp=page.getViewport({scale:1.6}),canvas=document.createElement('canvas');
+            canvas.width=vp.width;canvas.height=vp.height;await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
+            const result=await Tesseract.recognize(canvas,'spa');ocr+='\n'+result.data.text;
+          }return ocr;
         }
-
-        // Chatbot Maxi
-        function toggleChat() {
-            document.getElementById('widget-chat').classList.toggle('hidden');
+        async function procesarFacturaSeleccionada(){
+          const file=document.getElementById('audit-file').files[0];if(!file)return;
+          document.getElementById('audit-file-name').textContent='📄 '+file.name;
+          document.getElementById('audit-idle').classList.add('hidden');document.getElementById('informe-imprimible').classList.add('hidden');document.getElementById('audit-loading').classList.remove('hidden');
+          setAuditProgress(15,'Preparando lectura local…');
+          try{
+            if(file.size>12*1024*1024)throw new Error('El archivo supera 12 MB. Selecciona uno más pequeño.');
+            if(!/\.pdf$/i.test(file.name)&&!file.type.startsWith('image/'))throw new Error('Formato no compatible. Usa PDF, JPG o PNG.');
+            setAuditProgress(35,'Extrayendo texto…');
+            const text=/\.pdf$/i.test(file.name)?await leerPdf(file):(await Tesseract.recognize(file,'spa')).data.text;
+            setAuditProgress(85,'Buscando el importe…');const amount=extraerImporteFactura(text);
+            document.getElementById('audit-loading').classList.add('hidden');document.getElementById('audit-idle').classList.remove('hidden');
+            if(amount){document.getElementById('audit-gasto').value=amount.toFixed(2);setAuditStatus('Posible total detectado: '+money(amount)+'. Comprueba que sea el importe mensual correcto antes de comparar.');showToast('Importe detectado. Revísalo y compara.');}
+            else{setAuditStatus('No se ha detectado un total con suficiente confianza. Introduce manualmente el importe mensual.');showToast('No se detectó el total; puedes introducirlo manualmente.','info');}
+          }catch(err){document.getElementById('audit-loading').classList.add('hidden');document.getElementById('audit-idle').classList.remove('hidden');setAuditStatus(err.message||'No se pudo leer el documento. Introduce el importe manualmente.');showToast('No se ha podido leer la factura.','info');}
         }
-
-        function preguntarMaxi(texto) {
-            const inp = document.getElementById('maxi-input');
-            inp.value = texto;
-            enviarMaxi();
+        function simularFacturaReal(){
+          document.getElementById('audit-file').value='';document.getElementById('audit-file-name').textContent='Ejemplo ficticio (sin factura real)';
+          document.getElementById('audit-titular').value='Ejemplo de cliente';document.getElementById('audit-operador').value='Vodafone';
+          document.getElementById('audit-gasto').value='58.50';document.getElementById('audit-pack').value='49.90';
+          setAuditStatus('Ejemplo ficticio para probar el comparador; no corresponde a una factura real.');lanzarAuditoriaIA();
         }
-
-        function enviarMaxi() {
-            const inp = document.getElementById('maxi-input');
-            const txt = inp.value.trim();
-            if (!txt) return;
-            const box = document.getElementById('maxi-messages');
-            box.innerHTML += `<div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[80%]">${txt}</div>`;
-            inp.value = '';
-            box.scrollTop = box.scrollHeight;
-
-            setTimeout(() => {
-                let resp = "Puedes visitarnos en nuestra tienda de Calle Concejo, 17 o en el C.C. El Tormes en Salamanca para gestionarlo en persona.";
-                const t = txt.toLowerCase();
-                if (t.includes('permanencia')) {
-                    resp = "Nuestras tarifas de fibra tienen tan solo 3 meses de compromiso por la instalación gratuita del router WiFi 6.";
-                } else if (t.includes('luz') || t.includes('energia')) {
-                    resp = "Ofrecemos tarifas de luz 100% verde y estudios de optimización de potencia totalmente gratuitos tanto para hogar como para empresas.";
-                }
-                box.innerHTML += `<div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700 max-w-[85%]">${resp}</div>`;
-                box.scrollTop = box.scrollHeight;
-            }, 500);
+        function lanzarAuditoriaIA(){
+          const titular=document.getElementById('audit-titular').value.trim()||'Cliente';
+          const actual=Number(document.getElementById('audit-gasto').value),pack=Number(document.getElementById('audit-pack').value),operador=document.getElementById('audit-operador').value;
+          if(!Number.isFinite(actual)||actual<=0||actual>10000){showToast('Introduce un importe mensual válido.','info');return;}
+          if(!Number.isFinite(pack)||pack<=0){showToast('Selecciona un pack válido.','info');return;}
+          const diff=(actual-pack)*12;
+          document.getElementById('audit-idle').classList.add('hidden');document.getElementById('informe-imprimible').classList.add('hidden');document.getElementById('audit-loading').classList.remove('hidden');
+          setAuditProgress(40,'Comparando costes mensuales…');
+          setTimeout(()=>{setAuditProgress(80,'Calculando diferencia anual…');setTimeout(()=>{
+            document.getElementById('audit-loading').classList.add('hidden');document.getElementById('informe-imprimible').classList.remove('hidden');
+            document.getElementById('res-titular').textContent=titular;document.getElementById('res-actual').textContent=money(actual);document.getElementById('res-actual-pack').textContent=money(pack);document.getElementById('res-ahorro').textContent=money(Math.abs(diff));
+            const out=document.getElementById('audit-conclusion');
+            if(diff>0)out.innerHTML='<b class="text-emerald-700">Ahorro potencial estimado.</b> Frente a '+operador+', el pack elegido supondría '+money(diff/12)+' menos al mes ('+money(diff)+' al año), si ambos servicios cubren las mismas necesidades.';
+            else if(diff<0)out.innerHTML='<b class="text-amber-700">El pack elegido no es más barato.</b> Costaría '+money(Math.abs(diff/12))+' más al mes. Prueba otra opción o pide una revisión personalizada.';
+            else out.innerHTML='<b>Coste equivalente.</b> Ambos importes coinciden según los datos introducidos.';
+            if(chartAhorro)chartAhorro.destroy();
+            chartAhorro=new Chart(document.getElementById('chartAhorro').getContext('2d'),{type:'bar',data:{labels:['Factura actual','Pack elegido'],datasets:[{data:[actual,pack],backgroundColor:['#64748b','#2563eb'],borderRadius:9,barThickness:42}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>money(c.raw)}}},scales:{y:{beginAtZero:true,ticks:{callback:v=>v+' €'}},x:{grid:{display:false}}}}});
+            showToast('Comparativa calculada.');
+          },300);},250);
+        }
+        // Maxi: respuestas guiadas con la información de la web.
+        function toggleChat(){document.getElementById('widget-chat').classList.toggle('hidden');}
+        function preguntarMaxi(texto){document.getElementById('maxi-input').value=texto;enviarMaxi();}
+        function respuestaMaxi(txt){
+          const t=txt.toLowerCase();
+          if(/factura|ahorro|auditor|analiz/.test(t))return 'Puedes ir al apartado «Analizador de facturas». Sube un PDF o una imagen, revisa el importe mensual detectado y compáralo con uno de los packs. El cálculo es orientativo.';
+          if(/tarifa|precio|fibra|móvil|movil|pack/.test(t))return 'En esta demo aparecen: Fibra 300 Mb + Móvil 30 GB por 29,90 €/mes; Fibra 1 Gb + 2 líneas por 49,90 €/mes; y Pack Oficina Pro por 54,90 €/mes. Precios ilustrativos que deben confirmarse.';
+          if(/luz|energ[ií]a/.test(t))return 'En el apartado Luz puedes solicitar un estudio orientativo. El equipo debe confirmar tarifa y condiciones para tu suministro.';
+          if(/tienda|direcci[oó]n|d[oó]nde/.test(t))return 'Consulta las direcciones y horarios en el apartado «Tiendas» de esta página.';
+          if(/permanencia|compromiso/.test(t))return 'La permanencia depende de la tarifa y las condiciones vigentes. Confírmala con el equipo antes de contratar.';
+          if(/asesor|persona|contacto|llamar/.test(t))return 'Puedes utilizar el formulario de contacto o consultar el apartado Tiendas para hablar con el equipo.';
+          return 'Puedo orientarte sobre tarifas de fibra y móvil, energía, facturas y tiendas. ¿Qué te gustaría consultar?';
+        }
+        function enviarMaxi(){
+          const inp=document.getElementById('maxi-input'),txt=inp.value.trim();if(!txt)return;
+          const box=document.getElementById('maxi-messages'),user=document.createElement('div');
+          user.className='bg-blue-600 text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[85%] break-words';user.textContent=txt;box.appendChild(user);inp.value='';box.scrollTop=box.scrollHeight;
+          setTimeout(()=>{const reply=document.createElement('div');reply.className='bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700 max-w-[90%]';reply.textContent=respuestaMaxi(txt);box.appendChild(reply);box.scrollTop=box.scrollHeight;},350);
         }
     </script>
 </body>
