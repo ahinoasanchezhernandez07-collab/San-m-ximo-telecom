@@ -376,7 +376,7 @@
     <!-- ================= CHATBOT MAXI ================= -->
     <div class="fixed bottom-5 right-5 z-40">
       <div id="widget-chat" class="hidden mb-3 w-80 sm:w-96 max-w-[calc(100vw-2rem)] bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
-        <div class="bg-slate-900 text-white p-4 flex justify-between items-center"><div class="flex items-center space-x-3"><div class="maxi-avatar" role="img" aria-label="Avatar de Maxi"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell1)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></div><div><p class="text-xs font-bold">Maxi · Asistente San Máximo</p><p class="text-[10px] text-emerald-300"><i class="fa-solid fa-circle text-[7px] mr-1"></i> Disponible para ayudarte</p></div></div><button onclick="toggleChat()" aria-label="Cerrar chat" class="text-slate-300 hover:text-white"><i class="fa-solid fa-xmark"></i></button></div>
+        <div class="bg-slate-900 text-white p-4 flex justify-between items-center"><div class="flex items-center space-x-3"><div class="maxi-avatar" role="img" aria-label="Avatar de Maxi"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell1)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></div><div><p class="text-xs font-bold">Maxi · Asistente San Máximo</p><p class="text-[10px] text-amber-200"><i class="fa-solid fa-circle text-[7px] mr-1"></i> IA pendiente de conexión</p></div></div><button onclick="toggleChat()" aria-label="Cerrar chat" class="text-slate-300 hover:text-white"><i class="fa-solid fa-xmark"></i></button></div>
         <div id="maxi-messages" class="p-4 h-72 overflow-y-auto space-y-3 text-xs bg-slate-50" aria-live="polite">
           <div class="flex items-start gap-2"><div class="maxi-avatar !w-8 !h-8 !basis-8 !rounded-xl"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell2)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></div><div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700">¡Hola! Soy <b>Maxi</b>, tu asistente virtual. Puedo orientarte sobre tarifas, fibra, móvil, luz y nuestras tiendas. ¿Qué necesitas?</div></div>
           <div class="grid grid-cols-2 gap-2 pl-10"><button onclick="preguntarMaxi('Quiero conocer las tarifas de hogar')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-wifi mr-1"></i> Tarifas</button><button onclick="preguntarMaxi('Quiero analizar mi factura')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-file-invoice mr-1"></i> Facturas</button><button onclick="preguntarMaxi('Información sobre luz y energía')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-bolt mr-1"></i> Energía</button><button onclick="preguntarMaxi('Dónde están las tiendas')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-location-dot mr-1"></i> Tiendas</button></div>
@@ -666,24 +666,35 @@
         }
         configurarArrastrarFactura();
 
-        // Maxi: respuestas guiadas con la información de la web.
+        // Maxi IA: las respuestas se generan en un backend seguro.
+        // Se rellena cuando el Worker de Cloudflare esté publicado.
+        const MAXI_API_URL = "";
+        const maxiHistory = [];
+        let maxiSending = false;
         function toggleChat(){document.getElementById('widget-chat').classList.toggle('hidden');}
         function preguntarMaxi(texto){document.getElementById('maxi-input').value=texto;enviarMaxi();}
-        function respuestaMaxi(txt){
-          const t=txt.toLowerCase();
-          if(/factura|ahorro|auditor|analiz/.test(t))return 'Puedes usar el analizador para leer un PDF o imagen en tu navegador. La detección puede equivocarse: revisa importe, periodo y servicios antes de comparar. No es un análisis contractual.';
-          if(/tarifa|precio|fibra|móvil|movil|pack/.test(t))return 'En esta web puedes consultar los servicios y comparar dos ofertas introduciendo sus precios y condiciones reales. No mostramos tarifas precargadas ni precios confirmados; solicita siempre las condiciones vigentes antes de contratar.';
-          if(/luz|energ[ií]a/.test(t))return 'En el apartado Luz puedes solicitar un estudio orientativo. El equipo debe confirmar tarifa y condiciones para tu suministro.';
-          if(/tienda|direcci[oó]n|d[oó]nde/.test(t))return 'Consulta las direcciones y horarios en el apartado «Tiendas» de esta página.';
-          if(/permanencia|compromiso/.test(t))return 'La permanencia depende de la tarifa y las condiciones vigentes. Confírmala con el equipo antes de contratar.';
-          if(/asesor|persona|contacto|llamar/.test(t))return 'Puedes utilizar el formulario de contacto o consultar el apartado Tiendas para hablar con el equipo.';
-          return 'Puedo ayudarte con fibra y móvil, comparar dos ofertas, revisar una factura, calcular un coste de luz o localizar una tienda dentro de esta página. Dime qué necesitas y te indico el apartado exacto. No puedo consultar contratos, cobertura por dirección ni datos privados.';
+        function maxiMessage(text,role){
+          const box=document.getElementById('maxi-messages'),el=document.createElement('div');
+          el.className=role==='user'?'bg-blue-600 text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[85%] break-words':'bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700 max-w-[90%] whitespace-pre-wrap break-words';
+          el.textContent=text;box.appendChild(el);box.scrollTop=box.scrollHeight;return el;
         }
-        function enviarMaxi(){
-          const inp=document.getElementById('maxi-input'),txt=inp.value.trim();if(!txt)return;
-          const box=document.getElementById('maxi-messages'),user=document.createElement('div');
-          user.className='bg-blue-600 text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[85%] break-words';user.textContent=txt;box.appendChild(user);inp.value='';box.scrollTop=box.scrollHeight;
-          setTimeout(()=>{const reply=document.createElement('div');reply.className='bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700 max-w-[90%]';reply.textContent=respuestaMaxi(txt);box.appendChild(reply);box.scrollTop=box.scrollHeight;},350);
+        async function enviarMaxi(){
+          const inp=document.getElementById('maxi-input'),btn=document.querySelector('#widget-chat button[aria-label="Enviar mensaje"]'),txt=inp.value.trim();
+          if(!txt||maxiSending)return;
+          inp.value='';maxiMessage(txt,'user');
+          if(!MAXI_API_URL){maxiMessage('La IA de Maxi está preparada, pero falta publicar su servidor privado y conectar su dirección. No voy a fingir que una respuesta programada es una IA real.','assistant');return;}
+          maxiSending=true;if(btn)btn.disabled=true;
+          const pending=maxiMessage('Maxi está pensando…','assistant');
+          maxiHistory.push({role:'user',text:txt});
+          try{
+            const response=await fetch(MAXI_API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:maxiHistory.slice(-20)})});
+            const data=await response.json().catch(()=>({}));
+            if(!response.ok)throw new Error(data.error||'No se pudo conectar con Maxi.');
+            if(typeof data.answer!=='string'||!data.answer.trim())throw new Error('Maxi no ha devuelto una respuesta válida.');
+            pending.textContent=data.answer;maxiHistory.push({role:'model',text:data.answer});
+            if(maxiHistory.length>20)maxiHistory.splice(0,maxiHistory.length-20);
+          }catch(error){pending.textContent=error.message||'No se ha podido conectar con Maxi. Inténtalo de nuevo.';maxiHistory.pop();}
+          finally{maxiSending=false;if(btn)btn.disabled=false;inp.focus();}
         }
     </script>
 </body>
