@@ -32,9 +32,9 @@
         ::selection { background: #2563eb; color: #fff; }
         .glass-nav { background: rgba(255,255,255,.88); box-shadow: 0 8px 30px rgba(15,35,75,.06); }
         #inicio { background:
-          radial-gradient(ellipse at 82% 18%, rgba(59,130,246,.16), transparent 34%),
-          radial-gradient(ellipse at 8% 88%, rgba(14,165,233,.10), transparent 30%),
-          linear-gradient(135deg,#fff 0%,#f3f7ff 54%,#eaf3ff 100%); }
+          radial-gradient(ellipse at 82% 18%, rgba(37,99,235,.24), transparent 34%),
+          radial-gradient(ellipse at 8% 88%, rgba(14,165,233,.13), transparent 30%),
+          linear-gradient(135deg,#020617 0%,#0f172a 58%,#172554 100%); }
         #inicio:before { content:""; position:absolute; width:28rem; height:28rem; border:1px solid rgba(37,99,235,.12); border-radius:50%; right:-10rem; top:-12rem; box-shadow:0 0 0 34px rgba(37,99,235,.035),0 0 0 70px rgba(37,99,235,.025); pointer-events:none; }
         #inicio > div { position:relative; z-index:1; }
         .producto-card, #tiendas .grid > div, #luz .bg-white, #blog .bg-white { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
@@ -631,7 +631,7 @@
         function respuestaMaxi(txt){
           const t=txt.toLowerCase();
           if(/factura|ahorro|auditor|analiz/.test(t))return 'Puedes usar el analizador para leer un PDF o imagen en tu navegador. La detección puede equivocarse: revisa importe, periodo y servicios antes de comparar. No es un análisis contractual.';
-          if(/tarifa|precio|fibra|móvil|movil|pack/.test(t))return 'La web muestra tres packs de ejemplo: 29,90 €, 49,90 € y 54,90 €/mes. No son ofertas verificadas. Compara sus importes y solicita condiciones actualizadas antes de contratar.';
+          if(/tarifa|precio|fibra|móvil|movil|pack/.test(t))return 'En esta web puedes consultar los servicios y comparar dos ofertas introduciendo sus precios y condiciones reales. No mostramos tarifas precargadas ni precios confirmados; solicita siempre las condiciones vigentes antes de contratar.';
           if(/luz|energ[ií]a/.test(t))return 'En el apartado Luz puedes solicitar un estudio orientativo. El equipo debe confirmar tarifa y condiciones para tu suministro.';
           if(/tienda|direcci[oó]n|d[oó]nde/.test(t))return 'Consulta las direcciones y horarios en el apartado «Tiendas» de esta página.';
           if(/permanencia|compromiso/.test(t))return 'La permanencia depende de la tarifa y las condiciones vigentes. Confírmala con el equipo antes de contratar.';
