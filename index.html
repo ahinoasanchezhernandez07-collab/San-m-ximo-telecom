@@ -116,80 +116,22 @@
     </header>
 
     <!-- ================= 2. HERO & QUIÉNES SOMOS ================= -->
-    <section id="inicio" class="bg-gradient-to-br from-white via-blue-50/50 to-sky-50/70 border-b border-slate-200 py-14 sm:py-20 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10 items-center">
-            
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center space-x-2 bg-sky-400/25 border border-sky-400/50 text-slate-900 px-3.5 py-1.5 rounded-full text-xs font-extrabold">
-                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-                    <span>TELECOMUNICACIONES Y ENERGÍA &bull; SALAMANCA, ÁVILA Y ZAMORA</span>
-                </div>
+    <section id="inicio" class="relative bg-slate-950 text-white pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
+<div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/20 blur-[130px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-0 right-10 w-[400px] h-[300px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/90 border border-slate-700 text-xs sm:text-sm font-semibold text-slate-200 mb-6"><span class="w-2 h-2 rounded-full bg-blue-400"></span><span>TELECOMUNICACIONES Y ENERGÍA · SALAMANCA, ÁVILA Y ZAMORA</span></div>
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-6">Conectamos tu mundo. <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">Impulsamos tus decisiones.</span></h1>
+<p class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto mb-9 leading-relaxed">Asesoramiento en telecomunicaciones y energía para particulares, autónomos y empresas. Consulta servicios, compara los datos de tus ofertas y encuentra tu tienda más cercana.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"><a href="#auditor-ia" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-base transition-all shadow-xl flex items-center justify-center gap-2"><i class="fa-solid fa-file-invoice"></i> Analizar mi factura</a><a href="#servicios" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-base transition-all border border-slate-700 flex items-center justify-center gap-2"><i class="fa-solid fa-compass"></i> Ver servicios</a></div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pt-6 border-t border-slate-800 text-left sm:text-center">
+<div class="p-3"><div class="text-lg sm:text-xl font-extrabold text-white">Fibra y móvil</div><div class="text-xs sm:text-sm text-slate-400 mt-1">Soluciones de conectividad</div></div>
+<div class="p-3"><div class="text-lg sm:text-xl font-extrabold text-white">Energía</div><div class="text-xs sm:text-sm text-slate-400 mt-1">Asesoramiento para tu suministro</div></div>
+<div class="p-3"><div class="text-lg sm:text-xl font-extrabold text-white">Comparador</div><div class="text-xs sm:text-sm text-slate-400 mt-1">Calcula con precios que introduzcas</div></div>
+<div class="p-3"><div class="text-lg sm:text-xl font-extrabold text-white">Tiendas</div><div class="text-xs sm:text-sm text-slate-400 mt-1">Atención presencial en la zona</div></div>
+</div></div></section>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
-                    Conectamos tu mundo. <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-500">Impulsamos tu ahorro.</span>
-                </h1>
-
-                <!-- Quiénes Somos / Historia -->
-                <div class="bg-white/80 backdrop-blur-sm border border-slate-200 p-5 rounded-2xl space-y-3 text-slate-600 text-sm leading-relaxed shadow-2xs">
-                    <p class="font-bold text-slate-900"><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i>¿Quiénes Somos en San Máximo Telecom?</p>
-                    <p>Tu tecnología, más sencilla y más cerca de ti. Ofrecemos asesoramiento sobre soluciones de telecomunicaciones y energía para particulares, autónomos y PYMEs. Consulta con el equipo las marcas disponibles, cobertura y condiciones vigentes antes de contratar.</p>
-                </div>
-
-                <!-- Verificador de Cobertura en Vivo -->
-                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-lg max-w-xl space-y-3">
-                    <p class="text-xs font-extrabold uppercase tracking-wider text-slate-700 flex items-center space-x-2">
-                        <i class="fa-solid fa-map-pin text-blue-600"></i>
-                        <span>Consulta la cobertura de tu zona</span>
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-2.5">
-                        <input type="text" id="input-cp" placeholder="Código postal (5 cifras)" class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-500">
-                        <button onclick="comprobarCobertura()" class="bg-slate-900 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl text-sm transition shrink-0 cursor-pointer shadow-sm">
-                            Consultar zona
-                        </button>
-                    </div>
-                    <div id="resultado-cobertura" class="hidden text-xs bg-emerald-50 border border-emerald-200 text-emerald-900 p-3.5 rounded-xl flex items-start space-x-2.5">
-                        <i class="fa-solid fa-circle-check text-emerald-600 text-base mt-0.5"></i>
-                        <span id="texto-cobertura" class="font-semibold leading-relaxed"></span> <a id="official-coverage-link" class="hidden underline font-extrabold" target="_blank" rel="noopener noreferrer" href="https://digital.gob.es/telecomunicaciones-infraestructuras-digitales/areas-interes/banda-ancha/informacion-cobertura/mapas-servicios-banda-ancha">Abrir mapa oficial</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tarjeta Destacada Hero -->
-            <div class="lg:col-span-5">
-                <div class="bg-white border-2 border-blue-500 rounded-3xl p-7 sm:p-8 shadow-2xl relative overflow-hidden space-y-5">
-                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-[11px] font-extrabold uppercase px-4 py-1.5 rounded-bl-2xl">
-                        Pack Estrella Ahorro
-                    </div>
-                    <div>
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Fibra + Móvil + Luz</span>
-                        <h3 class="text-2xl font-extrabold text-slate-900 mt-1">Solución personalizada</h3>
-                    </div>
-
-                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 flex items-baseline justify-between">
-                        <div>
-                            <span class="text-2xl font-black text-slate-900">Consultar oferta</span>
-                            <span class="text-xs text-slate-500 font-semibold">/mes · ejemplo</span>
-                        </div>
-                        <span class="text-xs font-bold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-lg">Oferta a medida</span>
-                    </div>
-
-                    <ul class="space-y-2.5 text-sm text-slate-700">
-                        <li class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-blue-600"></i><span>Estudio de opciones de fibra e internet</span></li>
-                        <li class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-blue-600"></i><span>Comparación de alternativas de telefonía</span></li>
-                        <li class="flex items-center space-x-2.5"><i class="fa-solid fa-circle-info text-blue-600"></i><span>Servicios y condiciones sujetos a disponibilidad y confirmación</span></li>
-                    </ul>
-
-                    <a href="https://www.sanmaximotelecom.com/contacto/" target="_blank" rel="noopener noreferrer" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-4 rounded-2xl text-sm shadow-lg shadow-blue-600/25 transition flex items-center justify-center space-x-2 cursor-pointer">
-                        <i class="fa-solid fa-cart-plus"></i>
-                        <span>Consultar propuesta</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= 3. SECCIÓN: SERVICIOS ================= -->
-    <section id="servicios" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 space-y-8">
+<section id="servicios" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 space-y-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Catálogo de servicios</span>
@@ -257,7 +199,34 @@
     </section>
 
     <!-- ================= 6. SECCIÓN: BLOG & NOVEDADES ================= -->
-    <section id="blog" class="bg-slate-100 py-16">
+    <!-- ================= 8. AUDITOR DE FACTURAS ================= -->
+    <section id="auditor-ia" class="bg-white border-y border-slate-200 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+        <div class="max-w-3xl"><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Área de análisis</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Analizador de facturas y comparador de tarifas</h2><p class="text-sm text-slate-600 mt-2">Selecciona una factura PDF o una imagen. El navegador intentará leer el documento y detectar el importe mensual para compararlo con un pack.</p></div>
+        <div class="grid lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-5 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl space-y-4">
+            <div><label for="audit-titular" class="block text-xs font-bold text-slate-700 mb-1.5">Titular o empresa (opcional)</label><input type="text" id="audit-titular" placeholder="Nombre del titular" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"></div>
+            <div><label for="audit-operador" class="block text-xs font-bold text-slate-700 mb-1.5">Operador actual</label><select id="audit-operador" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><option>Otro</option><option>Movistar</option><option>Vodafone</option><option>Orange</option><option>MásMóvil</option><option>Yoigo</option></select></div>
+            <div><label for="audit-file" class="block text-xs font-bold text-slate-700 mb-1.5">Factura (PDF, JPG o PNG)</label><div id="audit-dropzone" class="border-2 border-dashed border-slate-300 hover:border-blue-500 bg-white rounded-2xl p-6 text-center transition-colors"><label for="audit-file" class="cursor-pointer flex flex-col items-center justify-center space-y-2"><i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-600"></i><span class="text-sm font-extrabold text-slate-800">Arrastra tu factura aquí</span><span class="text-xs text-slate-500">o haz clic para seleccionar un archivo</span><span id="audit-file-name" class="text-xs font-bold text-blue-700">PDF, JPG o PNG · Máximo 12 MB</span><input type="file" id="audit-file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" class="sr-only" onchange="procesarFacturaSeleccionada()"></label></div><p id="audit-status" class="audit-status mt-2">El archivo se procesa localmente en este navegador. No se envía a San Máximo Telecom.</p></div>
+            <div><label for="audit-gasto" class="block text-xs font-bold text-slate-700 mb-1.5">Importe mensual actual (€)</label><input type="number" id="audit-gasto" min="0" step="0.01" placeholder="Importe mensual de tu factura" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><p class="text-[10px] text-slate-500 mt-1">Revisa el importe detectado y corrígelo si incluye varios servicios o meses.</p></div>
+            <div><label for="audit-pack" class="block text-xs font-bold text-slate-700 mb-1.5">Precio mensual de la oferta que quieres comparar (€)</label><input id="audit-pack" type="number" min="0" step="0.01" placeholder="Introduce el precio de una oferta real" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><p class="text-[10px] text-slate-500 mt-1">Cópialo de las condiciones oficiales de la oferta; no hay precios precargados.</p></div>
+            <button id="audit-run" onclick="lanzarAuditoriaIA()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-4 rounded-2xl text-sm"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i> Comparar mi factura</button>
+            <p class="text-[10px] text-slate-500">Estimación orientativa según los datos introducidos; no es una oferta contractual ni sustituye la revisión de un asesor.</p>
+          </div>
+          <div class="lg:col-span-7 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl flex flex-col justify-center min-h-[440px]">
+            <div id="audit-idle" class="text-center space-y-3 py-10"><div class="w-16 h-16 rounded-2xl bg-white border border-slate-200 mx-auto flex items-center justify-center text-2xl text-blue-600"><i class="fa-solid fa-file-invoice-dollar"></i></div><h3 class="text-lg font-extrabold text-slate-900">Tu comparativa aparecerá aquí</h3><p class="text-xs text-slate-500 max-w-sm mx-auto">Sube una factura para intentar detectar el importe, o escribe el coste mensual manualmente.</p></div>
+            <div id="audit-loading" class="hidden text-center space-y-4 py-10"><div class="w-20 h-24 rounded-xl bg-white border border-blue-300 mx-auto flex items-center justify-center text-3xl text-blue-600 relative overflow-hidden"><i class="fa-solid fa-file-lines"></i><div class="scanner-line"></div></div><p id="audit-step-text" class="text-sm font-bold text-slate-900">Leyendo factura…</p><div class="w-56 bg-slate-200 h-2 rounded-full mx-auto overflow-hidden"><div id="audit-bar" class="bg-blue-600 h-full w-1/4"></div></div></div>
+            <div id="informe-imprimible" class="hidden space-y-5">
+              <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-200 pb-4"><div><span class="text-[11px] font-extrabold uppercase text-blue-700 bg-blue-100 px-2.5 py-0.5 rounded-md">Comparativa orientativa</span><h3 id="res-titular" class="text-lg font-extrabold text-slate-900 mt-1">Tu comparativa</h3></div><button onclick="window.print()" class="bg-white border border-slate-300 text-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl"><i class="fa-solid fa-print text-blue-600 mr-1.5"></i> Guardar PDF</button></div>
+              <div class="grid grid-cols-3 gap-3 text-center"><div class="bg-white p-3 rounded-2xl border"><p class="text-[11px] text-slate-500">Coste actual</p><p id="res-actual" class="text-lg font-black text-slate-900">58,50 €</p><p class="text-[10px] text-slate-500">al mes</p></div><div class="bg-white p-3 rounded-2xl border"><p class="text-[11px] text-slate-500">Pack elegido</p><p id="res-actual-pack" class="text-lg font-black text-blue-700">49,90 €</p><p class="text-[10px] text-slate-500">al mes</p></div><div class="bg-blue-50 p-3 rounded-2xl border border-blue-200"><p class="text-[11px] text-blue-800">Diferencia anual</p><p id="res-ahorro" class="text-lg font-black text-blue-700">103,20 €</p><p class="text-[10px] text-blue-700">estimada</p></div></div>
+              <div id="audit-conclusion" class="bg-white border border-slate-200 p-4 rounded-2xl text-xs leading-relaxed text-slate-700"></div><div class="h-48 bg-white p-3 rounded-2xl border"><canvas id="chartAhorro"></canvas></div><p class="text-[10px] text-slate-500">No contempla posibles costes de instalación, promociones, impuestos no incluidos ni diferencias de servicios. Confirma condiciones con un asesor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="blog" class="bg-slate-100 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
@@ -335,34 +304,7 @@
         </div>
     </section>
 
-    <!-- ================= 8. AUDITOR DE FACTURAS ================= -->
-    <section id="auditor-ia" class="bg-white border-y border-slate-200 py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
-        <div class="max-w-3xl"><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Área de análisis</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Analizador de facturas y comparador de tarifas</h2><p class="text-sm text-slate-600 mt-2">Selecciona una factura PDF o una imagen. El navegador intentará leer el documento y detectar el importe mensual para compararlo con un pack.</p></div>
-        <div class="grid lg:grid-cols-12 gap-8">
-          <div class="lg:col-span-5 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl space-y-4">
-            <div><label for="audit-titular" class="block text-xs font-bold text-slate-700 mb-1.5">Titular o empresa (opcional)</label><input type="text" id="audit-titular" placeholder="Nombre del titular" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"></div>
-            <div><label for="audit-operador" class="block text-xs font-bold text-slate-700 mb-1.5">Operador actual</label><select id="audit-operador" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><option>Otro</option><option>Movistar</option><option>Vodafone</option><option>Orange</option><option>MásMóvil</option><option>Yoigo</option></select></div>
-            <div><label for="audit-file" class="block text-xs font-bold text-slate-700 mb-1.5">Factura (PDF, JPG o PNG)</label><div id="audit-dropzone" class="border-2 border-dashed border-slate-300 hover:border-blue-500 bg-white rounded-2xl p-6 text-center transition-colors"><label for="audit-file" class="cursor-pointer flex flex-col items-center justify-center space-y-2"><i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-600"></i><span class="text-sm font-extrabold text-slate-800">Arrastra tu factura aquí</span><span class="text-xs text-slate-500">o haz clic para seleccionar un archivo</span><span id="audit-file-name" class="text-xs font-bold text-blue-700">PDF, JPG o PNG · Máximo 12 MB</span><input type="file" id="audit-file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" class="sr-only" onchange="procesarFacturaSeleccionada()"></label></div><p id="audit-status" class="audit-status mt-2">El archivo se procesa localmente en este navegador. No se envía a San Máximo Telecom.</p></div>
-            <div><label for="audit-gasto" class="block text-xs font-bold text-slate-700 mb-1.5">Importe mensual actual (€)</label><input type="number" id="audit-gasto" min="0" step="0.01" placeholder="Importe mensual de tu factura" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><p class="text-[10px] text-slate-500 mt-1">Revisa el importe detectado y corrígelo si incluye varios servicios o meses.</p></div>
-            <div><label for="audit-pack" class="block text-xs font-bold text-slate-700 mb-1.5">Precio mensual de la oferta que quieres comparar (€)</label><input id="audit-pack" type="number" min="0" step="0.01" placeholder="Introduce el precio de una oferta real" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900"><p class="text-[10px] text-slate-500 mt-1">Cópialo de las condiciones oficiales de la oferta; no hay precios precargados.</p></div>
-            <button id="audit-run" onclick="lanzarAuditoriaIA()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-4 rounded-2xl text-sm"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i> Comparar mi factura</button>
-            <p class="text-[10px] text-slate-500">Estimación orientativa según los datos introducidos; no es una oferta contractual ni sustituye la revisión de un asesor.</p>
-          </div>
-          <div class="lg:col-span-7 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl flex flex-col justify-center min-h-[440px]">
-            <div id="audit-idle" class="text-center space-y-3 py-10"><div class="w-16 h-16 rounded-2xl bg-white border border-slate-200 mx-auto flex items-center justify-center text-2xl text-blue-600"><i class="fa-solid fa-file-invoice-dollar"></i></div><h3 class="text-lg font-extrabold text-slate-900">Tu comparativa aparecerá aquí</h3><p class="text-xs text-slate-500 max-w-sm mx-auto">Sube una factura para intentar detectar el importe, o escribe el coste mensual manualmente.</p></div>
-            <div id="audit-loading" class="hidden text-center space-y-4 py-10"><div class="w-20 h-24 rounded-xl bg-white border border-blue-300 mx-auto flex items-center justify-center text-3xl text-blue-600 relative overflow-hidden"><i class="fa-solid fa-file-lines"></i><div class="scanner-line"></div></div><p id="audit-step-text" class="text-sm font-bold text-slate-900">Leyendo factura…</p><div class="w-56 bg-slate-200 h-2 rounded-full mx-auto overflow-hidden"><div id="audit-bar" class="bg-blue-600 h-full w-1/4"></div></div></div>
-            <div id="informe-imprimible" class="hidden space-y-5">
-              <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-200 pb-4"><div><span class="text-[11px] font-extrabold uppercase text-blue-700 bg-blue-100 px-2.5 py-0.5 rounded-md">Comparativa orientativa</span><h3 id="res-titular" class="text-lg font-extrabold text-slate-900 mt-1">Tu comparativa</h3></div><button onclick="window.print()" class="bg-white border border-slate-300 text-slate-800 text-xs font-bold px-3.5 py-2 rounded-xl"><i class="fa-solid fa-print text-blue-600 mr-1.5"></i> Guardar PDF</button></div>
-              <div class="grid grid-cols-3 gap-3 text-center"><div class="bg-white p-3 rounded-2xl border"><p class="text-[11px] text-slate-500">Coste actual</p><p id="res-actual" class="text-lg font-black text-slate-900">58,50 €</p><p class="text-[10px] text-slate-500">al mes</p></div><div class="bg-white p-3 rounded-2xl border"><p class="text-[11px] text-slate-500">Pack elegido</p><p id="res-actual-pack" class="text-lg font-black text-blue-700">49,90 €</p><p class="text-[10px] text-slate-500">al mes</p></div><div class="bg-blue-50 p-3 rounded-2xl border border-blue-200"><p class="text-[11px] text-blue-800">Diferencia anual</p><p id="res-ahorro" class="text-lg font-black text-blue-700">103,20 €</p><p class="text-[10px] text-blue-700">estimada</p></div></div>
-              <div id="audit-conclusion" class="bg-white border border-slate-200 p-4 rounded-2xl text-xs leading-relaxed text-slate-700"></div><div class="h-48 bg-white p-3 rounded-2xl border"><canvas id="chartAhorro"></canvas></div><p class="text-[10px] text-slate-500">No contempla posibles costes de instalación, promociones, impuestos no incluidos ni diferencias de servicios. Confirma condiciones con un asesor.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<section id="preguntas" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 space-y-6"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Ayuda</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Preguntas frecuentes</h2></div><div class="grid md:grid-cols-2 gap-3">
+    <section id="preguntas" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 space-y-6"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Ayuda</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Preguntas frecuentes</h2></div><div class="grid md:grid-cols-2 gap-3">
 <details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Los precios son definitivos?</summary><p class="text-sm text-slate-600 mt-3">No. Son ejemplos de demostración. Solicita una oferta actualizada con impuestos, duración de promociones y posibles costes adicionales.</p></details>
 <details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿La web confirma la cobertura?</summary><p class="text-sm text-slate-600 mt-3">No. Esta versión no consulta los sistemas de los operadores. La cobertura debe verificarse para la dirección de instalación.</p></details>
 <details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Se guarda mi factura?</summary><p class="text-sm text-slate-600 mt-3">La lectura se realiza localmente en el navegador. La detección automática puede equivocarse; comprueba los datos antes de comparar.</p></details>
@@ -656,16 +598,29 @@
         }
         // Zona de arrastrar y soltar para subir facturas.
         function configurarArrastrarFactura(){
-          const zone=document.getElementById('audit-dropzone'),input=document.getElementById('audit-file');
+          const zone=document.getElementById('audit-dropzone');
+          const input=document.getElementById('audit-file');
           if(!zone||!input)return;
-          ['dragenter','dragover'].forEach(evt=>zone.addEventListener(evt,e=>{e.preventDefault();e.stopPropagation();zone.classList.add('border-blue-600','bg-blue-50');}));
-          ['dragleave','dragend'].forEach(evt=>zone.addEventListener(evt,e=>{e.preventDefault();e.stopPropagation();zone.classList.remove('border-blue-600','bg-blue-50');}));
+          ['dragenter','dragover'].forEach(evt=>zone.addEventListener(evt,e=>{
+            e.preventDefault();e.stopPropagation();
+            zone.classList.add('border-blue-600','bg-blue-50');
+          }));
+          ['dragleave','dragend'].forEach(evt=>zone.addEventListener(evt,e=>{
+            e.preventDefault();e.stopPropagation();
+            zone.classList.remove('border-blue-600','bg-blue-50');
+          }));
           zone.addEventListener('drop',e=>{
-            e.preventDefault();e.stopPropagation();zone.classList.remove('border-blue-600','bg-blue-50');
-            const file=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(!file)return;
-            const valid=/\\.pdf$/i.test(file.name)||/^image\\/(png|jpeg)$/i.test(file.type);
+            e.preventDefault();e.stopPropagation();
+            zone.classList.remove('border-blue-600','bg-blue-50');
+            const file=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];
+            if(!file)return;
+            const name=file.name.toLowerCase();
+            const valid=name.endsWith('.pdf')||file.type==='image/png'||file.type==='image/jpeg';
             if(!valid){showToast('Formato no compatible. Usa PDF, JPG o PNG.','info');return;}
-            const transfer=new DataTransfer();transfer.items.add(file);input.files=transfer.files;procesarFacturaSeleccionada();
+            const transfer=new DataTransfer();
+            transfer.items.add(file);
+            input.files=transfer.files;
+            procesarFacturaSeleccionada();
           });
         }
         configurarArrastrarFactura();
