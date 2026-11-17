@@ -32,9 +32,9 @@
         ::selection { background: #2563eb; color: #fff; }
         .glass-nav { background: rgba(255,255,255,.88); box-shadow: 0 8px 30px rgba(15,35,75,.06); }
         #inicio { background:
-          radial-gradient(ellipse at 82% 18%, rgba(37,99,235,.24), transparent 34%),
-          radial-gradient(ellipse at 8% 88%, rgba(14,165,233,.13), transparent 30%),
-          linear-gradient(135deg,#020617 0%,#0f172a 58%,#172554 100%); }
+          radial-gradient(ellipse at 82% 18%, rgba(59,130,246,.16), transparent 34%),
+          radial-gradient(ellipse at 8% 88%, rgba(14,165,233,.10), transparent 30%),
+          linear-gradient(135deg,#fff 0%,#f3f7ff 54%,#eaf3ff 100%); }
         #inicio:before { content:""; position:absolute; width:28rem; height:28rem; border:1px solid rgba(37,99,235,.12); border-radius:50%; right:-10rem; top:-12rem; box-shadow:0 0 0 34px rgba(37,99,235,.035),0 0 0 70px rgba(37,99,235,.025); pointer-events:none; }
         #inicio > div { position:relative; z-index:1; }
         .producto-card, #tiendas .grid > div, #luz .bg-white, #blog .bg-white { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
@@ -116,20 +116,59 @@
     </header>
 
     <!-- ================= 2. HERO & QUIÉNES SOMOS ================= -->
-    <section id="inicio" class="relative bg-slate-950 text-white pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
-<div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/20 blur-[130px] rounded-full pointer-events-none"></div>
-<div class="absolute bottom-0 right-10 w-[400px] h-[300px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none"></div>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/90 border border-slate-700 text-xs sm:text-sm font-semibold text-slate-200 mb-6"><span class="w-2 h-2 rounded-full bg-blue-400"></span><span>TELECOMUNICACIONES Y ENERGÍA · SALAMANCA, ÁVILA Y ZAMORA</span></div>
-<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-6">Conectamos tu mundo. <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">Impulsamos tus decisiones.</span></h1>
-<p class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto mb-9 leading-relaxed">Asesoramiento en telecomunicaciones y energía para particulares, autónomos y empresas. Consulta servicios, compara los datos de tus ofertas y encuentra tu tienda más cercana.</p>
-<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"><a href="#auditor-ia" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-base transition-all shadow-xl flex items-center justify-center gap-2"><i class="fa-solid fa-file-invoice"></i> Analizar mi factura</a><a href="#servicios" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-base transition-all border border-slate-700 flex items-center justify-center gap-2"><i class="fa-solid fa-compass"></i> Ver servicios</a></div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pt-6 border-t border-slate-800 text-left sm:text-center">
-<div class="p-3"><div class="text-lg sm:text-xl font-extrabold text-white">Fibra y móvil</div><div class="text-xs sm:text-sm text-slate-400 mt-1">Soluciones de conectividad</div></div>
-<div class="p-3"><div class="text-lg sm:text-xl font-extrabold text-white">Energía</div><div class="text-xs sm:text-sm text-slate-400 mt-1">Asesoramiento para tu suministro</div></div>
-<div class="p-3"><div class="text-lg sm:text-xl font-extrabold text-white">Comparador</div><div class="text-xs sm:text-sm text-slate-400 mt-1">Calcula con precios que introduzcas</div></div>
-<div class="p-3"><div class="text-lg sm:text-xl font-extrabold text-white">Tiendas</div><div class="text-xs sm:text-sm text-slate-400 mt-1">Atención presencial en la zona</div></div>
-</div></div></section>
+    <section id="inicio" class="bg-gradient-to-br from-white via-blue-50/50 to-sky-50/70 border-b border-slate-200 py-14 sm:py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-sky-400/25 border border-sky-400/50 text-slate-900 px-3.5 py-1.5 rounded-full text-xs font-extrabold">
+                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
+                    <span>TELECOMUNICACIONES Y ENERGÍA &bull; SALAMANCA, ÁVILA Y ZAMORA</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
+                    Conectamos tu mundo. <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-500">Impulsamos tu ahorro.</span>
+                </h1>
+
+                <!-- Quiénes Somos / Historia -->
+                <div class="bg-white/80 backdrop-blur-sm border border-slate-200 p-5 rounded-2xl space-y-3 text-slate-600 text-sm leading-relaxed shadow-2xs">
+                    <p class="font-bold text-slate-900"><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i>¿Quiénes Somos en San Máximo Telecom?</p>
+                    <p>Tu tecnología, más sencilla y más cerca de ti. Ofrecemos asesoramiento sobre soluciones de telecomunicaciones y energía para particulares, autónomos y PYMEs. Consulta con el equipo las marcas disponibles, cobertura y condiciones vigentes antes de contratar.</p>
+                </div>
+
+                <!-- Verificador de Cobertura en Vivo -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-lg max-w-xl space-y-3">
+                    <p class="text-xs font-extrabold uppercase tracking-wider text-slate-700 flex items-center space-x-2">
+                        <i class="fa-solid fa-map-pin text-blue-600"></i>
+                        <span>Consulta la cobertura de tu zona</span>
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-2.5">
+                        <input type="text" id="input-cp" placeholder="Código postal (5 cifras)" class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-500">
+                        <button onclick="comprobarCobertura()" class="bg-slate-900 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl text-sm transition shrink-0 cursor-pointer shadow-sm">
+                            Consultar zona
+                        </button>
+                    </div>
+                    <div id="resultado-cobertura" class="hidden text-xs bg-emerald-50 border border-emerald-200 text-emerald-900 p-3.5 rounded-xl flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-base mt-0.5"></i>
+                        <span id="texto-cobertura" class="font-semibold leading-relaxed"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta principal de servicios -->
+            <div class="lg:col-span-5">
+                <div class="bg-white border-2 border-blue-500 rounded-3xl p-7 sm:p-8 shadow-2xl relative overflow-hidden space-y-5">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-[11px] font-extrabold uppercase px-4 py-1.5 rounded-bl-2xl">Atención personalizada</div>
+                    <div><span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Soluciones para ti</span><h3 class="text-2xl font-extrabold text-slate-900 mt-1">Conectividad y energía</h3><p class="text-sm text-slate-600 mt-2">Te ayudamos a revisar tus necesidades y comparar opciones con precios y condiciones reales.</p></div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-wifi text-blue-600 mt-0.5"></i><span><b>Fibra y móvil</b><br><span class="text-slate-500">Opciones para hogar y líneas móviles.</span></span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-bolt text-blue-600 mt-0.5"></i><span><b>Luz y energía</b><br><span class="text-slate-500">Revisión orientativa de tu factura.</span></span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-store text-blue-600 mt-0.5"></i><span><b>Atención en tienda</b><br><span class="text-slate-500">Asesoramiento en Salamanca, Ávila y Zamora.</span></span></li>
+                    </ul>
+                    <a href="#servicios" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-4 rounded-2xl text-sm shadow-lg transition flex items-center justify-center gap-2"><i class="fa-solid fa-compass"></i><span>Descubrir servicios</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <section id="servicios" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 space-y-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
