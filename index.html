@@ -154,7 +154,7 @@
               <p class="mt-4"><strong class="text-3xl tracking-tight text-slate-950">19,90 €</strong><span class="text-xs text-slate-500"> /mes</span></p>
               <p class="text-xs text-slate-600 mt-1">Durante 12 meses; después 29,90 €/mes.</p>
               <p class="text-[11px] text-slate-500 mt-3">Instalación y router incluidos según condiciones. Compromiso mínimo de 3 meses para evitar coste de instalación.</p>
-              <a href="#contacto" class="mt-auto pt-5 text-sm font-extrabold text-blue-700 hover:text-blue-900">Me interesa <i class="fa-solid fa-arrow-right ml-1"></i></a>
+              <button type="button" onclick="agregarAlCarrito('Fibra 600 Mb',19.90,'tarifa','19,90 €/mes durante 12 meses; después 29,90 €/mes')" class="mt-auto pt-5 text-left text-sm font-extrabold text-blue-700 hover:text-blue-900">Añadir tarifa al carrito <i class="fa-solid fa-cart-plus ml-1"></i></button>
             </article>
 
             <article class="bg-white rounded-2xl border border-blue-100 p-5 shadow-sm flex flex-col">
@@ -164,7 +164,7 @@
               <p class="mt-4"><strong class="text-3xl tracking-tight text-slate-950">14 €</strong><span class="text-xs text-slate-500"> /mes</span></p>
               <p class="text-xs text-slate-600 mt-1">Precio mensual final.</p>
               <p class="text-[11px] text-slate-500 mt-3">Sin permanencia. Cobertura 5G donde esté disponible.</p>
-              <a href="#contacto" class="mt-auto pt-5 text-sm font-extrabold text-blue-700 hover:text-blue-900">Me interesa <i class="fa-solid fa-arrow-right ml-1"></i></a>
+              <button type="button" onclick="agregarAlCarrito('35 GB + llamadas ilimitadas',14,'tarifa','14 €/mes')" class="mt-auto pt-5 text-left text-sm font-extrabold text-blue-700 hover:text-blue-900">Añadir tarifa al carrito <i class="fa-solid fa-cart-plus ml-1"></i></button>
             </article>
 
             <article class="bg-white rounded-2xl border-2 border-blue-500 p-5 shadow-md shadow-blue-900/5 flex flex-col relative">
@@ -175,7 +175,7 @@
               <p class="mt-4"><strong class="text-3xl tracking-tight text-slate-950">49 €</strong><span class="text-xs text-slate-500"> /mes</span></p>
               <p class="text-xs text-slate-600 mt-1">3 primeros meses; después 55 €/mes.</p>
               <p class="text-[11px] text-slate-500 mt-3">Incluye fijo. Precio y disponibilidad sujetos a cobertura y condiciones de Yoigo.</p>
-              <a href="#contacto" class="mt-auto pt-5 text-sm font-extrabold text-blue-700 hover:text-blue-900">Me interesa <i class="fa-solid fa-arrow-right ml-1"></i></a>
+              <button type="button" onclick="agregarAlCarrito('Fibra 600 Mb + 2 líneas',49,'tarifa','49 €/mes durante 3 meses; después 55 €/mes')" class="mt-auto pt-5 text-left text-sm font-extrabold text-blue-700 hover:text-blue-900">Añadir tarifa al carrito <i class="fa-solid fa-cart-plus ml-1"></i></button>
             </article>
 
             <article class="bg-white rounded-2xl border border-blue-100 p-5 shadow-sm flex flex-col">
@@ -185,7 +185,7 @@
               <p class="mt-4"><strong class="text-3xl tracking-tight text-slate-950">53 €</strong><span class="text-xs text-slate-500"> /mes</span></p>
               <p class="text-xs text-slate-600 mt-1">Cuota mensual publicada por Yoigo.</p>
               <p class="text-[11px] text-slate-500 mt-3">Incluye 80 GB para móvil. Consulta disponibilidad y condiciones.</p>
-              <a href="#contacto" class="mt-auto pt-5 text-sm font-extrabold text-blue-700 hover:text-blue-900">Me interesa <i class="fa-solid fa-arrow-right ml-1"></i></a>
+              <button type="button" onclick="agregarAlCarrito('Fibra 600 Mb + 80 GB',53,'tarifa','53 €/mes')" class="mt-auto pt-5 text-left text-sm font-extrabold text-blue-700 hover:text-blue-900">Añadir tarifa al carrito <i class="fa-solid fa-cart-plus ml-1"></i></button>
             </article>
           </div>
           <p class="text-[11px] text-slate-500 mt-4 leading-relaxed">Precios públicos de Yoigo consultados el 17/11/2026, IVA incluido. Son precios del operador y no una oferta propia de San Máximo Telecom. Las promociones, condiciones y cobertura pueden cambiar; se muestran como referencia y se pueden consultar en tienda.</p>
@@ -237,7 +237,7 @@
 <a target="_blank" rel="noopener noreferrer" href="https://calidadtelecos.cnmc.gob.es/mapa-cobertura" class="border border-slate-200 rounded-2xl p-4 hover:border-blue-400"><b class="text-sm text-slate-900">Mapa de cobertura y calidad</b><p class="text-xs text-slate-600 mt-1">CNMC: mapa de fibra y móvil y datos de medición.</p></a>
 <a target="_blank" rel="noopener noreferrer" href="https://comparador.cnmc.gob.es/" class="border border-slate-200 rounded-2xl p-4 hover:border-blue-400"><b class="text-sm text-slate-900">Comparador oficial de energía</b><p class="text-xs text-slate-600 mt-1">CNMC: ofertas de electricidad y gas revisadas por el regulador.</p></a>
 <a target="_blank" rel="noopener noreferrer" href="https://www.esios.ree.es/es" class="border border-slate-200 rounded-2xl p-4 hover:border-blue-400"><b class="text-sm text-slate-900">Datos del sistema eléctrico</b><p class="text-xs text-slate-600 mt-1">Red Eléctrica: indicadores y precios horarios de referencia del PVPC.</p></a></div><p class="text-[10px] text-slate-500">La cobertura agregada y los mapas de servicios tienen distinta resolución y periodicidad. La disponibilidad exacta debe verificarse por dirección.</p></section>
-<div id="grid-productos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Hogar</span><h3 class="text-lg font-extrabold text-slate-900">Fibra e internet</h3><p class="text-sm text-slate-600">Asesoramiento para elegir velocidad, tecnología y operador según tu domicilio y uso.</p><p class="text-sm font-extrabold text-slate-900">Precio y cobertura: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Solicitar información</a></article><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Hogar y móvil</span><h3 class="text-lg font-extrabold text-slate-900">Telefonía móvil y fija</h3><p class="text-sm text-slate-600">Comparación personalizada de alternativas de telefonía móvil y fija.</p><p class="text-sm font-extrabold text-slate-900">Precio y condiciones: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="empresas" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Empresas</span><h3 class="text-lg font-extrabold text-slate-900">Soluciones para negocios</h3><p class="text-sm text-slate-600">Análisis de facturas y necesidades de conectividad, valoración de alternativas y costes.</p><p class="text-sm font-extrabold text-slate-900">Propuesta a medida</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="terminales" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Dispositivos</span><h3 class="text-lg font-extrabold text-slate-900">Móviles libres y accesorios</h3><p class="text-sm text-slate-600">Consulta disponibilidad, modelos, precios y opciones de financiación en tienda.</p><p class="text-sm font-extrabold text-slate-900">Stock y precio: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="empresas" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Empresas</span><h3 class="text-lg font-extrabold text-slate-900">Auditoría de telecomunicaciones</h3><p class="text-sm text-slate-600">Revisión de red y facturas para identificar necesidades y estudiar posibles optimizaciones.</p><p class="text-sm font-extrabold text-slate-900">Estudio personalizado</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Energía</span><h3 class="text-lg font-extrabold text-slate-900">Luz y gas</h3><p class="text-sm text-slate-600">Envía tu factura mediante el canal oficial para recibir una propuesta adaptada.</p><p class="text-sm font-extrabold text-slate-900">Oferta: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article></div>   </section>
+<div id="grid-productos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Hogar</span><h3 class="text-lg font-extrabold text-slate-900">Fibra e internet</h3><p class="text-sm text-slate-600">Asesoramiento para elegir velocidad, tecnología y operador según tu domicilio y uso.</p><p class="text-sm font-extrabold text-slate-900">Precio y cobertura: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Solicitar información</a></article><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Hogar y móvil</span><h3 class="text-lg font-extrabold text-slate-900">Telefonía móvil y fija</h3><p class="text-sm text-slate-600">Comparación personalizada de alternativas de telefonía móvil y fija.</p><p class="text-sm font-extrabold text-slate-900">Precio y condiciones: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="empresas" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Empresas</span><h3 class="text-lg font-extrabold text-slate-900">Soluciones para negocios</h3><p class="text-sm text-slate-600">Análisis de facturas y necesidades de conectividad, valoración de alternativas y costes.</p><p class="text-sm font-extrabold text-slate-900">Propuesta a medida</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="terminales" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Dispositivos</span><h3 class="text-lg font-extrabold text-slate-900">Móviles libres y accesorios</h3><p class="text-sm text-slate-600">Consulta disponibilidad, modelos, precios y opciones de financiación en tienda.</p><p class="text-sm font-extrabold text-slate-900">Stock y precio: consultar</p></div><button type="button" onclick="agregarAlCarrito('Móviles libres y accesorios (modelo por elegir)',null,'producto','Precio y stock pendientes de confirmar')" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Añadir producto a la solicitud <i class="fa-solid fa-cart-plus ml-1"></i></button></article><article data-cat="empresas" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Empresas</span><h3 class="text-lg font-extrabold text-slate-900">Auditoría de telecomunicaciones</h3><p class="text-sm text-slate-600">Revisión de red y facturas para identificar necesidades y estudiar posibles optimizaciones.</p><p class="text-sm font-extrabold text-slate-900">Estudio personalizado</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Energía</span><h3 class="text-lg font-extrabold text-slate-900">Luz y gas</h3><p class="text-sm text-slate-600">Envía tu factura mediante el canal oficial para recibir una propuesta adaptada.</p><p class="text-sm font-extrabold text-slate-900">Oferta: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article></div>   </section>
 
 <!-- ================= 5. SECCIÓN: LUZ & ENERGÍA ================= -->
     <section id="luz" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 space-y-8">
@@ -393,12 +393,12 @@
             </div>
             <div class="border-t border-slate-200 pt-4 space-y-4">
                 <div class="flex justify-between items-center font-extrabold text-slate-900">
-                    <span>Cuota Mensual Total:</span>
+                    <span>Cuota mensual estimada (solo tarifas):</span>
                     <span id="total-carrito" class="text-2xl text-blue-600">0,00 €</span>
                 </div>
-                <input type="tel" id="cart-telefono" placeholder="Tu número de teléfono de contacto" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500">
+                <p class="text-[11px] text-slate-500">Prepara un resumen de tu selección. No introduzcas datos bancarios: esta web aún no procesa pagos ni envía pedidos.</p>
                 <button onclick="confirmarPedido()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-3.5 rounded-xl text-sm shadow-md transition cursor-pointer">
-                    Tramitar Contratación en Tienda / Online
+                    Preparar resumen de mi selección
                 </button>
             </div>
         </div>
@@ -489,59 +489,37 @@
             });
         }
 
-        // 3. Carrito Lateral
+        // 3. Carrito mixto: tarifas mensuales y productos con precio por confirmar.
         let carrito = [];
-        function agregarAlCarrito(nombre, precio) {
-            carrito.push({ nombre, precio });
+        function agregarAlCarrito(nombre, precio, tipo='producto', condiciones='') {
+            const existente=carrito.find(x=>x.nombre===nombre&&x.tipo===tipo);
+            if(existente) existente.cantidad++;
+            else carrito.push({nombre,precio:Number.isFinite(Number(precio))?Number(precio):null,tipo,condiciones,cantidad:1});
             actualizarCarritoUI();
-            document.getElementById('drawer-carrito').classList.remove('hidden');
-            document.getElementById('drawer-carrito').classList.add('flex');
-            showToast(`"${nombre}" añadido al carrito.`);
+            const drawer=document.getElementById('drawer-carrito');drawer.classList.remove('hidden');drawer.classList.add('flex');
+            showToast('Añadido: '+nombre);
         }
-
-        function eliminarDelCarrito(idx) {
-            carrito.splice(idx, 1);
-            actualizarCarritoUI();
-            showToast("Servicio eliminado del carrito.", 'info');
-        }
-
-        function actualizarCarritoUI() {
-            document.getElementById('cart-badge').innerText = carrito.length;
-            const lista = document.getElementById('lista-carrito');
-            if (carrito.length === 0) {
-                lista.innerHTML = `<p class="text-slate-400 text-xs text-center py-8">No hay servicios o terminales en el carrito.</p>`;
-                document.getElementById('total-carrito').innerText = "0,00 €";
-                return;
-            }
-            let total = 0;
-            lista.innerHTML = carrito.map((item, i) => {
-                total += item.precio;
-                return `
-                    <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl flex justify-between items-center">
-                        <div>
-                            <p class="font-bold text-slate-900 text-xs">${item.nombre}</p>
-                            <p class="text-blue-600 font-extrabold text-xs mt-0.5">${item.precio.toFixed(2).replace('.', ',')} €/mes</p>
-                        </div>
-                        <button onclick="eliminarDelCarrito(${i})" aria-label="Eliminar" class="text-slate-400 hover:text-rose-600 text-xs cursor-pointer"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
+        function cambiarCantidad(idx,delta){if(!carrito[idx])return;carrito[idx].cantidad+=delta;if(carrito[idx].cantidad<=0)carrito.splice(idx,1);actualizarCarritoUI();}
+        function eliminarDelCarrito(idx){carrito.splice(idx,1);actualizarCarritoUI();showToast('Elemento eliminado.','info');}
+        function actualizarCarritoUI(){
+            document.getElementById('cart-badge').innerText=carrito.reduce((n,x)=>n+x.cantidad,0);
+            const lista=document.getElementById('lista-carrito');
+            if(!carrito.length){lista.innerHTML='<p class="text-slate-400 text-xs text-center py-8">Tu carrito está vacío. Añade una tarifa o un dispositivo.</p>';document.getElementById('total-carrito').innerText='0,00 €/mes';return;}
+            const total=carrito.reduce((sum,x)=>sum+(x.tipo==='tarifa'&&x.precio!==null?x.precio*x.cantidad:0),0);
+            lista.innerHTML=carrito.map((item,i)=>{
+                const precio=item.precio===null?'Precio por confirmar':(item.tipo==='tarifa'?money(item.precio)+'/mes':money(item.precio)+' unidad');
+                return '<div class="bg-slate-50 border border-slate-200 p-3.5 rounded-xl space-y-2"><div class="flex justify-between gap-3"><div class="min-w-0"><p class="font-bold text-slate-900 text-xs">'+item.nombre+'</p><p class="text-blue-700 font-extrabold text-xs mt-1">'+precio+'</p>'+(item.condiciones?'<p class="text-[10px] text-slate-500 mt-1">'+item.condiciones+'</p>':'')+'</div><button onclick="eliminarDelCarrito('+i+')" aria-label="Eliminar" class="text-slate-400 hover:text-rose-600 text-xs"><i class="fa-solid fa-trash"></i></button></div><div class="flex items-center gap-3 text-xs"><button onclick="cambiarCantidad('+i+',-1)" class="w-7 h-7 rounded-lg border bg-white font-bold" aria-label="Restar unidad">−</button><span class="font-bold">'+item.cantidad+'</span><button onclick="cambiarCantidad('+i+',1)" class="w-7 h-7 rounded-lg border bg-white font-bold" aria-label="Añadir unidad">+</button></div></div>';
             }).join('');
-            document.getElementById('total-carrito').innerText = total.toFixed(2).replace('.', ',') + " €";
+            document.getElementById('total-carrito').innerText=money(total)+'/mes';
         }
-
-        function toggleCarrito() {
-            const d = document.getElementById('drawer-carrito');
-            d.classList.toggle('hidden');
-            d.classList.toggle('flex');
-        }
-
-        async function confirmarPedido() {
-            const tel = document.getElementById('cart-telefono').value.trim();
-            if (!carrito.length) return showToast('El carrito está vacío.', 'info');
-            if (!/^[+0-9\s().-]{9,20}$/.test(tel)) return showToast('Revisa el teléfono de contacto.', 'info');
-            const resumen = 'Solicitud orientativa - San Máximo Telecom\nTeléfono: ' + tel + '\n' + carrito.map(x => x.nombre + ' — ' + money(x.precio) + '/mes (ejemplo)').join('\n') + '\nTotal orientativo: ' + money(carrito.reduce((a,x)=>a+x.precio,0)) + '/mes. Pendiente de confirmar condiciones.';
-            try { await navigator.clipboard.writeText(resumen); showToast('Resumen copiado. Esta demo no tramita pedidos ni contacta con la empresa.'); }
-            catch(e) { showToast('Esta demo no tramita pedidos ni envía datos. Anota los productos del carrito.', 'info'); }
+        function toggleCarrito(){const d=document.getElementById('drawer-carrito');d.classList.toggle('hidden');d.classList.toggle('flex');}
+        async function confirmarPedido(){
+            if(!carrito.length)return showToast('El carrito está vacío.','info');
+            const lineas=carrito.map(x=>'• '+x.nombre+' × '+x.cantidad+' — '+(x.precio===null?'precio/stock por confirmar':x.tipo==='tarifa'?money(x.precio)+'/mes por unidad':money(x.precio)+' por unidad')+(x.condiciones?' ('+x.condiciones+')':'')).join('\\n');
+            const total=carrito.reduce((sum,x)=>sum+(x.tipo==='tarifa'&&x.precio!==null?x.precio*x.cantidad:0),0);
+            const resumen='SOLICITUD DE INFORMACIÓN / CONTRATACIÓN — SAN MÁXIMO TELECOM\\n\\n'+lineas+'\\n\\nCuota mensual inicial estimada de tarifas: '+money(total)+'/mes.\\n\\nSolicitud no enviada: pendiente de confirmar disponibilidad, condiciones, stock y canal seguro de pago.';
+            try{await navigator.clipboard.writeText(resumen);showToast('Resumen copiado. No es una compra ni se ha enviado ningún pedido.');}
+            catch(e){const blob=new Blob([resumen],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='solicitud-san-maximo-telecom.txt';a.click();URL.revokeObjectURL(url);showToast('Resumen descargado. No se ha enviado ni cobrado nada.');}
         }
 
         // Estudio Luz
