@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>San Máximo Telecom | Fibra, Móvil 5G, Luz y Energía en Salamanca, Ávila y Zamora</title>
+    <title>San Máximo Telecom | Fibra, móvil y energía en Salamanca</title>
+<meta name="description" content="Soluciones de telecomunicaciones y energía para particulares y empresas en Salamanca, Ávila y Zamora.">
+<meta name="theme-color" content="#1d4ed8">
+<meta property="og:title" content="San Máximo Telecom"><meta property="og:description" content="Conectividad, móvil y energía con asesoramiento cercano."><meta property="og:type" content="website">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -13,6 +16,9 @@
         .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
         @keyframes scanLine { 0% { top: 0%; } 50% { top: 96%; } 100% { top: 0%; } }
         .scanner-line { position: absolute; left: 0; right: 0; height: 3px; background: #2563eb; box-shadow: 0 0 14px #2563eb; animation: scanLine 1.8s infinite ease-in-out; }
+        :focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
+        details[open] summary { color: #1d4ed8; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
         @media print {
             body * { visibility: hidden; }
             #informe-imprimible, #informe-imprimible * { visibility: visible; }
@@ -72,7 +78,7 @@
                     <i class="fa-solid fa-bolt text-sky-500 text-xs"></i>
                     <span>Luz</span>
                 </a>
-                <a href="#blog" class="px-3.5 py-2 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">Blog</a>
+                <a href="#comparador-tarifas" class="px-3.5 py-2 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">Comparar</a><a href="#preguntas" class="px-3.5 py-2 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">Preguntas</a><a href="#blog" class="px-3.5 py-2 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">Blog</a>
                 <a href="#contacto" class="px-3.5 py-2 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">Contacto</a>
                 <a href="#trabaja" class="px-3.5 py-2 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition text-blue-600 font-extrabold">Trabaja con nosotros</a>
             </nav>
@@ -115,7 +121,7 @@
             <div class="lg:col-span-7 space-y-6">
                 <div class="inline-flex items-center space-x-2 bg-sky-400/25 border border-sky-400/50 text-slate-900 px-3.5 py-1.5 rounded-full text-xs font-extrabold">
                     <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-                    <span>DISTRIBUIDOR OFICIAL TELECOM & ENERGÍA &bull; SALAMANCA, ÁVILA Y ZAMORA</span>
+                    <span>TELECOMUNICACIONES Y ENERGÍA &bull; SALAMANCA, ÁVILA Y ZAMORA</span>
                 </div>
 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
@@ -125,19 +131,19 @@
                 <!-- Quiénes Somos / Historia -->
                 <div class="bg-white/80 backdrop-blur-sm border border-slate-200 p-5 rounded-2xl space-y-3 text-slate-600 text-sm leading-relaxed shadow-2xs">
                     <p class="font-bold text-slate-900"><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i>¿Quiénes Somos en San Máximo Telecom?</p>
-                    <p>Tu tecnología, más sencilla y más cerca de ti. Como distribuidor autorizado de las principales marcas del mercado (<b>MásMóvil, Yoigo y operadoras de energía verde</b>), ofrecemos un servicio integral de asesoramiento personalizado, soporte técnico presencial en nuestras tiendas físicas y gestión unificada de telecomunicaciones y luz para particulares y PYMEs.</p>
+                    <p>Tu tecnología, más sencilla y más cerca de ti. Ofrecemos asesoramiento sobre soluciones de telecomunicaciones y energía para particulares, autónomos y PYMEs. Consulta con el equipo las marcas disponibles, cobertura y condiciones vigentes antes de contratar.</p>
                 </div>
 
                 <!-- Verificador de Cobertura en Vivo -->
                 <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-lg max-w-xl space-y-3">
                     <p class="text-xs font-extrabold uppercase tracking-wider text-slate-700 flex items-center space-x-2">
                         <i class="fa-solid fa-map-pin text-blue-600"></i>
-                        <span>Comprueba cobertura de Fibra 1Gb y 5G en tu calle</span>
+                        <span>Consulta la cobertura de tu zona</span>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-2.5">
-                        <input type="text" id="input-cp" placeholder="Código Postal o Calle (Ej. 37002 Salamanca)" class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-500">
+                        <input type="text" id="input-cp" placeholder="Código postal (5 cifras)" class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-500">
                         <button onclick="comprobarCobertura()" class="bg-slate-900 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl text-sm transition shrink-0 cursor-pointer shadow-sm">
-                            Comprobar Cobertura
+                            Consultar zona
                         </button>
                     </div>
                     <div id="resultado-cobertura" class="hidden text-xs bg-emerald-50 border border-emerald-200 text-emerald-900 p-3.5 rounded-xl flex items-start space-x-2.5">
@@ -161,15 +167,15 @@
                     <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 flex items-baseline justify-between">
                         <div>
                             <span class="text-4xl font-black text-slate-900">49,90 €</span>
-                            <span class="text-xs text-slate-500 font-semibold">/mes todo incluido</span>
+                            <span class="text-xs text-slate-500 font-semibold">/mes · ejemplo</span>
                         </div>
-                        <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-lg">Ahorro unificado</span>
+                        <span class="text-xs font-bold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-lg">Pack de ejemplo</span>
                     </div>
 
                     <ul class="space-y-2.5 text-sm text-slate-700">
                         <li class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-blue-600"></i><span>Fibra simétrica 600 Mb + Router WiFi 6</span></li>
                         <li class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-blue-600"></i><span>2 Líneas móviles 5G con datos ilimitados</span></li>
-                        <li class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-blue-600"></i><span>Tarifa de luz 100% verde sin permanencia</span></li>
+                        <li class="flex items-center space-x-2.5"><i class="fa-solid fa-circle-info text-blue-600"></i><span>Servicios y condiciones sujetos a disponibilidad y confirmación</span></li>
                     </ul>
 
                     <button onclick="agregarAlCarrito('Pack Total San Máximo (Fibra + Móvil + Luz)', 49.90)" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-4 rounded-2xl text-sm shadow-lg shadow-blue-600/25 transition flex items-center justify-center space-x-2 cursor-pointer">
@@ -204,7 +210,14 @@
             <div class="bg-white border border-slate-200 rounded-2xl p-4"><p class="text-[11px] uppercase tracking-wide font-extrabold text-blue-600">Negocios</p><p class="font-extrabold text-slate-900 mt-1">Conectividad profesional</p><p class="text-xs text-slate-500 mt-1">Soluciones para autónomos y PYMEs.</p></div>
             <div class="bg-white border border-slate-200 rounded-2xl p-4"><p class="text-[11px] uppercase tracking-wide font-extrabold text-blue-600">Dispositivos</p><p class="font-extrabold text-slate-900 mt-1">Terminales 5G</p><p class="text-xs text-slate-500 mt-1">Equipos y financiación sujeta a estudio.</p></div>
         </div>
-        <div id="grid-productos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section id="comparador-tarifas" class="bg-blue-50/70 border border-blue-100 rounded-3xl p-5 sm:p-7 mb-7 space-y-4">
+<div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Comparador</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">Compara dos packs</h3><p class="text-xs text-slate-600 mt-1">Precios ilustrativos de esta demo, no ofertas verificadas.</p></div>
+<div class="grid md:grid-cols-2 gap-3">
+<label class="text-xs font-bold text-slate-700">Primera opción<select id="compare-a" class="mt-1 w-full bg-white border border-slate-300 rounded-xl px-3 py-3 text-sm"><option value="29.90">Fibra 300 Mb + Móvil 30 GB · 29,90 €/mes</option><option value="49.90">Fibra 1 Gb + 2 líneas · 49,90 €/mes</option><option value="54.90">Pack Oficina Pro · 54,90 €/mes</option></select></label>
+<label class="text-xs font-bold text-slate-700">Segunda opción<select id="compare-b" class="mt-1 w-full bg-white border border-slate-300 rounded-xl px-3 py-3 text-sm"><option value="29.90">Fibra 300 Mb + Móvil 30 GB · 29,90 €/mes</option><option value="49.90" selected>Fibra 1 Gb + 2 líneas · 49,90 €/mes</option><option value="54.90">Pack Oficina Pro · 54,90 €/mes</option></select></label></div>
+<div id="compare-result" aria-live="polite" class="bg-white border border-blue-100 rounded-2xl p-4 text-sm text-slate-700">Pulsa comparar para ver la diferencia mensual y anual.</div>
+<button type="button" onclick="actualizarComparador()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-3 rounded-xl text-xs">Comparar opciones</button></section>
+<div id="grid-productos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-xs hover:shadow-lg hover:border-blue-400 transition flex flex-col justify-between space-y-5">
                 <div class="space-y-3">
                     <span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-600 px-2.5 py-1 rounded-md">Fibra Esencial</span>
@@ -370,7 +383,7 @@
             <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Estamos a tu disposición</span>
                 <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Formulario de Contacto</h2>
-                <p class="text-xs text-slate-500 mt-1">Escríbenos y te responderemos en menos de 24 horas.</p>
+                <p class="text-xs text-slate-500 mt-1">Formulario de demostración: todavía no envía mensajes ni guarda datos.</p>
             </div>
             <div class="space-y-4">
                 <input type="text" id="cnt-nombre" placeholder="Tu Nombre completo" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500">
@@ -387,7 +400,7 @@
             <div>
                 <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Únete al equipo</span>
                 <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Trabaja con nosotros</h2>
-                <p class="text-xs text-slate-500 mt-1">Buscamos talento comercial y técnico para nuestras tiendas en Salamanca.</p>
+                <p class="text-xs text-slate-500 mt-1">Formulario de demostración: aún no recibe candidaturas.</p>
             </div>
             <div class="space-y-4">
                 <input type="text" id="job-nombre" placeholder="Nombre y Apellidos" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500">
@@ -404,7 +417,14 @@
         </div>
     </section>
 
-    <!-- ================= 8. AUDITOR DE FACTURAS ================= -->
+    <section id="preguntas" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 space-y-6"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Ayuda</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Preguntas frecuentes</h2></div><div class="grid md:grid-cols-2 gap-3">
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Los precios son definitivos?</summary><p class="text-sm text-slate-600 mt-3">No. Son ejemplos de demostración. Solicita una oferta actualizada con impuestos, duración de promociones y posibles costes adicionales.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿La web confirma la cobertura?</summary><p class="text-sm text-slate-600 mt-3">No. Esta versión no consulta los sistemas de los operadores. La cobertura debe verificarse para la dirección de instalación.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Se guarda mi factura?</summary><p class="text-sm text-slate-600 mt-3">La lectura se realiza localmente en el navegador. La detección automática puede equivocarse; comprueba los datos antes de comparar.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Puedo contratar desde la web?</summary><p class="text-sm text-slate-600 mt-3">No en esta versión. El carrito y los formularios son demostrativos y aún no están conectados a un sistema de pedidos.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Hay permanencia o instalación?</summary><p class="text-sm text-slate-600 mt-3">Depende del operador y la tarifa. Solicita por escrito permanencia, instalación, router, penalizaciones y precio tras promociones.</p></details>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Maxi es una IA conectada?</summary><p class="text-sm text-slate-600 mt-3">Maxi es un asistente automático de demostración con respuestas guiadas. No está conectado a una IA ni a sistemas internos.</p></details></div></section>
+<!-- ================= 8. AUDITOR DE FACTURAS ================= -->
     <section id="auditor-ia" class="bg-white border-y border-slate-200 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
         <div class="max-w-3xl"><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Área de análisis</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Analizador de facturas y comparador de tarifas</h2><p class="text-sm text-slate-600 mt-2">Selecciona una factura PDF o una imagen. El navegador intentará leer el documento y detectar el importe mensual para compararlo con un pack.</p></div>
@@ -619,6 +639,7 @@
             document.getElementById('job-email').value = '';
         }
 
+        function actualizarComparador() { const a=Number(document.getElementById('compare-a').value), b=Number(document.getElementById('compare-b').value), out=document.getElementById('compare-result'); if(a===b){out.textContent='Has elegido el mismo precio en ambas opciones. Selecciona dos packs distintos.';return;} const d=Math.abs(a-b), cheaper=a<b?'La primera opción':'La segunda opción'; out.textContent=cheaper+' cuesta '+money(d)+' menos al mes ('+money(d*12)+' al año), según los precios de ejemplo. Comprueba que servicios y condiciones sean equivalentes.'; }
         function compararTarifa(precio){
           const selector=document.getElementById('audit-pack');
           if(!selector)return;
@@ -707,13 +728,13 @@
         function preguntarMaxi(texto){document.getElementById('maxi-input').value=texto;enviarMaxi();}
         function respuestaMaxi(txt){
           const t=txt.toLowerCase();
-          if(/factura|ahorro|auditor|analiz/.test(t))return 'Puedes ir al apartado «Analizador de facturas». Sube un PDF o una imagen, revisa el importe mensual detectado y compáralo con uno de los packs. El cálculo es orientativo.';
-          if(/tarifa|precio|fibra|móvil|movil|pack/.test(t))return 'En esta demo aparecen: Fibra 300 Mb + Móvil 30 GB por 29,90 €/mes; Fibra 1 Gb + 2 líneas por 49,90 €/mes; y Pack Oficina Pro por 54,90 €/mes. Precios ilustrativos que deben confirmarse.';
+          if(/factura|ahorro|auditor|analiz/.test(t))return 'Puedes usar el analizador para leer un PDF o imagen en tu navegador. La detección puede equivocarse: revisa importe, periodo y servicios antes de comparar. No es un análisis contractual.';
+          if(/tarifa|precio|fibra|móvil|movil|pack/.test(t))return 'La web muestra tres packs de ejemplo: 29,90 €, 49,90 € y 54,90 €/mes. No son ofertas verificadas. Compara sus importes y solicita condiciones actualizadas antes de contratar.';
           if(/luz|energ[ií]a/.test(t))return 'En el apartado Luz puedes solicitar un estudio orientativo. El equipo debe confirmar tarifa y condiciones para tu suministro.';
           if(/tienda|direcci[oó]n|d[oó]nde/.test(t))return 'Consulta las direcciones y horarios en el apartado «Tiendas» de esta página.';
           if(/permanencia|compromiso/.test(t))return 'La permanencia depende de la tarifa y las condiciones vigentes. Confírmala con el equipo antes de contratar.';
           if(/asesor|persona|contacto|llamar/.test(t))return 'Puedes utilizar el formulario de contacto o consultar el apartado Tiendas para hablar con el equipo.';
-          return 'Puedo orientarte sobre tarifas de fibra y móvil, energía, facturas y tiendas. ¿Qué te gustaría consultar?';
+          return 'Puedo orientarte sobre tarifas de ejemplo, facturas, energía, cobertura y tiendas. Soy un asistente automático de demostración y no tengo acceso a datos de clientes ni a sistemas internos.';
         }
         function enviarMaxi(){
           const inp=document.getElementById('maxi-input'),txt=inp.value.trim();if(!txt)return;
