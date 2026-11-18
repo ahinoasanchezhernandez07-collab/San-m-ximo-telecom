@@ -11,6 +11,14 @@ const storeEmails={
 const euro=n=>Number(n||0).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
 let cart=[];
 function safeText(id){const el=document.getElementById(id);return el?el.value.trim():''}
+function sendReviewRequest(event){
+ event.preventDefault();const alias=safeText('review-name')||'Cliente',category=safeText('review-category'),rating=safeText('review-rating'),review=safeText('review-text'),consent=document.getElementById('review-consent'),status=document.getElementById('review-status');
+ if(!category||!rating||review.length<20||review.length>900||!consent?.checked){if(status)status.textContent='Completa los campos obligatorios y acepta la revisión y publicación.';return}
+ const subject='Reseña para revisar · San Máximo Telecom';
+ const body='Nueva reseña pendiente de revisión\n\nNombre o alias: '+alias+'\nCategoría: '+category+'\nValoración indicada: '+rating+'/5\n\nReseña:\n'+review+'\n\nLa persona autoriza a revisar y, si se aprueba, publicar el texto con el alias indicado.\n\nRevisar antes de publicar.';
+ window.location.href='mailto:german@sanmaximotelecom.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+ if(status)status.textContent='Se ha preparado el correo. Revísalo y pulsa Enviar. El equipo tendrá que aprobar la reseña antes de publicarla.';
+}
 function toast(message){const node=document.createElement('div');node.className='toast';node.textContent=message;document.body.append(node);setTimeout(()=>node.remove(),3200)}
 function loadCart(){try{const value=JSON.parse(localStorage.getItem('sanmaximo-cart')||'[]');cart=Array.isArray(value)?value.filter(x=>x&&typeof x.name==='string'&&Number.isInteger(x.qty)&&x.qty>0):[]}catch(e){cart=[]}renderCart()}
 function saveCart(){try{localStorage.setItem('sanmaximo-cart',JSON.stringify(cart))}catch(e){}}
@@ -73,33 +81,53 @@ function sendRequestEmail(event){
 function openMobileMenu(){const el=document.getElementById('mobile-nav');if(el)el.classList.toggle('open')}
 function toggleTheme(){document.body.classList.toggle('dark-mode');try{localStorage.setItem('sanmaximo-theme',document.body.classList.contains('dark-mode')?'dark':'light')}catch(e){}updateThemeButton()}
 function updateThemeButton(){const dark=document.body.classList.contains('dark-mode'),icon=document.getElementById('theme-icon'),btn=document.getElementById('theme-toggle');if(icon)icon.className='fa-solid '+(dark?'fa-sun':'fa-moon');if(btn)btn.setAttribute('aria-label',dark?'Activar modo claro':'Activar modo oscuro')}
-function addMessage(text,role,link){const box=document.getElementById('chat-messages');if(!box)return;const b=document.createElement('div');b.className='chat-bubble '+(role==='user'?'user':'bot');b.textContent=text;if(link){const a=document.createElement('a');a.href=link[0];a.className='block mt-2 font-extrabold text-blue-700 underline';a.textContent=link[1];b.append(a)}box.append(b);box.scrollTop=box.scrollHeight}
+function addMessage(text,role,link,choices){
+ const box=document.getElementById('chat-messages');if(!box)return;
+ const b=document.createElement('div');b.className='chat-bubble '+(role==='user'?'user':'bot');b.textContent=text;
+ if(link){const a=document.createElement('a');a.href=link[0];a.className='block mt-2 font-extrabold text-blue-700 underline';a.textContent=link[1];b.append(a)}
+ if(Array.isArray(choices)&&choices.length){const row=document.createElement('div');row.className='maxi-choice-row';choices.forEach(label=>{const button=document.createElement('button');button.type='button';button.className='maxi-choice';button.textContent=label;button.addEventListener('click',()=>presetMaxi(label));row.append(button)});b.append(row)}
+ box.append(b);box.scrollTop=box.scrollHeight;
+}
 function toggleMaxi(){const panel=document.getElementById('maxi-chat');if(!panel)return;const opening=panel.classList.contains('hidden');panel.classList.toggle('hidden');if(opening){const input=document.getElementById('maxi-input');if(input)input.focus()}}
 function presetMaxi(text){const input=document.getElementById('maxi-input');if(input)input.value=text;sendMaxi()}
+let maxiFlow=null;
 function answerMaxi(raw){
  const q=raw.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
  const has=(...words)=>words.some(x=>q.includes(x));
- if(has('carrito','cesta','solicitud','mi compra')){openCart();return ['He abierto tu cesta. Puedes revisar los artículos, hacer una compra de prueba o consultar con el equipo.',''];}
- if(has('compra de prueba','simular compra','compra simulada'))return ['Puedes probar la compra con los dispositivos de tu cesta. Es una simulación local: no se cobra ni se envía nada.',['compra-demo.html','Ir a la compra de prueba']];
- if(has('comprar','contratar','quiero una tarifa')&&!has('movil','smartphone','tablet','auricular','reloj','accesorio','iphone','samsung'))return ['Te acompaño paso a paso: primero elige una tarifa o un producto, añádelo a tu solicitud y después contacta con el equipo para confirmar cobertura, stock y condiciones.',['tarifas.html','Empezar a elegir']];
- if(has('movil','smartphone','tablet','auricular','reloj','accesorio','iphone','samsung','bateria externa','power bank'))return ['En Dispositivos tienes productos con fotografías, precios de referencia y vídeos de presentación cuando están disponibles. Puedes añadirlos a la cesta y probar una compra simulada.',['dispositivos.html','Ver dispositivos']];
- if(has('precio','tarifa','fibra','datos','gb','permanencia'))return ['En Tarifas puedes ver las opciones y comparar el coste de dos ofertas con promociones, precio posterior y alta. Los precios deben confirmarse antes de contratar.',['tarifas.html','Ver tarifas']];
- if(has('factura','recibo','ahorro','analizar'))return ['Puedes analizar localmente un PDF o imagen desde el apartado Facturas. El documento no se envía desde esta web y debes revisar el importe detectado.',['facturas.html','Analizar factura']];
- if(has('luz','gas','energia','kwh','electricidad'))return ['En Energía puedes calcular un subtotal y comparar dos ofertas introduciendo los datos de tus facturas.',['energia.html','Ir a Energía']];
- if(has('tienda','direccion','ubicacion','mapa','donde'))return ['En Tiendas tienes el mapa interactivo y los correos de cada establecimiento.',['tiendas.html','Ver tiendas']];
- if(has('persona','asesor','contactar','contacto','correo','email','hablar con alguien'))return ['Te llevo a Contacto. Allí puedes elegir el correo del equipo o de una tienda y enviar tu consulta.',['contacto.html','Contactar con el equipo']];
- if(has('cita','visita','reservar'))return ['En Contacto puedes preparar una consulta para la tienda. La hora no queda reservada hasta que la tienda la confirme.',['contacto.html#cita','Preparar visita']];
- if(has('hola','buenas','buenos dias','buenas tardes'))return ['¡Hola! Soy Maxi. Puedo ayudarte a elegir una tarifa, consultar dispositivos, revisar una factura, localizar una tienda o preparar una solicitud. ¿Por dónde empezamos?',''];
- if(has('gracias','perfecto'))return ['¡De nada! Estoy aquí para ayudarte con la web de San Máximo Telecom.',''];
- return ['Puedo ayudarte con tarifas, móviles, facturas, luz y gas, tiendas, carrito o contacto. Prueba con una de esas opciones o usa los accesos rápidos de abajo.',''];
+ if(maxiFlow==='device-priority'){maxiFlow=null;
+  if(has('camara','foto','fotografia'))return ['Para fotografía, compara cámara, estabilizador y calidad nocturna. Puedes revisar modelos y características en la tienda.',['dispositivos.html','Ver móviles'],['Comparar iPhone y Samsung','Ver todos los móviles']];
+  if(has('bateria','autonomia','duracion'))return ['Para tener más autonomía, fíjate en la batería, la potencia de carga y las pruebas de uso.',['dispositivos.html','Ver dispositivos']];
+  if(has('precio','economico','barato','ahorrar'))return ['Para priorizar precio, compara primero los modelos más económicos y confirma las ofertas vigentes.',['dispositivos.html','Ver catálogo'],['Ver tarifas de móvil']];
+  if(has('juego','gaming','potencia'))return ['Para jugar, compara procesador, pantalla, memoria y temperatura, no solo la cámara.',['dispositivos.html','Ver móviles']];
+  return ['Podemos comparar cámara, batería, potencia y precio. ¿Qué modelos quieres revisar?',['dispositivos.html','Abrir catálogo']];
+ }
+ if(has('opinion','opiniones','reseña','resena','valorar','valoracion','experiencia'))return ['En Opiniones puedes leer testimonios publicados por la empresa y enviar tu reseña para que el equipo la revise.',['opiniones.html','Ver opiniones y escribir reseña']];
+ if(has('recomiend','ayudame a elegir','ayudarme a elegir','no se cual','no se que movil','que movil me compro','cual me conviene')){maxiFlow='device-priority';return ['¡Claro! Te ayudo a elegir. ¿Qué es lo más importante para ti?',['dispositivos.html','Ver catálogo'],['Cámara','Batería','Precio','Juegos']]}
+ if(has('carrito','cesta','solicitud','mi compra')){openCart();return ['He abierto tu cesta. Puedes cambiar cantidades, quitar productos o continuar al resumen.',''];}
+ if(has('finalizar compra','hacer pedido','compra'))return ['Para continuar, abre tu cesta y pulsa “Finalizar compra”. El resumen no envía un pedido ni realiza un cobro.',['compra-demo.html','Ir al resumen de compra']];
+ if(has('movil','smartphone','tablet','auricular','reloj','accesorio','iphone','samsung','bateria externa','power bank'))return ['En Dispositivos puedes filtrar productos, elegir una variante, consultar fotografías y vídeos y añadirlos a tu cesta.',['dispositivos.html','Ver dispositivos'],['Ayúdame a elegir un móvil','Ver opiniones']];
+ if(has('precio','tarifa','fibra','datos','gb','permanencia','cobertura'))return ['En Tarifas puedes comparar cuotas y promociones. La cobertura debe comprobarse para la dirección donde se instalará el servicio.',['tarifas.html','Comparar tarifas'],['Hablar con el equipo']];
+ if(has('factura','recibo','ahorro','analizar'))return ['En Facturas puedes leer un PDF o imagen en tu navegador y comparar el importe con otra oferta. Revisa siempre la cifra detectada.',['facturas.html','Analizar factura'],['Contactar con un asesor']];
+ if(has('luz','gas','energia','kwh','electricidad'))return ['En Energía puedes calcular el coste a partir de tus kWh y comparar dos ofertas.',['energia.html','Comparar energía']];
+ if(has('tienda','direccion','ubicacion','mapa','donde'))return ['En Tiendas encontrarás el mapa, las direcciones y el correo de cada establecimiento.',['tiendas.html','Ver tiendas']];
+ if(has('persona','asesor','contactar','contacto','correo','email','hablar con alguien','reclamacion','queja','incidencia','averia'))return ['Te llevo a Contacto para que elijas el equipo o la tienda y expliques qué necesitas.',['contacto.html','Contactar con el equipo']];
+ if(has('garantia','devolucion','devolver','envio','stock','disponibilidad','financiacion','financiar'))return ['Las condiciones de garantía, devolución, envío, financiación y stock deben confirmarse para el producto concreto. Puedes pedir la información por escrito.',['contacto.html','Consultar condiciones']];
+ if(has('cita','visita','reservar'))return ['Puedes preparar un recordatorio de visita desde Contacto. La tienda tendrá que confirmar la hora.',['contacto.html#cita','Preparar visita']];
+ if(has('hola','buenas','buenos dias','buenas tardes'))return ['¡Hola! Soy Maxi. Puedo ayudarte a elegir un dispositivo, comparar tarifas, revisar una factura, encontrar una tienda o escribir una reseña. ¿Qué necesitas?','',['Elegir un móvil','Comparar tarifas','Analizar factura','Ver opiniones','Contactar']];
+ if(has('gracias','perfecto'))return ['¡De nada! ¿Necesitas que te lleve a algún apartado?','',['Ver tarifas','Dispositivos','Opiniones','Contactar']];
+ return ['Puedo guiarte paso a paso con tarifas, móviles, facturas, energía, tiendas, reseñas o tu cesta. ¿Por dónde empezamos?',['contacto.html','Contactar con el equipo'],['Elegir un móvil','Comparar tarifas','Ver opiniones','Abrir mi cesta']];
 }
-function sendMaxi(){const input=document.getElementById('maxi-input');if(!input)return;const value=input.value.trim();if(!value)return;input.value='';addMessage(value,'user');const result=answerMaxi(value);if(result[1]&&Array.isArray(result[1]))addMessage(result[0],'bot',result[1]);else addMessage(result[0],'bot');}
+function sendMaxi(){
+ const input=document.getElementById('maxi-input');if(!input)return;
+ const value=input.value.trim();if(!value)return;input.value='';addMessage(value,'user');
+ const result=answerMaxi(value);addMessage(result[0],'bot',Array.isArray(result[1])?result[1]:null,Array.isArray(result[2])?result[2]:null);
+}
 function filterDevices(){const q=(safeText('device-search')||'').toLocaleLowerCase('es'),category=safeText('device-filter')||'all';let count=0;document.querySelectorAll('.device-card').forEach(card=>{const okCat=category==='all'||card.dataset.category===category;const okText=!q||(card.dataset.keywords+' '+card.innerText).toLocaleLowerCase('es').includes(q);card.style.display=okCat&&okText?'block':'none';if(okCat&&okText)count++});const empty=document.getElementById('device-empty');if(empty)empty.classList.toggle('hidden',count!==0)}
 function updateStoreMap(){const select=document.getElementById('store-map-select');if(!select)return;const address=select.value,encoded=encodeURIComponent(address);const frame=document.getElementById('store-map-frame'),link=document.getElementById('store-map-link');if(frame)frame.src='https://maps.google.com/maps?q='+encoded+'&output=embed';if(link)link.href='https://www.google.com/maps/search/?api=1&query='+encoded}
 function makeCalendarReminder(){const d=safeText('visit-date'),t=safeText('visit-time');if(!d||!t){toast('Elige fecha y hora');return}const start=new Date(d+'T'+t+':00');if(Number.isNaN(start.getTime())||start<new Date()){toast('Elige una fecha y hora futuras');return}const end=new Date(start.getTime()+30*60000),stamp=x=>x.getFullYear()+String(x.getMonth()+1).padStart(2,'0')+String(x.getDate()).padStart(2,'0')+'T'+String(x.getHours()).padStart(2,'0')+String(x.getMinutes()).padStart(2,'0')+'00';const store=safeText('visit-store'),reason=safeText('visit-reason');const content=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//San Maximo Telecom//Recordatorio//ES','BEGIN:VEVENT','UID:'+Date.now()+'@sanmaximo.local','DTSTAMP:'+stamp(new Date()),'DTSTART:'+stamp(start),'DTEND:'+stamp(end),'SUMMARY:Recordatorio de visita San Máximo Telecom','LOCATION:'+store.replace(/,/g,'\\,'),'DESCRIPTION:Recordatorio personal. La tienda debe confirmar la hora. Motivo: '+reason,'END:VEVENT','END:VCALENDAR'].join('\r\n');const blob=new Blob([content],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='recordatorio-san-maximo.ics';a.click();URL.revokeObjectURL(url);const status=document.getElementById('visit-status');if(status)status.textContent='Recordatorio descargado. La visita no está reservada: contacta con la tienda para confirmar.'}
 function initPortal(){
  try{if(localStorage.getItem('sanmaximo-theme')==='dark')document.body.classList.add('dark-mode')}catch(e){}
- updateThemeButton();loadCart();
+ updateThemeButton();loadCart();initHomeMotion();
  const date=document.getElementById('visit-date');if(date){const now=new Date();now.setMinutes(now.getMinutes()-now.getTimezoneOffset());date.min=now.toISOString().slice(0,10)}
  const search=document.getElementById('device-search');if(search)search.addEventListener('input',filterDevices);
  const filter=document.getElementById('device-filter');if(filter)filter.addEventListener('change',filterDevices);
@@ -114,6 +142,7 @@ function initPortal(){
  const maxi=document.getElementById('maxi-launcher');if(maxi)maxi.addEventListener('click',toggleMaxi);
  const closeMaxi=document.getElementById('maxi-close');if(closeMaxi)closeMaxi.addEventListener('click',toggleMaxi);
  document.querySelectorAll('[data-maxi]').forEach(b=>b.addEventListener('click',()=>presetMaxi(b.dataset.maxi)));
+ const reviewForm=document.getElementById('review-form');if(reviewForm)reviewForm.addEventListener('submit',sendReviewRequest);
  const params=new URLSearchParams(location.search),requestMessage=document.getElementById('request-message');if(requestMessage&&!requestMessage.value.trim()){const type=params.get('tipo');if(params.get('origen')==='carrito')requestMessage.value='Me gustaría recibir información sobre los productos y tarifas que he añadido a mi solicitud. Por favor, confirmad disponibilidad, cobertura y condiciones.';else if(type==='empresa')requestMessage.value='Me gustaría solicitar información sobre soluciones de conectividad y telecomunicaciones para mi empresa.';else if(type==='energia')requestMessage.value='Me gustaría recibir asesoramiento sobre una oferta de luz o gas.';else if(type==='factura')requestMessage.value='Me gustaría recibir ayuda para revisar mi factura y comparar alternativas.'}
 }
 document.addEventListener('DOMContentLoaded',initPortal);
@@ -223,3 +252,16 @@ document.addEventListener('DOMContentLoaded',()=>{
  const modal=document.getElementById('product-media-modal');if(modal)modal.addEventListener('click',e=>{if(e.target===modal)closeDeviceMedia()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDeviceMedia()});
 });
+
+function initHomeMotion(){
+ const scene=document.querySelector('[data-home-tilt]');
+ if(scene&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  scene.addEventListener('pointermove',event=>{const rect=scene.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width-.5,y=(event.clientY-rect.top)/rect.height-.5;scene.style.setProperty('--tilt-x',(-y*7).toFixed(2)+'deg');scene.style.setProperty('--tilt-y',(x*9).toFixed(2)+'deg')});
+  scene.addEventListener('pointerleave',()=>{scene.style.setProperty('--tilt-x','0deg');scene.style.setProperty('--tilt-y','0deg')});
+ }
+ const cards=document.querySelectorAll('.feature-card,.review-preview-card');
+ if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('home-in');observer.unobserve(entry.target)}}),{threshold:.12});
+  cards.forEach(card=>{card.classList.add('home-reveal');observer.observe(card)});
+ }else cards.forEach(card=>card.classList.add('home-in'));
+}
