@@ -164,26 +164,29 @@ function initGlobalSearch(){
 }
 function calculateHouseholdQuote(){
  const people=Number(safeText('quote-people')||2),lines=Number(safeText('quote-lines')||0),fibre=safeText('quote-fibre')==='yes',usage=safeText('quote-use')||'normal';
- let title='Elige tus servicios',description='Selecciona fibra o al menos una línea móvil.',promo=0,months=0,normal=0,year=0,detail='',advice='Selecciona los servicios que necesitáis para obtener una estimación.',valid=fibre||lines>0;
- if(fibre&&lines===0){title='Fibra 600 Mb';description='Internet en casa sin líneas móviles incluidas.';promo=19.90;months=12;normal=29.90;detail='Fibra 600 Mb';advice='La tarifa publicada indica 19,90 €/mes durante 12 meses y después 29,90 €/mes. Revisa el compromiso de instalación.'}
- else if(fibre&&lines===1){title='Fibra 600 Mb + 80 GB';description='Fibra y una línea móvil con llamadas ilimitadas.';promo=53;normal=53;detail='Fibra 600 Mb + 80 GB';advice='La tarifa publicada indica 53 €/mes. Confirma que es la opción adecuada para una línea.'}
- else if(fibre&&lines>=2){const extra=lines-2;title='Fibra 600 Mb + '+lines+' líneas';description='Paquete de fibra con dos líneas y líneas adicionales estimadas.';promo=49+extra*14;months=3;normal=55+extra*14;detail='Fibra 600 Mb + 2 líneas'+(extra?' + '+extra+' línea(s) adicional(es) estimada(s)':'');advice=extra?'Las líneas adicionales se estiman a 14 €/mes cada una. La empresa debe confirmar compatibilidad y disponibilidad.':'Paquete publicado con 50 GB compartidos entre dos líneas.'}
- else if(!fibre&&lines>0){title=lines+' línea(s) móvil(es)';description='Tarifa de 35 GB y llamadas ilimitadas por línea.';promo=lines*14;normal=lines*14;detail=lines+' × 35 GB + llamadas ilimitadas';advice='Cálculo basado en una tarifa móvil individual de 14 €/mes por línea.'}
+ let title='Necesitamos revisar tu combinación',description='No hay un precio público confirmado para esta combinación.',promo=0,months=0,normal=0,year=0,detail='',advice='El equipo debe confirmar la tarifa y las condiciones antes de darte un precio.',valid=false;
+ if(fibre&&lines===0){valid=true;title='Fibra 600 Mb';description='Internet en casa sin líneas móviles incluidas.';promo=19.90;months=12;normal=29.90;detail='Fibra 600 Mb';advice='19,90 €/mes durante 12 meses y después 29,90 €/mes. La instalación es gratuita con al menos 3 meses de permanencia; consulta las condiciones de baja y devolución del router.'}
+ else if(fibre&&lines===2){valid=true;title='Fibra 600 Mb + 2 líneas';description='Fibra, fijo y dos líneas móviles con 50 GB compartidos.';promo=49;months=3;normal=55;detail='Fibra 600 Mb + fijo + 2 líneas con 50 GB compartidos';advice='49 €/mes durante 3 meses y después 55 €/mes. Paquete público de Yoigo sujeto a cobertura y condiciones.'}
+ else if(!fibre&&lines===1){valid=true;title='Móvil GB ilimitados';description='Una línea móvil con datos y llamadas ilimitadas.';promo=24;months=12;normal=28;detail='1 línea móvil con GB y llamadas ilimitadas';advice='24 €/mes durante 12 meses y después 28 €/mes, según la oferta pública de Yoigo.'}
+ else if(fibre&&lines===1){advice='La oferta pública consultada no confirma un paquete de fibra con una sola línea. Solicita un estudio personalizado.'}
+ else if(fibre&&lines>2){advice='El precio de líneas adicionales depende de la oferta y no se ha añadido una cuota estimada. Solicita un estudio personalizado.'}
+ else if(!fibre&&lines>1){advice='No se ha confirmado un precio individual para varias líneas sin fibra. Solicita un estudio personalizado.'}
  if(valid)year=months?promo*months+normal*(12-months):normal*12;
  if(usage==='intensive')advice+=' Para streaming y teletrabajo, revisa la cobertura disponible en casa.';
  if(usage==='gaming')advice+=' Para juegos y muchos dispositivos, confirma la cobertura y el rendimiento de la fibra.';
  const fmt=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
  const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
  set('quote-title',title);set('quote-description',people+' persona(s) en el hogar · '+lines+' línea(s) móvil(es) · '+(fibre?'con fibra 600 Mb':'sin fibra')+'. '+description);
- set('quote-promo',valid?fmt(promo)+'/mes':'—');set('quote-normal',valid?fmt(normal)+'/mes':'—');
- set('quote-promo-period',valid?(months?'Durante '+months+' meses':'Sin promoción temporal indicada'):'Añade un servicio');
- set('quote-normal-period',valid?(months?'Después de la promoción':'Cuota mensual'):'—');
- set('quote-year',valid?fmt(year):'—');set('quote-advice',advice+' Precios públicos de referencia con IVA incluido; sujetos a confirmación.');
+ set('quote-promo',valid?fmt(promo)+'/mes':'A consultar');set('quote-normal',valid?fmt(normal)+'/mes':'A consultar');
+ set('quote-promo-period',valid?(months?'Durante '+months+' meses':'Sin promoción temporal indicada'):'No disponible para esta combinación');
+ set('quote-normal-period',valid?(months?'Después de la promoción':'Cuota mensual'):'Contacta con el equipo');
+ set('quote-year',valid?fmt(year):'A consultar');set('quote-advice',advice+' Precios públicos de referencia con IVA incluido; sujetos a confirmación.');
+ const add=document.getElementById('quote-add'),print=document.getElementById('quote-print');if(add)add.disabled=!valid;if(print)print.disabled=!valid;
  window.householdQuote={people,lines,fibre,usage,title,description,promo,months,normal,year,detail,advice,valid};
  return window.householdQuote;
 }
 function printHouseholdQuote(){
- const q=calculateHouseholdQuote();if(!q.valid){toast('Selecciona fibra o al menos una línea móvil');return}
+ const q=calculateHouseholdQuote();if(!q.valid){toast('Esta combinación necesita confirmación del equipo');return}
  const fmt=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
  const popup=window.open('','_blank','width=820,height=720');if(!popup){toast('Permite las ventanas emergentes para guardar el presupuesto');return}
  const html='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Presupuesto orientativo · San Máximo Telecom</title><style>body{font-family:Arial,sans-serif;color:#172b48;margin:40px;line-height:1.5}header{border-bottom:3px solid #2563eb;padding-bottom:18px}.brand{font-weight:900;color:#1d4ed8}h1{font-size:26px}table{width:100%;border-collapse:collapse;margin:25px 0}td,th{text-align:left;padding:12px;border-bottom:1px solid #dce5f0}.summary{background:#eff6ff;border-radius:12px;padding:18px}.summary b{font-size:22px;color:#1d4ed8}.foot{margin-top:30px;border-top:1px solid #dce5f0;padding-top:15px;font-size:11px;color:#596b80}@media print{body{margin:18mm}}</style></head><body><header><div class="brand">SAN MÁXIMO TELECOM</div><h1>Presupuesto orientativo para el hogar</h1><small>Fecha: '+new Date().toLocaleDateString('es-ES')+'</small></header><p><b>Personas:</b> '+q.people+' · <b>Líneas:</b> '+q.lines+' · <b>Fibra:</b> '+(q.fibre?'Sí, 600 Mb':'No')+'</p><table><tr><th>Propuesta</th><th>Detalle</th><th>Cuota inicial</th></tr><tr><td>'+q.title+'</td><td>'+q.detail+'</td><td>'+fmt(q.promo)+'/mes</td></tr></table><div class="summary"><p><b>Cuota inicial:</b> '+fmt(q.promo)+'/mes'+(q.months?' durante '+q.months+' meses':'')+'</p><p><b>Después:</b> '+fmt(q.normal)+'/mes</p><p><b>Coste estimado del primer año:</b> '+fmt(q.year)+'</p></div><p>'+q.advice+'</p><div class="foot">Documento informativo basado en los precios de referencia publicados en esta web, con IVA incluido. No es una factura fiscal, contrato ni oferta vinculante. Cobertura, disponibilidad, compatibilidad y condiciones deben confirmarse con San Máximo Telecom. Teléfono de contacto: 923 24 43 69.</div><script>window.onload=()=>window.print();</script></body></html>';
@@ -192,11 +195,11 @@ function printHouseholdQuote(){
 function initHouseholdQuote(){
  const people=document.getElementById('quote-people'),lines=document.getElementById('quote-lines'),fibre=document.getElementById('quote-fibre'),usage=document.getElementById('quote-use');
  if(!people||!lines||!fibre||!usage)return;
- people.addEventListener('change',()=>{lines.value=String(Math.min(8,Number(people.value)));calculateHouseholdQuote()});
+ people.addEventListener('change',calculateHouseholdQuote);
  [lines,fibre,usage].forEach(el=>el.addEventListener('change',calculateHouseholdQuote));
  document.getElementById('quote-calculate')?.addEventListener('click',calculateHouseholdQuote);
  document.getElementById('quote-print')?.addEventListener('click',printHouseholdQuote);
- document.getElementById('quote-add')?.addEventListener('click',()=>{const q=calculateHouseholdQuote();if(!q.valid){toast('Selecciona fibra o alguna línea móvil');return}agregarAlCarrito(q.title,q.promo,'tarifa',q.detail+' · después '+q.normal.toFixed(2).replace('.',',')+' €/mes · presupuesto orientativo para '+q.people+' persona(s)')});
+ document.getElementById('quote-add')?.addEventListener('click',()=>{const q=calculateHouseholdQuote();if(!q.valid){toast('Esta combinación necesita confirmación del equipo');return}agregarAlCarrito(q.title,q.promo,'tarifa',q.detail+' · después '+q.normal.toFixed(2).replace('.',',')+' €/mes · presupuesto orientativo para '+q.people+' persona(s)')});
  calculateHouseholdQuote();
 }
 
