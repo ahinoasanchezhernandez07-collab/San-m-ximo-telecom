@@ -640,7 +640,7 @@ body.dark-mode details{background:#111d31!important;border-color:#293a54!importa
         function agregarAlCarrito(nombre, precio, tipo='producto', condiciones='') {
             const existente=carrito.find(x=>x.nombre===nombre&&x.tipo===tipo);
             if(existente) existente.cantidad++;
-            else carrito.push({nombre,precio:Number.isFinite(Number(precio))?Number(precio):null,tipo,condiciones,cantidad:1});
+            else carrito.push({nombre,precio:(precio!==null&&precio!==undefined&&precio!==''&&Number.isFinite(Number(precio))&&Number(precio)>=0)?Number(precio):null,tipo,condiciones,cantidad:1});
             actualizarCarritoUI();
             const drawer=document.getElementById('drawer-carrito');drawer.classList.remove('hidden');drawer.classList.add('flex');
             showToast('Añadido: '+nombre);
