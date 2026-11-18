@@ -51,7 +51,7 @@ function updateRequestPreview(){
  if(!cart.length){el.textContent='No hay artículos guardados en tu solicitud.';return}
  cart.forEach(item=>{const p=document.createElement('p');p.className='text-xs py-2 border-b border-slate-200';p.textContent=item.qty+' × '+item.name+' — '+(item.price===null?'Precio por confirmar':euro(item.price)+(item.type==='tarifa'?'/mes':''))+(item.detail?' · '+item.detail:'');el.append(p)});
  const total=cart.reduce((sum,item)=>sum+(item.type==='tarifa'&&item.price!==null?item.price*item.qty:0),0);
- const sum=document.getElementById('request-monthly-total');if(sum)sum.textContent=euro(total)+'/mes (solo tarifas';
+ const sum=document.getElementById('request-monthly-total');if(sum)sum.textContent=euro(total)+'/mes (solo tarifas)';
 }
 function sendRequestEmail(event){
  event.preventDefault();const name=safeText('request-name'),email=safeText('request-email'),message=safeText('request-message'),dest=safeText('request-destination')||GENERAL_EMAIL;
@@ -75,7 +75,7 @@ function answerMaxi(raw){
  const q=raw.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
  const has=(...words)=>words.some(x=>q.includes(x));
  if(has('carrito','cesta','solicitud','mi compra')){openCart();return ['He abierto tu solicitud. Desde ahí puedes revisar cantidades y continuar para preparar un correo con la selección.',''];}
- if(has('comprar','contratar','quiero una tarifa'))return ['Te acompaño paso a paso: primero elige la tarifa o el producto, añádelo a tu solicitud y después contacta con el equipo para confirmar cobertura, stock y condiciones.','tarifas.html'];
+ if(has('comprar','contratar','quiero una tarifa'))return ['Te acompaño paso a paso: primero elige una tarifa o un producto, añádelo a tu solicitud y después contacta con el equipo para confirmar cobertura, stock y condiciones.',['tarifas.html','Empezar a elegir']];
  if(has('movil','smartphone','tablet','auricular','reloj','accesorio','iphone','samsung'))return ['Para consultar móviles y accesorios, entra en la tienda de dispositivos. Puedes guardar lo que te interesa en tu solicitud.',['dispositivos.html','Ver dispositivos']];
  if(has('precio','tarifa','fibra','datos','gb','permanencia'))return ['En Tarifas puedes ver las opciones y comparar el coste de dos ofertas con promociones, precio posterior y alta. Los precios deben confirmarse antes de contratar.',['tarifas.html','Ver tarifas']];
  if(has('factura','recibo','ahorro','analizar'))return ['Puedes analizar localmente un PDF o imagen desde el apartado Facturas. El documento no se envía desde esta web y debes revisar el importe detectado.',['facturas.html','Analizar factura']];
