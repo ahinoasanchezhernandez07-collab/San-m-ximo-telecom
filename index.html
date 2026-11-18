@@ -51,7 +51,54 @@
           *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
         }
 
-    .maxi-avatar{width:44px;height:44px;flex:0 0 44px;border-radius:15px;background:linear-gradient(145deg,#dbeafe,#eff6ff);display:grid;place-items:center;border:1px solid #bfdbfe;box-shadow:0 5px 14px rgba(37,99,235,.16)}.maxi-avatar svg{width:38px;height:38px}.maxi-launcher-avatar{width:28px;height:28px;display:inline-grid;place-items:center}.maxi-launcher-avatar svg{width:28px;height:28px}.tariff-note{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;border-radius:14px;padding:12px 14px;font-size:11px;line-height:1.55}.audit-status{font-size:11px;color:#475569;line-height:1.5}</style>
+    .maxi-avatar{width:44px;height:44px;flex:0 0 44px;border-radius:15px;background:linear-gradient(145deg,#dbeafe,#eff6ff);display:grid;place-items:center;border:1px solid #bfdbfe;box-shadow:0 5px 14px rgba(37,99,235,.16)}.maxi-avatar svg{width:38px;height:38px}.maxi-launcher-avatar{width:28px;height:28px;display:inline-grid;place-items:center}.maxi-launcher-avatar svg{width:28px;height:28px}.tariff-note{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;border-radius:14px;padding:12px 14px;font-size:11px;line-height:1.55}.audit-status{font-size:11px;color:#475569;line-height:1.5}
+/* Mejoras funcionales y accesibilidad */
+:root{scroll-behavior:smooth}
+.nav-tool{width:42px;height:42px;display:inline-grid;place-items:center;border-radius:13px;background:#eff6ff;color:#1d4ed8;border:1px solid #dbeafe;transition:.2s}
+.nav-tool:hover{background:#dbeafe;transform:translateY(-1px)}
+.maxi-float{width:88px;height:88px;padding:0;background:transparent;border:0;display:grid;place-items:center;cursor:pointer;filter:drop-shadow(0 10px 12px rgba(15,40,90,.22));transition:transform .2s}
+.maxi-float:hover{transform:translateY(-5px) scale(1.04)}
+.maxi-float svg{width:88px;height:88px;overflow:visible}
+.maxi-float:focus-visible{outline:3px solid #38bdf8;outline-offset:3px;border-radius:50%}
+.maxi-float .maxi-spark{animation:maxiSpark 2.8s ease-in-out infinite;transform-origin:center}
+@keyframes maxiSpark{0%,100%{opacity:.75;transform:scale(.95)}50%{opacity:1;transform:scale(1.12)}}
+.device-card{transition:transform .22s,box-shadow .22s}
+.device-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(30,64,175,.12)}
+.device-art{height:132px;display:grid;place-items:center;border-radius:20px;background:radial-gradient(circle at 50% 35%,#dbeafe,#eff6ff 60%,#f8fafc);color:#2563eb}
+.device-art i{font-size:54px;filter:drop-shadow(0 7px 8px rgba(37,99,235,.14))}
+.feature-panel{border:1px solid #dbeafe;background:linear-gradient(135deg,#fff,#f2f7ff);border-radius:24px}
+.tool-field{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:11px 12px;background:#fff;color:#0f172a;font-size:14px}
+.tool-label{font-size:11px;font-weight:800;color:#334155;display:block}
+.tool-label .tool-field{margin-top:6px}
+.soft-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:12px 16px;background:#1d4ed8;color:white;font-size:12px;font-weight:800;transition:.2s}
+.soft-button:hover{background:#1e40af;transform:translateY(-1px)}
+.outline-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:11px 15px;border:1px solid #cbd5e1;background:white;color:#1e40af;font-size:12px;font-weight:800}
+#search-overlay,#device-detail-modal{backdrop-filter:blur(8px)}
+.search-result{display:block;width:100%;text-align:left;padding:13px;border:1px solid #e2e8f0;border-radius:13px;background:white}
+.search-result:hover{border-color:#60a5fa;background:#eff6ff}
+.review-stars{color:#f59e0b;letter-spacing:2px}
+#tiendas .store-map-frame{width:100%;height:340px;border:0;border-radius:18px;background:#e2e8f0}
+.reveal-item{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.reveal-item.is-visible{opacity:1;transform:none}
+body.dark-mode{background:#0b1220!important;color:#e5e7eb!important}
+body.dark-mode .glass-nav{background:rgba(15,23,42,.94);border-color:#263449}
+body.dark-mode .glass-nav span,body.dark-mode .glass-nav a,body.dark-mode .glass-nav i{color:inherit}
+body.dark-mode #inicio{background:radial-gradient(ellipse at 82% 18%,rgba(59,130,246,.2),transparent 34%),linear-gradient(135deg,#101b31,#0b1220 65%,#10213b);border-color:#263449}
+body.dark-mode #inicio h1,body.dark-mode #inicio h2,body.dark-mode #inicio h3,body.dark-mode #inicio p{color:#e5e7eb}
+body.dark-mode .bg-white,body.dark-mode .bg-slate-50,body.dark-mode .bg-slate-100{background-color:#111d31!important;color:#e5e7eb!important;border-color:#293a54!important}
+body.dark-mode .bg-blue-50,body.dark-mode .bg-blue-50\/70,body.dark-mode .bg-sky-50,body.dark-mode .bg-violet-50{background-color:#172b49!important;color:#dbeafe!important;border-color:#29466f!important}
+body.dark-mode .text-slate-950,body.dark-mode .text-slate-900,body.dark-mode .text-slate-800,body.dark-mode .text-slate-700,body.dark-mode .text-slate-600,body.dark-mode .text-slate-500{color:#dbe5f3!important}
+body.dark-mode .border-slate-200,body.dark-mode .border-slate-300{border-color:#293a54!important}
+body.dark-mode input,body.dark-mode select,body.dark-mode textarea,body.dark-mode .tool-field{background:#0b1425!important;color:#f1f5f9!important;border-color:#344963!important}
+body.dark-mode #widget-chat,body.dark-mode #drawer-carrito,body.dark-mode #search-overlay,body.dark-mode #device-detail-modal{color:#e5e7eb}
+body.dark-mode .feature-panel{background:linear-gradient(135deg,#111d31,#142743);border-color:#29466f}
+body.dark-mode .device-art{background:radial-gradient(circle at 50% 35%,#213e67,#16263e 70%);color:#93c5fd}
+body.dark-mode .outline-button,body.dark-mode .search-result{background:#14233a;color:#dbeafe;border-color:#344963}
+body.dark-mode details{background:#111d31!important;border-color:#293a54!important}
+@media(max-width:640px){.maxi-float,.maxi-float svg{width:76px;height:76px}#tiendas .store-map-frame{height:280px}.device-art{height:110px}}
+@media(prefers-reduced-motion:reduce){.reveal-item{opacity:1;transform:none;transition:none}.maxi-float .maxi-spark{animation:none}}
+
+</style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
@@ -90,6 +137,9 @@
                     <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
                 </button>
 
+
+                <button type="button" id="open-search" class="nav-tool" aria-label="Buscar en la web" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="button" id="toggle-theme" class="nav-tool" aria-label="Activar modo oscuro" title="Cambiar tema"><i id="theme-icon" class="fa-solid fa-moon"></i></button>
                 <a href="#auditor-ia" class="hidden sm:inline-flex bg-slate-900 hover:bg-blue-600 text-white font-bold text-xs px-5 py-3 rounded-xl shadow-sm transition items-center space-x-2">
                     <i class="fa-solid fa-file-invoice-dollar text-blue-400"></i>
                     <span>Analizar factura</span>
@@ -108,6 +158,9 @@
             <a href="#servicios" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Servicios</a>
             <a href="#tiendas" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Tiendas</a>
             <a href="#luz" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600"><i class="fa-solid fa-bolt text-sky-500 mr-2"></i> Luz y Energía</a>
+            <a href="#tienda-dispositivos" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Móviles y accesorios</a>
+            <a href="#comparador-energia" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Comparador de luz y gas</a>
+            <a href="#citas" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Pedir cita</a>
             <a href="#preguntas" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Preguntas frecuentes</a>
             <a href="#blog" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Blog</a>
             <a href="#contacto" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-sm text-slate-800 hover:bg-blue-50 hover:text-blue-600">Contacto</a>
@@ -239,6 +292,27 @@
 <a target="_blank" rel="noopener noreferrer" href="https://www.esios.ree.es/es" class="border border-slate-200 rounded-2xl p-4 hover:border-blue-400"><b class="text-sm text-slate-900">Datos del sistema eléctrico</b><p class="text-xs text-slate-600 mt-1">Red Eléctrica: indicadores y precios horarios de referencia del PVPC.</p></a></div><p class="text-[10px] text-slate-500">La cobertura agregada y los mapas de servicios tienen distinta resolución y periodicidad. La disponibilidad exacta debe verificarse por dirección.</p></section>
 <div id="grid-productos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Hogar</span><h3 class="text-lg font-extrabold text-slate-900">Fibra e internet</h3><p class="text-sm text-slate-600">Asesoramiento para elegir velocidad, tecnología y operador según tu domicilio y uso.</p><p class="text-sm font-extrabold text-slate-900">Precio y cobertura: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Solicitar información</a></article><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Hogar y móvil</span><h3 class="text-lg font-extrabold text-slate-900">Telefonía móvil y fija</h3><p class="text-sm text-slate-600">Comparación personalizada de alternativas de telefonía móvil y fija.</p><p class="text-sm font-extrabold text-slate-900">Precio y condiciones: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="empresas" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Empresas</span><h3 class="text-lg font-extrabold text-slate-900">Soluciones para negocios</h3><p class="text-sm text-slate-600">Análisis de facturas y necesidades de conectividad, valoración de alternativas y costes.</p><p class="text-sm font-extrabold text-slate-900">Propuesta a medida</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="terminales" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Dispositivos</span><h3 class="text-lg font-extrabold text-slate-900">Móviles libres y accesorios</h3><p class="text-sm text-slate-600">Consulta disponibilidad, modelos, precios y opciones de financiación en tienda.</p><p class="text-sm font-extrabold text-slate-900">Stock y precio: consultar</p></div><button type="button" onclick="agregarAlCarrito('Móviles libres y accesorios (modelo por elegir)',null,'producto','Precio y stock pendientes de confirmar')" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Añadir producto a la solicitud <i class="fa-solid fa-cart-plus ml-1"></i></button></article><article data-cat="empresas" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Empresas</span><h3 class="text-lg font-extrabold text-slate-900">Auditoría de telecomunicaciones</h3><p class="text-sm text-slate-600">Revisión de red y facturas para identificar necesidades y estudiar posibles optimizaciones.</p><p class="text-sm font-extrabold text-slate-900">Estudio personalizado</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article><article data-cat="hogar" class="producto-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-5"><div class="space-y-3"><span class="text-[11px] font-bold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">Energía</span><h3 class="text-lg font-extrabold text-slate-900">Luz y gas</h3><p class="text-sm text-slate-600">Envía tu factura mediante el canal oficial para recibir una propuesta adaptada.</p><p class="text-sm font-extrabold text-slate-900">Oferta: consultar</p></div><a href="#contacto" class="text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs">Consultar servicio oficial</a></article></div>   </section>
 
+
+<!-- Catálogo visual de dispositivos: sin inventar marcas, precios ni stock -->
+<section id="tienda-dispositivos" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 space-y-7">
+ <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+  <div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Tienda de dispositivos</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Encuentra tu próximo dispositivo</h2><p class="text-sm text-slate-600 mt-2 max-w-2xl">Explora las categorías y añade lo que te interesa a tu solicitud. El modelo exacto, precio y disponibilidad se confirman en tienda; no mostramos stock ficticio.</p></div>
+  <a href="#tiendas" class="outline-button"><i class="fa-solid fa-location-dot"></i> Consultar en tienda</a>
+ </div>
+ <div class="feature-panel p-4 sm:p-5 flex flex-col sm:flex-row gap-3">
+  <label class="flex-1 tool-label">Buscar dispositivo<input id="device-search" class="tool-field" type="search" placeholder="Ej. móvil, auriculares, reloj…"></label>
+  <label class="tool-label sm:w-56">Categoría<select id="device-filter" class="tool-field"><option value="todos">Todas las categorías</option><option value="moviles">Smartphones</option><option value="tablets">Tablets</option><option value="relojes">Relojes y wearables</option><option value="audio">Audio</option><option value="accesorios">Accesorios</option></select></label>
+ </div>
+ <div id="device-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+  <article class="device-card bg-white border border-slate-200 rounded-3xl p-4 shadow-sm" data-device-category="moviles" data-device-name="smartphones móviles"><div class="device-art"><i class="fa-solid fa-mobile-screen-button"></i></div><div class="pt-4"><span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-700">Smartphones</span><h3 class="font-extrabold text-lg text-slate-900 mt-1">Móviles libres</h3><p class="text-xs text-slate-600 mt-2">Consulta terminales Android y iOS, capacidades y opciones disponibles.</p><div class="flex gap-2 mt-4"><button class="soft-button flex-1" onclick="abrirFichaDispositivo('Smartphones')">Ver categoría</button><button class="outline-button" onclick="agregarAlCarrito('Consulta de smartphones',null,'producto','Modelo, precio y stock por confirmar')">Añadir</button></div></div></article>
+  <article class="device-card bg-white border border-slate-200 rounded-3xl p-4 shadow-sm" data-device-category="tablets" data-device-name="tablets ipad tablet"><div class="device-art"><i class="fa-solid fa-tablet-screen-button"></i></div><div class="pt-4"><span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-700">Tablets</span><h3 class="font-extrabold text-lg text-slate-900 mt-1">Tablets</h3><p class="text-xs text-slate-600 mt-2">Dispositivos para estudiar, trabajar, leer o disfrutar de contenido.</p><div class="flex gap-2 mt-4"><button class="soft-button flex-1" onclick="abrirFichaDispositivo('Tablets')">Ver categoría</button><button class="outline-button" onclick="agregarAlCarrito('Consulta de tablets',null,'producto','Modelo, precio y stock por confirmar')">Añadir</button></div></div></article>
+  <article class="device-card bg-white border border-slate-200 rounded-3xl p-4 shadow-sm" data-device-category="relojes" data-device-name="relojes inteligentes smartwatches wearables"><div class="device-art"><i class="fa-solid fa-clock"></i></div><div class="pt-4"><span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-700">Wearables</span><h3 class="font-extrabold text-lg text-slate-900 mt-1">Relojes inteligentes</h3><p class="text-xs text-slate-600 mt-2">Consulta compatibilidad, conectividad y modelos disponibles.</p><div class="flex gap-2 mt-4"><button class="soft-button flex-1" onclick="abrirFichaDispositivo('Relojes inteligentes')">Ver categoría</button><button class="outline-button" onclick="agregarAlCarrito('Consulta de relojes inteligentes',null,'producto','Modelo, precio y stock por confirmar')">Añadir</button></div></div></article>
+  <article class="device-card bg-white border border-slate-200 rounded-3xl p-4 shadow-sm" data-device-category="audio" data-device-name="auriculares cascos altavoces audio"><div class="device-art"><i class="fa-solid fa-headphones"></i></div><div class="pt-4"><span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-700">Audio</span><h3 class="font-extrabold text-lg text-slate-900 mt-1">Auriculares y audio</h3><p class="text-xs text-slate-600 mt-2">Auriculares, cascos y accesorios de sonido según disponibilidad.</p><div class="flex gap-2 mt-4"><button class="soft-button flex-1" onclick="abrirFichaDispositivo('Audio y auriculares')">Ver categoría</button><button class="outline-button" onclick="agregarAlCarrito('Consulta de audio y auriculares',null,'producto','Modelo, precio y stock por confirmar')">Añadir</button></div></div></article>
+  <article class="device-card bg-white border border-slate-200 rounded-3xl p-4 shadow-sm" data-device-category="accesorios" data-device-name="fundas protectores cristales carcasas"><div class="device-art"><i class="fa-solid fa-shield-halved"></i></div><div class="pt-4"><span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-700">Protección</span><h3 class="font-extrabold text-lg text-slate-900 mt-1">Fundas y protectores</h3><p class="text-xs text-slate-600 mt-2">Protección para tu dispositivo. Indica el modelo para comprobar compatibilidad.</p><div class="flex gap-2 mt-4"><button class="soft-button flex-1" onclick="abrirFichaDispositivo('Fundas y protectores')">Ver categoría</button><button class="outline-button" onclick="agregarAlCarrito('Consulta de fundas y protectores',null,'producto','Compatibilidad y stock por confirmar')">Añadir</button></div></div></article>
+  <article class="device-card bg-white border border-slate-200 rounded-3xl p-4 shadow-sm" data-device-category="accesorios" data-device-name="cargadores cables baterías powerbank"><div class="device-art"><i class="fa-solid fa-charging-station"></i></div><div class="pt-4"><span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-700">Accesorios</span><h3 class="font-extrabold text-lg text-slate-900 mt-1">Cargadores y cables</h3><p class="text-xs text-slate-600 mt-2">Cargadores, cables y baterías externas compatibles.</p><div class="flex gap-2 mt-4"><button class="soft-button flex-1" onclick="abrirFichaDispositivo('Cargadores y cables')">Ver categoría</button><button class="outline-button" onclick="agregarAlCarrito('Consulta de cargadores y cables',null,'producto','Modelo, precio y stock por confirmar')">Añadir</button></div></div></article>
+ </div>
+ <p id="device-empty" class="hidden text-sm text-slate-500 text-center py-6">No hay categorías que coincidan con tu búsqueda.</p>
+</section>
 <!-- ================= 5. SECCIÓN: LUZ & ENERGÍA ================= -->
     <section id="luz" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 space-y-8">
         <div class="bg-gradient-to-r from-slate-900 to-slate-950 text-white p-8 sm:p-12 rounded-3xl shadow-xl grid lg:grid-cols-12 gap-8 items-center">
@@ -270,7 +344,25 @@
 
     <!-- ================= 6. SECCIÓN: BLOG & NOVEDADES ================= -->
     <!-- ================= 8. AUDITOR DE FACTURAS ================= -->
-    <section id="auditor-ia" class="bg-white border-y border-slate-200 py-16">
+    
+<section id="comparador-energia" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+ <div class="feature-panel p-5 sm:p-8 space-y-5">
+  <div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Comparador de energía</span><h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Compara dos ofertas de luz o gas</h2><p class="text-sm text-slate-600 mt-2 max-w-3xl">Introduce los datos que aparecen en las ofertas o facturas. El cálculo es orientativo y no incorpora impuestos ni conceptos que no introduzcas.</p></div>
+  <div class="grid sm:grid-cols-3 gap-3">
+   <label class="tool-label">Tipo de suministro<select id="energy-kind" class="tool-field"><option value="electricidad">Electricidad</option><option value="gas">Gas</option></select></label>
+   <label class="tool-label">Consumo mensual (kWh)<input id="energy-usage" type="number" min="0" step=".1" class="tool-field" placeholder="Consumo de tu factura"></label>
+   <label class="tool-label">Unidad de cálculo<span class="tool-field block bg-slate-50">€/kWh + costes fijos mensuales</span></label>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-4">
+   <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-3"><h3 class="font-extrabold text-slate-900">Oferta A</h3><label class="tool-label">Nombre<input id="energy-a-name" class="tool-field" value="Oferta A"></label><div class="grid grid-cols-2 gap-2"><label class="tool-label">Precio €/kWh<input id="energy-a-unit" type="number" min="0" step=".0001" class="tool-field" placeholder="Ej. 0,12"></label><label class="tool-label">Costes fijos €/mes<input id="energy-a-fixed" type="number" min="0" step=".01" class="tool-field" placeholder="Ej. 8,50"></label></div></div>
+   <div class="bg-white border border-slate-200 rounded-2xl p-4 space-y-3"><h3 class="font-extrabold text-slate-900">Oferta B</h3><label class="tool-label">Nombre<input id="energy-b-name" class="tool-field" value="Oferta B"></label><div class="grid grid-cols-2 gap-2"><label class="tool-label">Precio €/kWh<input id="energy-b-unit" type="number" min="0" step=".0001" class="tool-field" placeholder="Ej. 0,15"></label><label class="tool-label">Costes fijos €/mes<input id="energy-b-fixed" type="number" min="0" step=".01" class="tool-field" placeholder="Ej. 6,00"></label></div></div>
+  </div>
+  <button type="button" onclick="compararEnergia()" class="soft-button"><i class="fa-solid fa-scale-balanced"></i> Comparar ofertas</button>
+  <div id="energy-compare-result" aria-live="polite" class="bg-white border border-blue-100 rounded-2xl p-4 text-sm text-slate-700">Completa el consumo y los precios para ver la comparación mensual y anual.</div>
+  <p class="text-[10px] text-slate-500">No incluye impuestos, alquiler de contador, peajes u otros conceptos salvo que los sumes a los costes fijos. Comprueba que ambas ofertas tengan los mismos servicios y condiciones.</p>
+ </div>
+</section>
+<section id="auditor-ia" class="bg-white border-y border-slate-200 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
         <div class="max-w-3xl"><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Área de análisis</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Analizador de facturas y comparador de tarifas</h2><p class="text-sm text-slate-600 mt-2">Selecciona una factura PDF o una imagen. El navegador intentará leer el documento y detectar el importe mensual para compararlo con un pack.</p></div>
         <div class="grid lg:grid-cols-12 gap-8">
@@ -296,6 +388,18 @@
       </div>
     </section>
 
+
+<section id="calculadora-ahorro" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+ <div class="grid lg:grid-cols-5 gap-5 items-stretch">
+  <div class="lg:col-span-2 bg-slate-900 text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between"><div><span class="text-xs font-extrabold uppercase tracking-widest text-sky-300">Calculadora rápida</span><h2 class="text-2xl sm:text-3xl font-extrabold mt-2">¿Cuánto podrías ahorrar?</h2><p class="text-sm text-slate-300 mt-3">Compara tu cuota actual con otra propuesta. No hace falta subir ninguna factura.</p></div><i class="fa-solid fa-piggy-bank text-6xl text-sky-300/80 mt-8"></i></div>
+  <div class="lg:col-span-3 feature-panel p-5 sm:p-7 space-y-4">
+   <div class="grid sm:grid-cols-2 gap-3"><label class="tool-label">Tu cuota actual €/mes<input id="saving-current" type="number" min="0" step=".01" class="tool-field" placeholder="Ej. 58,50"></label><label class="tool-label">Nueva cuota €/mes<input id="saving-new" type="number" min="0" step=".01" class="tool-field" placeholder="Ej. 45"></label><label class="tool-label">Coste inicial de cambio €<input id="saving-fee" type="number" min="0" step=".01" value="0" class="tool-field"></label><label class="tool-label">Meses de promoción<input id="saving-months" type="number" min="0" max="24" step="1" value="0" class="tool-field"></label></div>
+   <p class="text-[11px] text-slate-500">Para una comparación prudente, la cuota nueva se aplica a todos los meses. Si hay promociones o subidas posteriores, utiliza el comparador detallado de tarifas.</p>
+   <button type="button" onclick="calcularAhorroRapido()" class="soft-button"><i class="fa-solid fa-calculator"></i> Calcular diferencia</button>
+   <div id="saving-result" aria-live="polite" class="bg-white border border-blue-100 rounded-2xl p-4 text-sm text-slate-700">El resultado aparecerá aquí.</div>
+  </div>
+ </div>
+</section>
 <section id="blog" class="bg-slate-100 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -376,6 +480,29 @@
 
     
 
+
+<section id="citas" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+ <div class="grid lg:grid-cols-2 gap-6">
+  <div class="feature-panel p-6 sm:p-8 space-y-4">
+   <span class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Atención en tienda</span><h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Prepara tu visita</h2><p class="text-sm text-slate-600">Elige una tienda, una fecha y una hora para crear un recordatorio en tu calendario. Este paso no reserva una cita: la disponibilidad deberá confirmarse directamente con la tienda.</p>
+   <div class="grid sm:grid-cols-2 gap-3"><label class="tool-label sm:col-span-2">Tienda<select id="appointment-store" class="tool-field"><option value="MASlife Salamanca · Calle Concejo, 17, 37002 Salamanca">MASlife Salamanca · Concejo</option><option value="MASlife Zamora · Calle Santa Clara, 1, 49003 Zamora">MASlife Zamora · Santa Clara</option><option value="MASlife Salamanca · Avenida Villamayor, 37, 37007 Salamanca">MASlife Salamanca · Villamayor</option><option value="MASlife Carrefour Salamanca · Avenida Agustinos Recoletos, 1, 37006 Salamanca">MASlife Carrefour Salamanca</option><option value="Yoigo · C.C. El Tormes · Avenida Salamanca, 27, 37900 Santa Marta de Tormes">Yoigo · C.C. El Tormes</option><option value="MASlife Bulevar Ávila · Avenida Juan Carlos I, 35, 05004 Ávila">MASlife Bulevar Ávila</option><option value="MASlife Ávila · Avenida de Portugal, 33, 05001 Ávila">MASlife Ávila · Portugal</option></select></label><label class="tool-label">Fecha<input id="appointment-date" type="date" class="tool-field"></label><label class="tool-label">Hora<input id="appointment-time" type="time" class="tool-field" value="11:00"></label><label class="tool-label sm:col-span-2">Motivo de la visita<select id="appointment-reason" class="tool-field"><option>Consultar tarifas de fibra y móvil</option><option>Revisar factura</option><option>Consultar móviles y accesorios</option><option>Consultar luz y gas</option><option>Otra consulta</option></select></label></div>
+   <button type="button" onclick="crearRecordatorioCita()" class="soft-button"><i class="fa-solid fa-calendar-plus"></i> Añadir recordatorio al calendario</button>
+   <p id="appointment-status" class="text-xs text-slate-500" aria-live="polite">El archivo de calendario sirve como recordatorio personal, no como confirmación de reserva.</p>
+  </div>
+  <div id="area-cliente" class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 space-y-5">
+   <div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl bg-blue-500/20 grid place-items-center text-2xl text-sky-300"><i class="fa-solid fa-user-shield"></i></div><div><span class="text-xs font-extrabold uppercase tracking-widest text-sky-300">Área privada</span><h2 class="text-2xl font-extrabold mt-1">Tu espacio de cliente</h2></div></div>
+   <p class="text-sm text-slate-300">Una vista previa de las gestiones que podría reunir el área de cliente cuando se conecte al sistema seguro de la empresa.</p>
+   <div class="grid sm:grid-cols-2 gap-3"><div class="rounded-2xl bg-white/10 border border-white/10 p-4"><i class="fa-solid fa-file-invoice text-sky-300"></i><p class="font-bold mt-2">Facturas</p><p class="text-xs text-slate-300 mt-1">Consultar recibos y descargarlos.</p></div><div class="rounded-2xl bg-white/10 border border-white/10 p-4"><i class="fa-solid fa-sim-card text-sky-300"></i><p class="font-bold mt-2">Líneas y servicios</p><p class="text-xs text-slate-300 mt-1">Revisar productos contratados.</p></div><div class="rounded-2xl bg-white/10 border border-white/10 p-4"><i class="fa-solid fa-chart-line text-sky-300"></i><p class="font-bold mt-2">Consumo</p><p class="text-xs text-slate-300 mt-1">Controlar el uso de tus servicios.</p></div><div class="rounded-2xl bg-white/10 border border-white/10 p-4"><i class="fa-solid fa-headset text-sky-300"></i><p class="font-bold mt-2">Soporte</p><p class="text-xs text-slate-300 mt-1">Solicitar ayuda y seguimiento.</p></div></div>
+   <div class="rounded-xl bg-amber-400/10 border border-amber-300/20 p-3 text-xs text-amber-100"><i class="fa-solid fa-lock mr-1"></i> Acceso aún no conectado. No introduzcas contraseñas ni datos personales aquí. Hace falta el sistema privado y la autorización de la empresa.</div>
+  </div>
+ </div>
+</section>
+<section id="opiniones" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+ <div class="feature-panel p-6 sm:p-8 grid lg:grid-cols-2 gap-6">
+  <div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Opiniones y confianza</span><h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Tu experiencia importa</h2><div class="mt-5 bg-white border border-slate-200 rounded-2xl p-5"><div class="review-stars text-xl">★★★★★</div><p class="font-extrabold text-slate-900 mt-2">Opiniones verificadas</p><p class="text-sm text-slate-600 mt-1">Todavía no se han añadido reseñas verificadas a esta página. No mostramos testimonios inventados ni puntuaciones simuladas.</p></div></div>
+  <div class="space-y-3"><h3 class="font-extrabold text-slate-900">Prepara tu opinión</h3><label class="tool-label">Valoración<select id="review-rating" class="tool-field"><option value="5">5 estrellas</option><option value="4">4 estrellas</option><option value="3">3 estrellas</option><option value="2">2 estrellas</option><option value="1">1 estrella</option></select></label><label class="tool-label">Tu experiencia<textarea id="review-text" rows="4" maxlength="600" class="tool-field" placeholder="Cuéntanos cómo fue la atención…"></textarea></label><button type="button" onclick="prepararOpinion()" class="soft-button"><i class="fa-solid fa-copy"></i> Copiar opinión</button><p id="review-status" class="text-xs text-slate-500" aria-live="polite">La opinión se prepara en tu dispositivo y no se publica ni se envía desde esta web.</p></div>
+ </div>
+</section>
     <!-- ================= DRAWER CARRITO ================= -->
     <div id="drawer-carrito" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden justify-end">
         <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl">
@@ -404,17 +531,28 @@
         </div>
     </div>
 
+
+<div id="search-overlay" class="hidden fixed inset-0 z-[70] bg-slate-950/60 p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="search-title" onclick="cerrarBusqueda()">
+ <div class="max-w-2xl mx-auto mt-8 sm:mt-16 bg-white rounded-3xl shadow-2xl p-5 sm:p-7 space-y-4" onclick="event.stopPropagation()">
+  <div class="flex items-center justify-between gap-3"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Buscador de la web</span><h2 id="search-title" class="text-xl font-extrabold text-slate-900">¿Qué necesitas encontrar?</h2></div><button type="button" onclick="cerrarBusqueda()" class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700" aria-label="Cerrar búsqueda"><i class="fa-solid fa-xmark"></i></button></div>
+  <input id="site-search-input" type="search" class="tool-field" placeholder="Busca tarifas, facturas, tiendas, luz…" autocomplete="off">
+  <div id="site-search-results" class="space-y-2 max-h-[55vh] overflow-y-auto"><p class="text-sm text-slate-500">Escribe para ver resultados dentro de esta página.</p></div>
+ </div>
+</div>
+<div id="device-detail-modal" class="hidden fixed inset-0 z-[65] bg-slate-950/60 p-4 grid place-items-center" role="dialog" aria-modal="true" aria-labelledby="device-detail-title" onclick="cerrarFichaDispositivo()">
+ <div class="w-full max-w-md bg-white rounded-3xl p-6 shadow-2xl space-y-4" onclick="event.stopPropagation()"><div class="flex items-start justify-between gap-3"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Ficha de categoría</span><h2 id="device-detail-title" class="text-2xl font-extrabold text-slate-900 mt-1">Dispositivos</h2></div><button type="button" onclick="cerrarFichaDispositivo()" aria-label="Cerrar" class="w-9 h-9 bg-slate-100 rounded-xl"><i class="fa-solid fa-xmark"></i></button></div><div class="device-art"><i id="device-detail-icon" class="fa-solid fa-mobile-screen-button"></i></div><p id="device-detail-copy" class="text-sm text-slate-600">Consulta precios y disponibilidad.</p><div class="bg-blue-50 text-blue-900 border border-blue-100 rounded-xl p-3 text-xs">Precio, modelo y stock pendientes de confirmar. No se añade ningún producto específico hasta que la tienda confirme la referencia.</div><button type="button" onclick="anadirFichaDispositivo()" class="soft-button w-full"><i class="fa-solid fa-cart-plus"></i> Añadir esta consulta al carrito</button></div>
+</div>
     <!-- ================= CHATBOT MAXI ================= -->
     <div class="fixed bottom-5 right-5 z-40">
       <div id="widget-chat" class="hidden mb-3 w-80 sm:w-96 max-w-[calc(100vw-2rem)] bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
         <div class="bg-slate-900 text-white p-4 flex justify-between items-center"><div class="flex items-center space-x-3"><div class="maxi-avatar" role="img" aria-label="Avatar de Maxi"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell1)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></div><div><p class="text-xs font-bold">Maxi · Asistente San Máximo</p><p class="text-[10px] text-emerald-200"><i class="fa-solid fa-circle text-[7px] mr-1"></i> Asistente automático activo</p></div></div><button onclick="toggleChat()" aria-label="Cerrar chat" class="text-slate-300 hover:text-white"><i class="fa-solid fa-xmark"></i></button></div>
         <div id="maxi-messages" class="p-4 h-72 overflow-y-auto space-y-3 text-xs bg-slate-50" aria-live="polite">
-          <div class="flex items-start gap-2"><div class="maxi-avatar !w-8 !h-8 !basis-8 !rounded-xl"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell2)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></div><div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700">¡Hola! Soy <b>Maxi</b>, tu asistente virtual. Puedo orientarte sobre tarifas, fibra, móvil, luz y nuestras tiendas. ¿Qué necesitas?</div></div>
+          <div class="flex items-start gap-2"><div class="maxi-avatar !w-8 !h-8 !basis-8 !rounded-xl"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell2)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></div><div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-none text-slate-700">¡Hola! Soy <b>Maxi</b>, el asistente automático de San Máximo Telecom. Puedo orientarte sobre tarifas, facturas, dispositivos, luz, tiendas y visitas. ¿Qué necesitas?</div></div>
           <div class="grid grid-cols-2 gap-2 pl-10"><button onclick="preguntarMaxi('Quiero conocer las tarifas de hogar')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-wifi mr-1"></i> Tarifas</button><button onclick="preguntarMaxi('Quiero analizar mi factura')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-file-invoice mr-1"></i> Facturas</button><button onclick="preguntarMaxi('Información sobre luz y energía')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-bolt mr-1"></i> Energía</button><button onclick="preguntarMaxi('Dónde están las tiendas')" class="text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 rounded-xl p-2.5 font-bold"><i class="fa-solid fa-location-dot mr-1"></i> Tiendas</button></div>
         </div>
         <div class="p-3 bg-white border-t border-slate-200 flex space-x-2"><input type="text" id="maxi-input" placeholder="Escribe tu consulta..." class="flex-1 min-w-0 bg-slate-100 rounded-xl px-3 py-2 text-xs" onkeydown="if(event.key==='Enter') enviarMaxi()"><button onclick="enviarMaxi()" aria-label="Enviar mensaje" class="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-2 rounded-xl text-xs font-bold"><i class="fa-solid fa-paper-plane"></i></button></div>
       </div>
-      <button onclick="toggleChat()" aria-label="Abrir chat con Maxi" class="ml-auto bg-blue-600 hover:bg-blue-500 text-white px-4 py-3 rounded-full shadow-xl flex items-center space-x-2.5 font-bold text-xs"><span class="maxi-launcher-avatar"><svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="maxiShell3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><path d="M32 5v7" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="5" r="3" fill="#38bdf8"/><rect x="8" y="15" width="48" height="39" rx="14" fill="url(#maxiShell3)" stroke="#bfdbfe" stroke-width="2"/><rect x="14" y="21" width="36" height="25" rx="9" fill="#eff6ff"/><ellipse cx="24" cy="32" rx="3" ry="4" fill="#1d4ed8"/><ellipse cx="40" cy="32" rx="3" ry="4" fill="#1d4ed8"/><path d="M25 39q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M8 30H4m56 0h-4" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/><path d="M22 54v5m20-5v5" stroke="#1e40af" stroke-width="4" stroke-linecap="round"/></svg></span><span>Hablar con Maxi</span></button>
+      <button type="button" onclick="toggleChat()" aria-label="Abrir chat con Maxi" title="Hablar con Maxi" class="maxi-float ml-auto"><svg viewBox="0 0 100 100" role="img" aria-label="Maxi, asistente de San Máximo"><ellipse cx="50" cy="92" rx="24" ry="5" fill="#0f172a" opacity=".12"/><g class="maxi-spark"><path d="M76 13l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#38bdf8"/><circle cx="18" cy="35" r="3" fill="#93c5fd"/></g><path d="M37 68h26l5 18H32z" fill="#1e40af" stroke="#bfdbfe" stroke-width="2"/><path d="M28 62q-8 1-10 11l-2 8q0 4 5 4 4 0 6-5l5-10m40-8q8 1 10 11l2 8q0 4-5 4-4 0-6-5l-5-10" fill="#2563eb" stroke="#bfdbfe" stroke-width="2.5" stroke-linecap="round"/><rect x="27" y="22" width="46" height="48" rx="19" fill="#2563eb" stroke="#bfdbfe" stroke-width="3"/><rect x="33" y="29" width="34" height="28" rx="12" fill="#eff6ff"/><ellipse cx="43" cy="41" rx="3.3" ry="4.4" fill="#1e40af"/><ellipse cx="57" cy="41" rx="3.3" ry="4.4" fill="#1e40af"/><path d="M43 49q7 6 14 0" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/><path d="M50 17v-6" stroke="#93c5fd" stroke-width="3.5" stroke-linecap="round"/><circle cx="50" cy="8" r="4" fill="#38bdf8" stroke="#dbeafe" stroke-width="1.5"/><circle cx="27" cy="44" r="5" fill="#60a5fa" stroke="#bfdbfe" stroke-width="2"/><circle cx="73" cy="44" r="5" fill="#60a5fa" stroke="#bfdbfe" stroke-width="2"/><path d="M40 72v8m20-8v8" stroke="#1e40af" stroke-width="5" stroke-linecap="round"/><path d="M37 87h9m8 0h9" stroke="#93c5fd" stroke-width="4" stroke-linecap="round"/></svg></button>
     </div>
 
 <section id="preguntas" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 space-y-6"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Ayuda</span><h2 class="text-3xl font-extrabold text-slate-900 mt-1">Preguntas frecuentes</h2></div><div class="grid md:grid-cols-2 gap-3">
@@ -423,10 +561,16 @@
 <details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Se guarda mi factura?</summary><p class="text-sm text-slate-600 mt-3">La lectura se realiza localmente en el navegador. La detección automática puede equivocarse; comprueba los datos antes de comparar.</p></details>
 <details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Puedo contratar desde la web?</summary><p class="text-sm text-slate-600 mt-3">No en esta versión. El carrito y los formularios son demostrativos y aún no están conectados a un sistema de pedidos.</p></details>
 <details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Hay permanencia o instalación?</summary><p class="text-sm text-slate-600 mt-3">Depende del operador y la tarifa. Solicita por escrito permanencia, instalación, router, penalizaciones y precio tras promociones.</p></details>
-<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Cómo funciona Maxi?</summary><p class="text-sm text-slate-600 mt-3">Maxi es un bot automático con respuestas programadas sobre los contenidos de esta web. No es una IA ni está conectado a sistemas internos.</p></details></div></section>
+<details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Puedo reservar una cita desde aquí?</summary><p class="text-sm text-slate-600 mt-3">Puedes descargar un recordatorio de calendario, pero no es una reserva. La tienda debe confirmar la hora.</p></details><details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿El catálogo muestra móviles disponibles?</summary><p class="text-sm text-slate-600 mt-3">Muestra categorías para preparar una consulta. No hay stock ni precios sincronizados; se confirman en tienda.</p></details><details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿El área de cliente ya funciona?</summary><p class="text-sm text-slate-600 mt-3">No. Es una vista previa. Para activarla se necesita un backend seguro y acceso autorizado al sistema de la empresa.</p></details><details class="bg-white border border-slate-200 rounded-2xl p-5"><summary class="font-extrabold text-sm cursor-pointer">¿Cómo funciona Maxi?</summary><p class="text-sm text-slate-600 mt-3">Maxi es un bot automático con respuestas programadas sobre los contenidos de esta web. No es una IA ni está conectado a sistemas internos.</p></details></div></section>
 
     <!-- ================= 4. SECCIÓN: TIENDAS FÍSICAS ================= -->
-    <section id="tiendas" class="bg-white border-y border-slate-200 py-16"><div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8"><div class="text-center"><h2 class="text-3xl font-extrabold text-slate-900">Tiendas San Máximo Telecom</h2><p class="text-sm text-slate-600 mt-2">Direcciones publicadas en el directorio oficial. Comprueba horarios antes de desplazarte.</p></div><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Salamanca · Concejo</h3><p class="text-sm text-slate-600">Calle Concejo, 17, 37002 Salamanca</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Calle%20Concejo%2C%2017%2C%2037002%20Salamanca">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Zamora · Santa Clara</h3><p class="text-sm text-slate-600">Calle Santa Clara, 1, 49003 Zamora</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Calle%20Santa%20Clara%2C%201%2C%2049003%20Zamora">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Salamanca · Villamayor</h3><p class="text-sm text-slate-600">Avenida Villamayor, 37, 37007 Salamanca</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Villamayor%2C%2037%2C%2037007%20Salamanca">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Carrefour Salamanca</h3><p class="text-sm text-slate-600">Avenida Agustinos Recoletos, 1, CC Carrefour, 37006 Salamanca</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Agustinos%20Recoletos%2C%201%2C%20CC%20Carrefour%2C%2037006%20Salamanca">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">Yoigo · C.C. El Tormes</h3><p class="text-sm text-slate-600">Avenida Salamanca, 27, CC El Tormes, 37900 Santa Marta de Tormes</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Salamanca%2C%2027%2C%20CC%20El%20Tormes%2C%2037900%20Santa%20Marta%20de%20Tormes">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Bulevar Ávila</h3><p class="text-sm text-slate-600">Avenida Juan Carlos I, 35, local 18, El Bulevar, 05004 Ávila</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Juan%20Carlos%20I%2C%2035%2C%20local%2018%2C%20El%20Bulevar%2C%2005004%20%C3%81vila">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Ávila · Portugal</h3><p class="text-sm text-slate-600">Avenida de Portugal, 33, 05001 Ávila</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20de%20Portugal%2C%2033%2C%2005001%20%C3%81vila">Cómo llegar</a></article></div><p class="text-xs text-slate-500">Fuente: <a class="underline" href="https://www.sanmaximotelecom.com/tiendas/" target="_blank" rel="noopener noreferrer">directorio oficial de tiendas</a>.</p></div></section>
+    <section id="tiendas" class="bg-white border-y border-slate-200 py-16"><div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8"><div class="text-center"><h2 class="text-3xl font-extrabold text-slate-900">Tiendas San Máximo Telecom</h2><p class="text-sm text-slate-600 mt-2">Direcciones publicadas en el directorio oficial. Comprueba horarios antes de desplazarte.</p></div>
+<div class="bg-slate-50 border border-blue-100 rounded-3xl p-4 sm:p-5 space-y-3">
+ <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3"><div><span class="text-xs font-extrabold uppercase tracking-widest text-blue-700">Mapa interactivo</span><h3 class="text-xl font-extrabold text-slate-900 mt-1">Localiza tu tienda</h3><p class="text-xs text-slate-600 mt-1">Selecciona un establecimiento para ver su ubicación en el mapa.</p></div><label class="tool-label sm:w-80">Seleccionar tienda<select id="store-map-select" class="tool-field"><option value="Calle Concejo, 17, 37002 Salamanca, España">MASlife Salamanca · Concejo</option><option value="Calle Santa Clara, 1, 49003 Zamora, España">MASlife Zamora · Santa Clara</option><option value="Avenida Villamayor, 37, 37007 Salamanca, España">MASlife Salamanca · Villamayor</option><option value="Avenida Agustinos Recoletos, 1, 37006 Salamanca, España">MASlife Carrefour Salamanca</option><option value="Avenida Salamanca, 27, 37900 Santa Marta de Tormes, España">Yoigo · C.C. El Tormes</option><option value="Avenida Juan Carlos I, 35, 05004 Ávila, España">MASlife Bulevar Ávila</option><option value="Avenida de Portugal, 33, 05001 Ávila, España">MASlife Ávila · Portugal</option></select></label></div>
+ <iframe id="store-map-frame" class="store-map-frame" title="Mapa de la tienda seleccionada" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Calle%20Concejo%2C%2017%2C%2037002%20Salamanca%2C%20Espa%C3%B1a&output=embed"></iframe>
+ <div class="flex flex-wrap gap-2"><a id="store-map-open" class="outline-button" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Calle%20Concejo%2C%2017%2C%2037002%20Salamanca%2C%20Espa%C3%B1a"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir indicaciones</a><span class="text-[10px] text-slate-500 self-center">El mapa muestra la dirección buscada; confirma horarios antes de ir.</span></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Salamanca · Concejo</h3><p class="text-sm text-slate-600">Calle Concejo, 17, 37002 Salamanca</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Calle%20Concejo%2C%2017%2C%2037002%20Salamanca">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Zamora · Santa Clara</h3><p class="text-sm text-slate-600">Calle Santa Clara, 1, 49003 Zamora</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Calle%20Santa%20Clara%2C%201%2C%2049003%20Zamora">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Salamanca · Villamayor</h3><p class="text-sm text-slate-600">Avenida Villamayor, 37, 37007 Salamanca</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Villamayor%2C%2037%2C%2037007%20Salamanca">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Carrefour Salamanca</h3><p class="text-sm text-slate-600">Avenida Agustinos Recoletos, 1, CC Carrefour, 37006 Salamanca</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Agustinos%20Recoletos%2C%201%2C%20CC%20Carrefour%2C%2037006%20Salamanca">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">Yoigo · C.C. El Tormes</h3><p class="text-sm text-slate-600">Avenida Salamanca, 27, CC El Tormes, 37900 Santa Marta de Tormes</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Salamanca%2C%2027%2C%20CC%20El%20Tormes%2C%2037900%20Santa%20Marta%20de%20Tormes">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Bulevar Ávila</h3><p class="text-sm text-slate-600">Avenida Juan Carlos I, 35, local 18, El Bulevar, 05004 Ávila</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20Juan%20Carlos%20I%2C%2035%2C%20local%2018%2C%20El%20Bulevar%2C%2005004%20%C3%81vila">Cómo llegar</a></article><article class="bg-slate-50 border border-slate-200 p-6 rounded-3xl space-y-3"><h3 class="font-extrabold text-slate-900">MASlife Ávila · Portugal</h3><p class="text-sm text-slate-600">Avenida de Portugal, 33, 05001 Ávila</p><a class="text-xs font-extrabold text-blue-700 underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Avenida%20de%20Portugal%2C%2033%2C%2005001%20%C3%81vila">Cómo llegar</a></article></div><p class="text-xs text-slate-500">Fuente: <a class="underline" href="https://www.sanmaximotelecom.com/tiendas/" target="_blank" rel="noopener noreferrer">directorio oficial de tiendas</a>.</p></div></section>
     <!-- ================= FOOTER CORPORATIVO ================= -->
     <footer class="bg-slate-900 text-slate-400 text-xs py-10 px-4 sm:px-6 mt-12">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
@@ -502,6 +646,7 @@
         function cambiarCantidad(idx,delta){if(!carrito[idx])return;carrito[idx].cantidad+=delta;if(carrito[idx].cantidad<=0)carrito.splice(idx,1);actualizarCarritoUI();}
         function eliminarDelCarrito(idx){carrito.splice(idx,1);actualizarCarritoUI();showToast('Elemento eliminado.','info');}
         function actualizarCarritoUI(){
+            try{localStorage.setItem('sanmaximo-cart',JSON.stringify(carrito));}catch(e){}
             document.getElementById('cart-badge').innerText=carrito.reduce((n,x)=>n+x.cantidad,0);
             const lista=document.getElementById('lista-carrito');
             if(!carrito.length){lista.innerHTML='<p class="text-slate-400 text-xs text-center py-8">Tu carrito está vacío. Añade una tarifa o un dispositivo.</p>';document.getElementById('total-carrito').innerText='0,00 €/mes';return;}
@@ -560,7 +705,7 @@
           const wrap=document.createElement('div');wrap.className='grid sm:grid-cols-2 gap-4';
           [[a,a1,a2],[b,b1,b2]].forEach(([x,y1,y2])=>{const card=document.createElement('div'),name=document.createElement('b'),p1=document.createElement('p'),p2=document.createElement('p');name.textContent=safe(x.name);p1.textContent='Año 1: '+money(y1);p2.textContent='Año 2: '+money(y2);card.append(name,p1,p2);wrap.append(card);});
           out.append(wrap);
-          const summary=document.createElement('p');summary.className='mt-3 font-extrabold text-blue-800';summary.textContent='Menor coste año 1: '+(a1===b1?'empate':a1<b1?a.name:b.name)+'. Año 2: '+(a2===b2?'empate':a2<b2?a.name:b.name)+'.';out.append(summary);
+          const summary=document.createElement('p');summary.className='mt-3 font-extrabold text-blue-800';summary.textContent='Menor coste año 1: '+(a1===b1?'empate':a1<b1?a.name:b.name)+'. Año 2: '+(a2===b2?'empate':a2<b2?a.name:b.name)+'. Coste total a 24 meses: '+money(a1+a2)+' frente a '+money(b1+b2)+'.';out.append(summary);
           const note=document.createElement('p');note.className='text-xs mt-2 text-slate-500';note.textContent='Comparación matemática de los datos introducidos; comprueba que servicios y condiciones sean equivalentes.';out.append(note);
         }
         function calcularConsumoLuz(){
@@ -771,6 +916,134 @@
           if(btn)btn.disabled=false;
           input.focus();
         }
+
+        // Comparador orientativo de luz y gas (datos introducidos por la persona).
+        function compararEnergia(){
+          const usage=Number(document.getElementById('energy-usage').value);
+          const a={name:document.getElementById('energy-a-name').value.trim()||'Oferta A',unit:Number(document.getElementById('energy-a-unit').value),fixed:Number(document.getElementById('energy-a-fixed').value)};
+          const b={name:document.getElementById('energy-b-name').value.trim()||'Oferta B',unit:Number(document.getElementById('energy-b-unit').value),fixed:Number(document.getElementById('energy-b-fixed').value)};
+          const out=document.getElementById('energy-compare-result');
+          const fields=['energy-usage','energy-a-unit','energy-a-fixed','energy-b-unit','energy-b-fixed'];
+          if(fields.some(id=>document.getElementById(id).value==='')||!Number.isFinite(usage)||usage<0||[a,b].some(x=>!Number.isFinite(x.unit)||!Number.isFinite(x.fixed)||x.unit<0||x.fixed<0)){out.textContent='Completa todos los campos con cantidades válidas.';return;}
+          const ca=usage*a.unit+a.fixed,cb=usage*b.unit+b.fixed,kind=document.getElementById('energy-kind').value;
+          const fmt=n=>money(n);
+          const box=document.createElement('div');box.className='grid sm:grid-cols-2 gap-3';
+          [[a,ca],[b,cb]].forEach(([x,c])=>{const card=document.createElement('div');card.className='rounded-xl border border-slate-200 bg-slate-50 p-3';const title=document.createElement('b');title.textContent=x.name;const m=document.createElement('p');m.className='mt-2 text-lg font-extrabold text-slate-900';m.textContent=fmt(c)+' / mes';const y=document.createElement('p');y.className='text-xs text-slate-500';y.textContent=fmt(c*12)+' / año';card.append(title,m,y);box.append(card);});
+          out.textContent='';out.append(box);
+          const note=document.createElement('p');note.className='mt-3 font-extrabold text-blue-800';note.textContent=(ca===cb?'Las dos ofertas cuestan lo mismo según los datos.':(ca<cb?a.name:b.name)+' sería más económica por '+fmt(Math.abs(ca-cb))+' al mes ('+fmt(Math.abs(ca-cb)*12)+' al año).');out.append(note);
+          const detail=document.createElement('p');detail.className='mt-2 text-xs text-slate-500';detail.textContent='Estimación para '+kind+' con '+usage+' kWh/mes. No es una oferta contractual.';out.append(detail);
+        }
+        // Calculadora rápida de ahorro.
+        function calcularAhorroRapido(){
+          const c=document.getElementById('saving-current').value,n=document.getElementById('saving-new').value,f=document.getElementById('saving-fee').value;
+          const out=document.getElementById('saving-result'),current=Number(c),next=Number(n),fee=Number(f);
+          if(c===''||n===''||f===''||![current,next,fee].every(Number.isFinite)||current<0||next<0||fee<0){out.textContent='Introduce cuotas y costes válidos.';return;}
+          const month=current-next,year=month*12-fee,two=month*24-fee;
+          out.textContent='';
+          const p=document.createElement('p');p.className='font-extrabold text-lg '+(year>=0?'text-emerald-700':'text-amber-700');p.textContent=(year>=0?'Diferencia estimada a tu favor: ':'Coste adicional estimado: ')+money(Math.abs(year))+' el primer año.';out.append(p);
+          const q=document.createElement('p');q.className='mt-2 text-xs text-slate-600';q.textContent='Diferencia mensual: '+money(month)+'. En 24 meses: '+money(two)+'. Coste inicial incluido: '+money(fee)+'.';out.append(q);
+        }
+        // Filtros y fichas del catálogo de dispositivos.
+        const deviceDetails={
+          'Smartphones':['fa-mobile-screen-button','Consulta móviles Android y iOS, memoria, cámara, conectividad y compatibilidad. El modelo y su disponibilidad deben confirmarse en tienda.'],
+          'Tablets':['fa-tablet-screen-button','Consulta tablets por tamaño, capacidad, conectividad Wi-Fi o móvil y compatibilidad con tus necesidades.'],
+          'Relojes inteligentes':['fa-clock','Consulta modelos compatibles con tu teléfono, autonomía y conectividad disponible.'],
+          'Audio y auriculares':['fa-headphones','Consulta auriculares y productos de audio, conexión y compatibilidad.'],
+          'Fundas y protectores':['fa-shield-halved','Para comprobar compatibilidad necesitaremos el modelo exacto de tu teléfono.'],
+          'Cargadores y cables':['fa-charging-station','Consulta conexiones, potencia y compatibilidad del cargador o cable con tu dispositivo.']
+        };
+        let selectedDevice='Smartphones';
+        function filtrarDispositivos(){
+          const cat=document.getElementById('device-filter').value,q=document.getElementById('device-search').value.toLocaleLowerCase('es').trim();
+          let shown=0;
+          document.querySelectorAll('.device-card').forEach(card=>{
+            const okCat=cat==='todos'||card.dataset.deviceCategory===cat;
+            const okText=!q||(card.dataset.deviceName+' '+card.innerText).toLocaleLowerCase('es').includes(q);
+            card.style.display=okCat&&okText?'block':'none';if(okCat&&okText)shown++;
+          });
+          document.getElementById('device-empty').classList.toggle('hidden',shown!==0);
+        }
+        function abrirFichaDispositivo(name){
+          selectedDevice=name;const item=deviceDetails[name]||deviceDetails.Smartphones;
+          document.getElementById('device-detail-title').textContent=name;
+          document.getElementById('device-detail-copy').textContent=item[1];
+          document.getElementById('device-detail-icon').className='fa-solid '+item[0];
+          document.getElementById('device-detail-modal').classList.remove('hidden');
+        }
+        function cerrarFichaDispositivo(){document.getElementById('device-detail-modal').classList.add('hidden');}
+        function anadirFichaDispositivo(){cerrarFichaDispositivo();agregarAlCarrito('Consulta de '+selectedDevice.toLowerCase(),null,'producto','Precio, referencia y stock por confirmar');}
+        // Mapa de tiendas: cambia el mapa y el enlace para la dirección elegida.
+        function actualizarMapaTiendas(){
+          const select=document.getElementById('store-map-select');if(!select)return;
+          const address=select.value,encoded=encodeURIComponent(address);
+          document.getElementById('store-map-frame').src='https://maps.google.com/maps?q='+encoded+'&output=embed';
+          document.getElementById('store-map-open').href='https://www.google.com/maps/search/?api=1&query='+encoded;
+        }
+        // Recordatorio de visita: descarga un archivo de calendario, sin reservar hora con la tienda.
+        function crearRecordatorioCita(){
+          const d=document.getElementById('appointment-date').value,t=document.getElementById('appointment-time').value;
+          if(!d||!t){document.getElementById('appointment-status').textContent='Elige una fecha y una hora.';return;}
+          const start=new Date(d+'T'+t+':00');if(Number.isNaN(start.getTime())||start<new Date()){document.getElementById('appointment-status').textContent='Elige una fecha y hora futuras.';return;}
+          const end=new Date(start.getTime()+30*60000),stamp=x=>x.getFullYear()+String(x.getMonth()+1).padStart(2,'0')+String(x.getDate()).padStart(2,'0')+'T'+String(x.getHours()).padStart(2,'0')+String(x.getMinutes()).padStart(2,'0')+'00';
+          const escapeICS=s=>String(s).replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n');
+          const store=document.getElementById('appointment-store').value,reason=document.getElementById('appointment-reason').value;
+          const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//San Maximo Telecom//Recordatorio//ES','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:'+Date.now()+'@sanmaximo.local','DTSTAMP:'+stamp(new Date()),'DTSTART:'+stamp(start),'DTEND:'+stamp(end),'SUMMARY:'+escapeICS('Recordatorio: '+reason),'LOCATION:'+escapeICS(store),'DESCRIPTION:'+escapeICS('Recordatorio personal. Esta hora no está reservada ni confirmada por la tienda.'),'END:VEVENT','END:VCALENDAR'].join('\r\n');
+          const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='recordatorio-visita-san-maximo.ics';a.click();URL.revokeObjectURL(url);
+          document.getElementById('appointment-status').textContent='Recordatorio descargado. Recuerda contactar con la tienda para confirmar disponibilidad.';
+        }
+        // Opiniones: prepara texto en el dispositivo; no publica ni transmite reseñas.
+        async function prepararOpinion(){
+          const text=document.getElementById('review-text').value.trim(),rating=document.getElementById('review-rating').value,status=document.getElementById('review-status');
+          if(text.length<8){status.textContent='Escribe una opinión un poco más completa antes de copiarla.';return;}
+          const content='Mi valoración de San Máximo Telecom: '+rating+'/5 estrellas.\n'+text;
+          try{await navigator.clipboard.writeText(content);status.textContent='Opinión copiada. No se ha publicado ni enviado.';}
+          catch(e){const blob=new Blob([content],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mi-opinion-san-maximo.txt';a.click();URL.revokeObjectURL(url);status.textContent='Opinión descargada. No se ha publicado ni enviado.';}
+        }
+        // Buscador global dentro del contenido visible de esta página.
+        function abrirBusqueda(){document.getElementById('search-overlay').classList.remove('hidden');setTimeout(()=>document.getElementById('site-search-input').focus(),30);}
+        function cerrarBusqueda(){document.getElementById('search-overlay').classList.add('hidden');}
+        function buscarEnWeb(){
+          const input=document.getElementById('site-search-input'),out=document.getElementById('site-search-results'),q=input.value.toLocaleLowerCase('es').trim();
+          out.textContent='';if(q.length<2){const p=document.createElement('p');p.className='text-sm text-slate-500';p.textContent='Escribe al menos dos letras para buscar.';out.append(p);return;}
+          const targets=[...document.querySelectorAll('h2,h3,details summary,.producto-card,.device-card')],seen=new Set();let found=0;
+          targets.forEach(node=>{
+            const label=(node.innerText||node.textContent||'').replace(/\s+/g,' ').trim();
+            if(!label.toLocaleLowerCase('es').includes(q))return;
+            const section=node.closest('section[id]')||node.closest('[id]'),id=section&&section.id?section.id:'servicios';
+            if(seen.has(id+'|'+label))return;seen.add(id+'|'+label);
+            const a=document.createElement('a');a.href='#'+id;a.className='search-result';const title=document.createElement('b');title.className='block text-sm text-slate-900';title.textContent=label.slice(0,100);const sub=document.createElement('span');sub.className='text-xs text-slate-500';sub.textContent='Ir a la sección';a.append(title,sub);a.addEventListener('click',cerrarBusqueda);out.append(a);found++;
+          });
+          if(!found){const p=document.createElement('p');p.className='text-sm text-slate-500';p.textContent='No he encontrado coincidencias. Prueba con otra palabra.';out.append(p);}
+        }
+        // Modo oscuro y preferencias locales.
+        function inicializarMejoras(){
+          const theme=localStorage.getItem('sanmaximo-theme');
+          if(theme==='dark')document.body.classList.add('dark-mode');
+          actualizarIconoTema();
+          const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
+          const dateInput=document.getElementById('appointment-date');if(dateInput)dateInput.min=today.toISOString().slice(0,10);
+          try{const saved=JSON.parse(localStorage.getItem('sanmaximo-cart')||'[]');if(Array.isArray(saved))carrito=saved.filter(x=>x&&typeof x.nombre==='string'&&Number.isInteger(x.cantidad)&&x.cantidad>0);}catch(e){}
+          actualizarCarritoUI();
+          document.querySelectorAll('section:not(#inicio)').forEach(el=>el.classList.add('reveal-item'));
+          if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.reveal-item').forEach(el=>observer.observe(el));}else document.querySelectorAll('.reveal-item').forEach(el=>el.classList.add('is-visible'));
+        }
+        function actualizarIconoTema(){
+          const dark=document.body.classList.contains('dark-mode'),icon=document.getElementById('theme-icon'),btn=document.getElementById('toggle-theme');
+          if(icon)icon.className='fa-solid '+(dark?'fa-sun':'fa-moon');if(btn){btn.setAttribute('aria-label',dark?'Activar modo claro':'Activar modo oscuro');btn.title=dark?'Cambiar a modo claro':'Cambiar a modo oscuro';}
+        }
+        function alternarTema(){
+          document.body.classList.toggle('dark-mode');localStorage.setItem('sanmaximo-theme',document.body.classList.contains('dark-mode')?'dark':'light');actualizarIconoTema();
+        }
+        document.addEventListener('DOMContentLoaded',()=>{});
+        document.getElementById('device-filter').addEventListener('change',filtrarDispositivos);
+        document.getElementById('device-search').addEventListener('input',filtrarDispositivos);
+        document.getElementById('store-map-select').addEventListener('change',actualizarMapaTiendas);
+        document.getElementById('site-search-input').addEventListener('input',buscarEnWeb);
+        document.getElementById('open-search').addEventListener('click',abrirBusqueda);
+        document.getElementById('toggle-theme').addEventListener('click',alternarTema);
+        document.getElementById('site-search-input').addEventListener('keydown',e=>{if(e.key==='Escape')cerrarBusqueda();});
+        document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();abrirBusqueda();}if(e.key==='Escape'){cerrarBusqueda();cerrarFichaDispositivo();}});
+        inicializarMejoras();
     </script>
 </body>
 </html>
