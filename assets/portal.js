@@ -125,9 +125,84 @@ function sendMaxi(){
 function filterDevices(){const q=(safeText('device-search')||'').toLocaleLowerCase('es'),category=safeText('device-filter')||'all';let count=0;document.querySelectorAll('.device-card').forEach(card=>{const okCat=category==='all'||card.dataset.category===category;const okText=!q||(card.dataset.keywords+' '+card.innerText).toLocaleLowerCase('es').includes(q);card.style.display=okCat&&okText?'block':'none';if(okCat&&okText)count++});const empty=document.getElementById('device-empty');if(empty)empty.classList.toggle('hidden',count!==0)}
 function updateStoreMap(){const select=document.getElementById('store-map-select');if(!select)return;const address=select.value,encoded=encodeURIComponent(address);const frame=document.getElementById('store-map-frame'),link=document.getElementById('store-map-link');if(frame)frame.src='https://maps.google.com/maps?q='+encoded+'&output=embed';if(link)link.href='https://www.google.com/maps/search/?api=1&query='+encoded}
 function makeCalendarReminder(){const d=safeText('visit-date'),t=safeText('visit-time');if(!d||!t){toast('Elige fecha y hora');return}const start=new Date(d+'T'+t+':00');if(Number.isNaN(start.getTime())||start<new Date()){toast('Elige una fecha y hora futuras');return}const end=new Date(start.getTime()+30*60000),stamp=x=>x.getFullYear()+String(x.getMonth()+1).padStart(2,'0')+String(x.getDate()).padStart(2,'0')+'T'+String(x.getHours()).padStart(2,'0')+String(x.getMinutes()).padStart(2,'0')+'00';const store=safeText('visit-store'),reason=safeText('visit-reason');const content=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//San Maximo Telecom//Recordatorio//ES','BEGIN:VEVENT','UID:'+Date.now()+'@sanmaximo.local','DTSTAMP:'+stamp(new Date()),'DTSTART:'+stamp(start),'DTEND:'+stamp(end),'SUMMARY:Recordatorio de visita San Máximo Telecom','LOCATION:'+store.replace(/,/g,'\\,'),'DESCRIPTION:Recordatorio personal. La tienda debe confirmar la hora. Motivo: '+reason,'END:VEVENT','END:VCALENDAR'].join('\r\n');const blob=new Blob([content],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='recordatorio-san-maximo.ics';a.click();URL.revokeObjectURL(url);const status=document.getElementById('visit-status');if(status)status.textContent='Recordatorio descargado. La visita no está reservada: contacta con la tienda para confirmar.'}
+
+const GLOBAL_SEARCH_ITEMS=[
+ {title:'Tarifas de fibra y móvil',description:'Precios y condiciones de los servicios.',url:'tarifas.html',terms:'tarifas tarifa fibra móvil movil datos gb precio'},
+ {title:'Presupuesto para el hogar',description:'Calcula una propuesta según personas y líneas.',url:'tarifas.html#configurador-hogar',terms:'familia personas casa presupuesto factura líneas lineas hogar'},
+ {title:'Comparador de ofertas',description:'Compara promociones y coste de dos ofertas.',url:'tarifas.html',terms:'comparar ofertas promoción cuota coste ahorro'},
+ {title:'Móviles y accesorios',description:'Encuentra smartphones, auriculares y complementos.',url:'dispositivos.html',terms:'móviles moviles móvil movil smartphone iphone samsung auriculares accesorios'},
+ {title:'Analizar una factura',description:'Revisa un PDF o una imagen.',url:'facturas.html',terms:'factura facturas recibo pdf analizar'},
+ {title:'Luz y gas',description:'Calcula y compara ofertas de energía.',url:'energia.html',terms:'luz gas energía energia electricidad kwh'},
+ {title:'Tiendas y direcciones',description:'Mapa y datos de los establecimientos.',url:'tiendas.html',terms:'tienda tiendas dirección direccion mapa salamanca zamora ávila avila'},
+ {title:'Contacto y teléfono',description:'Llama al 923 24 43 69 o escribe al equipo.',url:'contacto.html',terms:'contacto llamar teléfono telefono número numero asesor persona'},
+ {title:'Opiniones y reseñas',description:'Lee testimonios y comparte tu experiencia.',url:'opiniones.html',terms:'opiniones reseñas reseña valoración valoracion estrellas'},
+ {title:'Servicios para empresas',description:'Soluciones de conectividad para negocios.',url:'servicios.html#empresas',terms:'empresa empresas negocio autónomos autonomos'},
+ {title:'Mi área de cliente',description:'Información y accesos para tus gestiones.',url:'clientes.html',terms:'cliente clientes área area gestiones soporte'}
+];
+function normaliseSearch(value){return String(value||'').toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function renderGlobalSearch(query){
+ const box=document.getElementById('global-search-results');if(!box)return;box.textContent='';
+ const tokens=normaliseSearch(query).trim().split(/\s+/).filter(Boolean);
+ const results=GLOBAL_SEARCH_ITEMS.filter(item=>!tokens.length||tokens.every(token=>normaliseSearch(item.title+' '+item.description+' '+item.terms).includes(token))).slice(0,7);
+ if(!results.length){const empty=document.createElement('p');empty.className='global-search-empty';empty.textContent='No hemos encontrado ese apartado. Puedes contactar con el equipo.';const link=document.createElement('a');link.href='contacto.html';link.textContent='Ir a Contacto';link.className='global-search-result-link';box.append(empty,link);return}
+ results.forEach(item=>{const a=document.createElement('a');a.href=item.url;a.className='global-search-result';const icon=document.createElement('span');icon.className='global-search-result-icon';icon.innerHTML='<i class="fa-solid fa-arrow-right"></i>';const text=document.createElement('span');text.className='global-search-result-text';const title=document.createElement('b');title.textContent=item.title;const desc=document.createElement('small');desc.textContent=item.description;text.append(title,desc);a.append(icon,text);box.append(a)});
+}
+function initGlobalSearch(){
+ const header=document.querySelector('header.site-header'),controls=header?.querySelector('.flex.items-center.gap-2.shrink-0');if(!header||!controls||document.getElementById('global-search-toggle'))return;
+ const toggle=document.createElement('button');toggle.type='button';toggle.id='global-search-toggle';toggle.className='header-icon';toggle.title='Buscar en toda la web';toggle.setAttribute('aria-label','Buscar en toda la web');toggle.innerHTML='<i class="fa-solid fa-magnifying-glass"></i>';controls.insertBefore(toggle,controls.firstChild);
+ const panel=document.createElement('div');panel.id='global-search-panel';panel.className='global-search-panel hidden';panel.innerHTML='<div class="global-search-inner"><div class="global-search-field"><i class="fa-solid fa-magnifying-glass"></i><input id="global-search-input" type="search" placeholder="Busca tarifas, móviles, facturas, tiendas…" autocomplete="off" aria-label="Buscar en toda la web"><button id="global-search-close" type="button" aria-label="Cerrar búsqueda"><i class="fa-solid fa-xmark"></i></button></div><div class="global-search-hint">Acceso rápido a todos los apartados</div><div id="global-search-results" class="global-search-results" aria-live="polite"></div></div>';
+ header.insertAdjacentElement('afterend',panel);
+ const input=panel.querySelector('#global-search-input');
+ const open=()=>{panel.classList.remove('hidden');renderGlobalSearch(input.value);input.focus()};
+ const close=()=>{panel.classList.add('hidden');toggle.focus()};
+ toggle.addEventListener('click',()=>panel.classList.contains('hidden')?open():close());
+ panel.querySelector('#global-search-close').addEventListener('click',close);
+ input.addEventListener('input',()=>renderGlobalSearch(input.value));
+ input.addEventListener('keydown',event=>{if(event.key==='Escape')close();if(event.key==='Enter'){const first=panel.querySelector('.global-search-result');if(first)location.href=first.href}});
+ document.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();open()}if(event.key==='Escape'&&!panel.classList.contains('hidden'))close()});
+ document.addEventListener('click',event=>{if(!panel.contains(event.target)&&!toggle.contains(event.target)&&!panel.classList.contains('hidden'))panel.classList.add('hidden')});
+}
+function calculateHouseholdQuote(){
+ const people=Number(safeText('quote-people')||2),lines=Number(safeText('quote-lines')||0),fibre=safeText('quote-fibre')==='yes',usage=safeText('quote-use')||'normal';
+ let title='Elige tus servicios',description='Selecciona fibra o al menos una línea móvil.',promo=0,months=0,normal=0,year=0,detail='',advice='Selecciona los servicios que necesitáis para obtener una estimación.',valid=fibre||lines>0;
+ if(fibre&&lines===0){title='Fibra 600 Mb';description='Internet en casa sin líneas móviles incluidas.';promo=19.90;months=12;normal=29.90;detail='Fibra 600 Mb';advice='La tarifa publicada indica 19,90 €/mes durante 12 meses y después 29,90 €/mes. Revisa el compromiso de instalación.'}
+ else if(fibre&&lines===1){title='Fibra 600 Mb + 80 GB';description='Fibra y una línea móvil con llamadas ilimitadas.';promo=53;normal=53;detail='Fibra 600 Mb + 80 GB';advice='La tarifa publicada indica 53 €/mes. Confirma que es la opción adecuada para una línea.'}
+ else if(fibre&&lines>=2){const extra=lines-2;title='Fibra 600 Mb + '+lines+' líneas';description='Paquete de fibra con dos líneas y líneas adicionales estimadas.';promo=49+extra*14;months=3;normal=55+extra*14;detail='Fibra 600 Mb + 2 líneas'+(extra?' + '+extra+' línea(s) adicional(es) estimada(s)':'');advice=extra?'Las líneas adicionales se estiman a 14 €/mes cada una. La empresa debe confirmar compatibilidad y disponibilidad.':'Paquete publicado con 50 GB compartidos entre dos líneas.'}
+ else if(!fibre&&lines>0){title=lines+' línea(s) móvil(es)';description='Tarifa de 35 GB y llamadas ilimitadas por línea.';promo=lines*14;normal=lines*14;detail=lines+' × 35 GB + llamadas ilimitadas';advice='Cálculo basado en una tarifa móvil individual de 14 €/mes por línea.'}
+ if(valid)year=months?promo*months+normal*(12-months):normal*12;
+ if(usage==='intensive')advice+=' Para streaming y teletrabajo, revisa la cobertura disponible en casa.';
+ if(usage==='gaming')advice+=' Para juegos y muchos dispositivos, confirma la cobertura y el rendimiento de la fibra.';
+ const fmt=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+ const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
+ set('quote-title',title);set('quote-description',people+' persona(s) en el hogar · '+lines+' línea(s) móvil(es) · '+(fibre?'con fibra 600 Mb':'sin fibra')+'. '+description);
+ set('quote-promo',valid?fmt(promo)+'/mes':'—');set('quote-normal',valid?fmt(normal)+'/mes':'—');
+ set('quote-promo-period',valid?(months?'Durante '+months+' meses':'Sin promoción temporal indicada'):'Añade un servicio');
+ set('quote-normal-period',valid?(months?'Después de la promoción':'Cuota mensual'):'—');
+ set('quote-year',valid?fmt(year):'—');set('quote-advice',advice+' Precios públicos de referencia con IVA incluido; sujetos a confirmación.');
+ window.householdQuote={people,lines,fibre,usage,title,description,promo,months,normal,year,detail,advice,valid};
+ return window.householdQuote;
+}
+function printHouseholdQuote(){
+ const q=calculateHouseholdQuote();if(!q.valid){toast('Selecciona fibra o al menos una línea móvil');return}
+ const fmt=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+ const popup=window.open('','_blank','width=820,height=720');if(!popup){toast('Permite las ventanas emergentes para guardar el presupuesto');return}
+ const html='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Presupuesto orientativo · San Máximo Telecom</title><style>body{font-family:Arial,sans-serif;color:#172b48;margin:40px;line-height:1.5}header{border-bottom:3px solid #2563eb;padding-bottom:18px}.brand{font-weight:900;color:#1d4ed8}h1{font-size:26px}table{width:100%;border-collapse:collapse;margin:25px 0}td,th{text-align:left;padding:12px;border-bottom:1px solid #dce5f0}.summary{background:#eff6ff;border-radius:12px;padding:18px}.summary b{font-size:22px;color:#1d4ed8}.foot{margin-top:30px;border-top:1px solid #dce5f0;padding-top:15px;font-size:11px;color:#596b80}@media print{body{margin:18mm}}</style></head><body><header><div class="brand">SAN MÁXIMO TELECOM</div><h1>Presupuesto orientativo para el hogar</h1><small>Fecha: '+new Date().toLocaleDateString('es-ES')+'</small></header><p><b>Personas:</b> '+q.people+' · <b>Líneas:</b> '+q.lines+' · <b>Fibra:</b> '+(q.fibre?'Sí, 600 Mb':'No')+'</p><table><tr><th>Propuesta</th><th>Detalle</th><th>Cuota inicial</th></tr><tr><td>'+q.title+'</td><td>'+q.detail+'</td><td>'+fmt(q.promo)+'/mes</td></tr></table><div class="summary"><p><b>Cuota inicial:</b> '+fmt(q.promo)+'/mes'+(q.months?' durante '+q.months+' meses':'')+'</p><p><b>Después:</b> '+fmt(q.normal)+'/mes</p><p><b>Coste estimado del primer año:</b> '+fmt(q.year)+'</p></div><p>'+q.advice+'</p><div class="foot">Documento informativo basado en los precios de referencia publicados en esta web, con IVA incluido. No es una factura fiscal, contrato ni oferta vinculante. Cobertura, disponibilidad, compatibilidad y condiciones deben confirmarse con San Máximo Telecom. Teléfono de contacto: 923 24 43 69.</div><script>window.onload=()=>window.print();</script></body></html>';
+ popup.document.open();popup.document.write(html);popup.document.close();
+}
+function initHouseholdQuote(){
+ const people=document.getElementById('quote-people'),lines=document.getElementById('quote-lines'),fibre=document.getElementById('quote-fibre'),usage=document.getElementById('quote-use');
+ if(!people||!lines||!fibre||!usage)return;
+ people.addEventListener('change',()=>{lines.value=String(Math.min(8,Number(people.value)));calculateHouseholdQuote()});
+ [lines,fibre,usage].forEach(el=>el.addEventListener('change',calculateHouseholdQuote));
+ document.getElementById('quote-calculate')?.addEventListener('click',calculateHouseholdQuote);
+ document.getElementById('quote-print')?.addEventListener('click',printHouseholdQuote);
+ document.getElementById('quote-add')?.addEventListener('click',()=>{const q=calculateHouseholdQuote();if(!q.valid){toast('Selecciona fibra o alguna línea móvil');return}agregarAlCarrito(q.title,q.promo,'tarifa',q.detail+' · después '+q.normal.toFixed(2).replace('.',',')+' €/mes · presupuesto orientativo para '+q.people+' persona(s)')});
+ calculateHouseholdQuote();
+}
+
 function initPortal(){
  try{if(localStorage.getItem('sanmaximo-theme')==='dark')document.body.classList.add('dark-mode')}catch(e){}
- updateThemeButton();loadCart();initHomeMotion();
+ updateThemeButton();loadCart();initHomeMotion();initGlobalSearch();initHouseholdQuote();
  const date=document.getElementById('visit-date');if(date){const now=new Date();now.setMinutes(now.getMinutes()-now.getTimezoneOffset());date.min=now.toISOString().slice(0,10)}
  const search=document.getElementById('device-search');if(search)search.addEventListener('input',filterDevices);
  const filter=document.getElementById('device-filter');if(filter)filter.addEventListener('change',filterDevices);
