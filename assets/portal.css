@@ -28,3 +28,5 @@
 .dark-mode .product-price,.dark-mode .product-media-panel h2{color:#edf4ff}
 .dark-mode .demo-success{background:#123326;border-color:#23634a;color:#c8f7db}
 @media(max-width:640px){.product-photo{height:220px}.product-media-panel{padding:15px}.store-promo-banner{padding:17px}}
+
+.product-photo{position:relative}.product-photo-credit{position:absolute;right:8px;bottom:7px;padding:4px 7px;border-radius:7px;background:rgba(255,255,255,.85);color:#475569;font-size:8px;font-weight:800}.dark-mode .product-photo-credit{background:rgba(15,23,42,.85);color:#cbd5e1}
