@@ -221,6 +221,7 @@ function initPortal(){
  const closeMaxi=document.getElementById('maxi-close');if(closeMaxi)closeMaxi.addEventListener('click',toggleMaxi);
  document.querySelectorAll('[data-maxi]').forEach(b=>b.addEventListener('click',()=>presetMaxi(b.dataset.maxi)));
  const reviewForm=document.getElementById('review-form');if(reviewForm)reviewForm.addEventListener('submit',sendReviewRequest);
+ const reviewText=document.getElementById('review-text'),reviewCount=document.getElementById('review-count');if(reviewText&&reviewCount){const updateReviewCount=()=>{reviewCount.textContent=reviewText.value.length+'/900'};reviewText.addEventListener('input',updateReviewCount);updateReviewCount();}
  const params=new URLSearchParams(location.search),requestMessage=document.getElementById('request-message');if(requestMessage&&!requestMessage.value.trim()){const type=params.get('tipo');if(params.get('origen')==='carrito')requestMessage.value='Me gustaría recibir información sobre los productos y tarifas que he añadido a mi solicitud. Por favor, confirmad disponibilidad, cobertura y condiciones.';else if(type==='empresa')requestMessage.value='Me gustaría solicitar información sobre soluciones de conectividad y telecomunicaciones para mi empresa.';else if(type==='energia')requestMessage.value='Me gustaría recibir asesoramiento sobre una oferta de luz o gas.';else if(type==='factura')requestMessage.value='Me gustaría recibir ayuda para revisar mi factura y comparar alternativas.'}
 }
 document.addEventListener('DOMContentLoaded',initPortal);
