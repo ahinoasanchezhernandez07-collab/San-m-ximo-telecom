@@ -104,7 +104,7 @@ function answerMaxi(raw){
  if(has('opinion','opiniones','reseña','resena','valorar','valoracion','experiencia'))return ['En Opiniones puedes leer testimonios publicados por la empresa y enviar tu reseña para que el equipo la revise.',['opiniones.html','Ver opiniones y escribir reseña']];
  if(has('recomiend','ayudame a elegir','ayudarme a elegir','no se cual','no se que movil','que movil me compro','cual me conviene')){maxiFlow='device-priority';return ['¡Claro! Te ayudo a elegir. ¿Qué es lo más importante para ti?',['dispositivos.html','Ver catálogo'],['Cámara','Batería','Precio','Juegos']]}
  if(has('carrito','cesta','solicitud','mi compra')){openCart();return ['He abierto tu cesta. Puedes cambiar cantidades, quitar productos o continuar al resumen.',''];}
- if(has('finalizar compra','hacer pedido','compra'))return ['Para continuar, abre tu cesta y pulsa “Finalizar compra”. El resumen no envía un pedido ni realiza un cobro.',['compra-demo.html','Ir al resumen de compra']];
+ if(has('finalizar compra','hacer pedido','terminar compra'))return ['Te llevo al resumen de tu cesta para revisar los artículos y el importe.',['compra-demo.html','Finalizar compra']];
  if(has('movil','smartphone','tablet','auricular','reloj','accesorio','iphone','samsung','bateria externa','power bank'))return ['En Dispositivos puedes filtrar productos, elegir una variante, consultar fotografías y vídeos y añadirlos a tu cesta.',['dispositivos.html','Ver dispositivos'],['Ayúdame a elegir un móvil','Ver opiniones']];
  if(has('precio','tarifa','fibra','datos','gb','permanencia','cobertura'))return ['En Tarifas puedes comparar cuotas y promociones. La cobertura debe comprobarse para la dirección donde se instalará el servicio.',['tarifas.html','Comparar tarifas'],['Hablar con el equipo']];
  if(has('factura','recibo','ahorro','analizar'))return ['En Facturas puedes leer un PDF o imagen en tu navegador y comparar el importe con otra oferta. Revisa siempre la cifra detectada.',['facturas.html','Analizar factura'],['Contactar con un asesor']];
@@ -227,7 +227,7 @@ function updateDemoCheckout(){
 function confirmDemoPurchase(){
  const items=demoItems();if(!items.length){toast('Añade un dispositivo o accesorio primero');return}
  if(items.some(x=>x.price===null)){toast('Hay productos sin precio: consulta antes de continuar');return}
- if(!document.getElementById('demo-accept').checked){toast('Confirma que has entendido que es una simulación');return}
+ if(!document.getElementById('demo-accept').checked){toast('Confirma que has revisado el resumen');return}
  const delivery=safeText('demo-delivery'),total=items.reduce((sum,x)=>sum+x.price*x.qty,0);
  const order={id:'DEMO-'+new Date().getFullYear()+'-'+Math.random().toString(36).slice(2,8).toUpperCase(),date:new Date().toISOString(),delivery,total,items:items.map(x=>({...x}))};
  try{const saved=JSON.parse(localStorage.getItem('sanmaximo-demo-orders')||'[]');localStorage.setItem('sanmaximo-demo-orders',JSON.stringify([order,...(Array.isArray(saved)?saved:[])].slice(0,5)));localStorage.setItem('sanmaximo-demo-last-order',JSON.stringify(order))}catch(e){}
@@ -240,8 +240,8 @@ function downloadDemoReceipt(){
  let order=null;try{order=JSON.parse(localStorage.getItem('sanmaximo-demo-last-order')||'null')}catch(e){}
  if(!order){toast('No hay recibo disponible');return}
  const lines=order.items.map(x=>x.qty+' × '+x.name+' — '+euro(x.price*x.qty)).join('\n');
- const content='SAN MÁXIMO TELECOM · RECIBO DE DEMOSTRACIÓN\n\nCódigo: '+order.id+'\nFecha: '+new Date(order.date).toLocaleString('es-ES')+'\nModalidad: '+order.delivery+'\n\n'+lines+'\n\nTOTAL SIMULADO: '+euro(order.total)+'\n\nESTO NO ES UNA COMPRA REAL. No se ha realizado ningún pago, no existe un pedido y no se enviará ningún producto.';
- const blob=new Blob([content],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='recibo-demo-san-maximo.txt';a.click();URL.revokeObjectURL(url);
+ const content='SAN MÁXIMO TELECOM · RESUMEN DE COMPRA (SIMULACIÓN)\n\nCódigo: '+order.id+'\nFecha: '+new Date(order.date).toLocaleString('es-ES')+'\nModalidad: '+order.delivery+'\n\n'+lines+'\n\nTOTAL ORIENTATIVO: '+euro(order.total)+'\n\nEste documento es un resumen simulado. No acredita un pedido ni un pago y no se enviará ningún producto.';
+ const blob=new Blob([content],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='resumen-compra-san-maximo.txt';a.click();URL.revokeObjectURL(url);
 }
 document.addEventListener('DOMContentLoaded',()=>{
  renderDeviceStore();updateDemoCheckout();
