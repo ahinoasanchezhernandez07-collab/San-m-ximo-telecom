@@ -61,7 +61,7 @@ function sendRequestEmail(event){
  const total=cart.reduce((sum,x)=>sum+(x.type==='tarifa'&&x.price!==null?x.price*x.qty:0),0);
  const subject='Solicitud desde la web de San Máximo Telecom';
  const body='Hola, me gustaría recibir información.\n\nNombre: '+name+'\nCorreo para responderme: '+email+'\n\nConsulta:\n'+message+'\n\nMi selección:\n'+lines+'\n\nCuota mensual inicial estimada (solo tarifas): '+euro(total)+'/mes.\n\nEntiendo que esta solicitud no es una contratación ni un pago. Quedo pendiente de confirmar disponibilidad y condiciones.';
- const url='mailto:'+encodeURIComponent(dest)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+ const safeDest=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(dest)?dest:GENERAL_EMAIL;const url='mailto:'+safeDest+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
  window.location.href=url;
  const status=document.getElementById('request-status');if(status)status.textContent='Se ha preparado un correo en tu aplicación de email. Revísalo y pulsa Enviar para transmitir la solicitud.';
 }
@@ -108,6 +108,6 @@ function initPortal(){
  const maxi=document.getElementById('maxi-launcher');if(maxi)maxi.addEventListener('click',toggleMaxi);
  const closeMaxi=document.getElementById('maxi-close');if(closeMaxi)closeMaxi.addEventListener('click',toggleMaxi);
  document.querySelectorAll('[data-maxi]').forEach(b=>b.addEventListener('click',()=>presetMaxi(b.dataset.maxi)));
- const quick=document.getElementById('request-from-cart');if(quick&&new URLSearchParams(location.search).get('origen')==='carrito'){const note=document.getElementById('request-intro');if(note)note.textContent='Hemos recuperado tu selección. Completa la consulta y se preparará un correo para el equipo.'}
+ const params=new URLSearchParams(location.search),requestMessage=document.getElementById('request-message');if(requestMessage&&!requestMessage.value.trim()){const type=params.get('tipo');if(params.get('origen')==='carrito')requestMessage.value='Me gustaría recibir información sobre los productos y tarifas que he añadido a mi solicitud. Por favor, confirmad disponibilidad, cobertura y condiciones.';else if(type==='empresa')requestMessage.value='Me gustaría solicitar información sobre soluciones de conectividad y telecomunicaciones para mi empresa.';else if(type==='energia')requestMessage.value='Me gustaría recibir asesoramiento sobre una oferta de luz o gas.';else if(type==='factura')requestMessage.value='Me gustaría recibir ayuda para revisar mi factura y comparar alternativas.'}
 }
 document.addEventListener('DOMContentLoaded',initPortal);
